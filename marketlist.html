@@ -1,0 +1,614 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>家具快搜-品牌</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=7;IE=9;IE=8">
+        
+        <link rel="icon" href="/jiajukuaiso.ico"  type="image/x-icon" />
+        <link rel="shortcut icon" href="/jiajukuaiso.ico"  type="image/x-icon" />
+        <link href="resource/content/css/core.css" rel="stylesheet" type="text/css" />
+        <link href="resource/content/css/css.css" rel="stylesheet" type="text/css" />
+        <link href="resource/content/css/brand/brand.css" rel="stylesheet" type="text/css" />
+        <script src="resource/content/js/core.js" type="text/javascript"></script>
+        <script src="resource/content/libs/slides.min.jquery.js" type="text/javascript"></script>
+        
+        <script src="resource/content/js/brand.js" type="text/javascript"></script>
+        <script src="resource/page/page.js" type="text/javascript"></script>
+        <link href="resource/page/page.css" rel="stylesheet" type="text/css" />
+        <style>
+            
+        .quyu
+        {
+            cursor: pointer;
+        }
+        .quyu ul
+        {
+            display: none;
+        }
+        .quyu:hover ul
+        {
+            display: block;
+            position: absolute;
+            background: #f5f5f5;
+            border-top: none;
+            overflow: hidden;
+            border: 1px solid #d8d8d8;
+            width: 89px;
+        }
+        .quyu ul li
+        {
+            height: 22px;
+            padding-left: 16px;
+            line-height: 22px;
+            background: #fff;
+            color: #af051c;
+            text-decoration: none;
+        }
+        .site {
+    background: url("/resource/web/css/zd.gif") no-repeat scroll 2px 12px rgba(0, 0, 0, 0);
+    color: #9d9d9d;
+    height: 40px;
+    line-height: 40px;
+    margin: 0 auto;
+    padding-left: 25px;
+    width: 1175px;
+}
+.tipmessage{position:absolute;color:#d52249;height:31px;line-height:31px;display:none;width:286px;text-align:center;background:url(/resource/web/images/viptipbg.gif) no-repeat;z-index:100;}
+    
+        </style>
+    </head>
+    <body>
+   
+        <div class="header-box">
+            <div class="w clearfix">
+                <div class="logo fl" style="position: relative;">
+                    <a href="/" style="position: absolute; top: 5px; left: 5px; width: 140px; height: 45px;
+                    z-index: 2px;"></a>
+                    <div class="citys">
+                        <a class="a0" href="#">上海</a>
+                        <ul class="clearfix">
+                            <li><a href="##">全国</a></li>
+                            <li>上海</li>
+                            <li>广州</li>
+                            <li>深圳</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="fl search">
+                    <div class="logo-s-t" id="searchTypeList" style="display: none;">
+                        <a id="T_product" title="product" class="Searcha">
+                        搜产品</a> <a id="T_brand" title="brand" class="">
+                    搜品牌</a> <a id="T_market" title="market" class="">
+                搜卖场</a>
+                </div>
+                <input type="text" class="text" name="searchKey" id="searchKey" placeholder="明星家具盛惠，1元拍爆款家具，抢码最高省4500！" autocomplete="off"><input class="button" type="button" name="topSearchBtn" id="topSearchBtn" value="搜索">
+                <div class="hot" style="border: 0px solid #cacaca;">
+                    <a class="a-on" target="_blank" href="/Dealer/index.aspx?did=84">楷模</a>  <a target="_blank" href="/company/210/index.aspx">北欧E家</a>
+                    <a href="/51/default.aspx" target="_blank"> 品牌团购</a> <a target="_blank" href="/productlisttbb.aspx">名品折扣</a>
+                    <a target="_blank" h
+                        ref="/productlist.aspx?did=7">家具精选</a>  <a target="_blank" href="/productlisttbb.aspx?xid=50&amp;did=11">特价书柜</a>
+                        
+                    </div>
+                </div>
+                <div class="right fr">
+                    
+                    <img src="resource/images/eweima.jpg">
+                </div>
+            </div>
+        </div>
+        <!--头部结束-->
+
+       <!--菜单开始-->
+      <div class="nav">
+    <div class="nav-box w clearfix">
+        <div class="main-nav fl" id="j_navTab">
+            <a href="#" class="a0">全部分类</a>
+            <ul class="pull-down hide">
+                <li class="li1"><a href="/market/list.aspx" class="nav-item">家具卖场</a> <a href="#" class="trim"></a>
+                    <dl class="hide">
+                        <dt id="marketmenu"><span class="on" onmouseover="GetMarket('A,B,C,D',this);">ABCD</span>
+                            <span onmouseover="GetMarket('E,F,G,H',this);">EFGH</span> <span onmouseover="GetMarket('I,J,K,L',this);">
+                                IJKL</span> <span onmouseover="GetMarket('M,N,O,P',this);">MNOS</span> <span onmouseover="GetMarket('Q,R,S,T,U',this);">
+                                    TUVW</span> <span onmouseover="GetMarket('V,W,X,Y,Z',this);">XYZ</span>
+                        </dt>
+                        <dd>
+                            <div class="items" id="kslkcon">
+                                <div class="inner" style=" min-height:110px;"><a target="_blank" class="myred" href="/market/53/index.aspx">春申江春申江家具曲阳商厦店</a><a target="_blank" class="myred" href="/market/61/index.aspx">东明家居东明家具广场沪太店</a><a target="_blank" class="myred" href="/market/52/index.aspx">东明家居东明家具广场浦东店</a><a target="_blank" class="myred" href="/market/222/index.aspx">东明家居浦东</a></div>
+                                <div class="inner-img">
+                                    <a href="http://www.jiajuks.com/market/14/index.aspx">
+                                        <img style="width: 120px; height: 45px;" src="http://www.jiajuks.com/upload/market/logo/14/20130608175750105503.jpg"></a>
+                                    <a href="http://www.jiajuks.com/market/list.aspx">
+                                        <img src="http://www.jiajuks.com/upload/market/logo/8/20130608144234216136.jpg"></a>
+                                    <a href="http://www.jiajuks.com/market/list.aspx">
+                                        <img src="http://www.jiajuks.com/upload/market/logo/41/20130608174628497316.jpg"></a>
+                                    <a href="http://www.jiajuks.com/market/list.aspx">
+                                        <img src="http://www.jiajuks.com/upload/market/logo/43/20130608145015418676.jpg"></a>
+                                    <a href="http://www.jiajuks.com/market/list.aspx">
+                                        <img src="http://www.jiajuks.com/upload/market/logo/45/20130608145353002055.jpg"></a>
+                                    <a href="http://www.jiajuks.com/market/list.aspx">
+                                        <img src="http://www.jiajuks.com/upload/market/logo/46/20130608150014577812.jpg"></a>
+                                    <a href="http://www.jiajuks.com/market/list.aspx">
+                                        <img src="http://www.jiajuks.com/upload/market/logo/52/20130608150641921687.jpg"></a>
+                                    <a href="http://www.jiajuks.com/market/list.aspx">
+                                        <img src="http://www.jiajuks.com/upload/market/logo/56/20130608174958084551.jpg"></a>
+                                </div>
+                            </div>
+                        </dd>
+                    </dl>
+                </li>
+                <li class="li2"><a href="/company-brand/list.aspx" class="nav-item">家具品牌</a> <a href="#" class="trim"></a>
+                    <dl class="hide">
+                        <dt id="brandmenu"><span class="on" onmouseover="GetBrand('A,B,C',this);">ABC</span>
+                            <span onmouseover="GetBrand('D,E,F,G',this);">DEFG</span> <span onmouseover="GetBrand('H,I,J,K',this);">
+                                HIJK</span> <span onmouseover="GetBrand('L,M,N,O',this);">LMNO</span> <span onmouseover="GetBrand('P,Q,R,S,T',this);">
+                                    PQRST</span> <span onmouseover="GetBrand('U,V,W,X,Y,Z',this);">UVWXYZ</span>
+                        </dt>
+                        <dd>
+                            <div class="items" id="ksbrandcon">
+                                <div class="inner" style=" min-height:110px;"><a target="_blank" href="/ShopBrand.aspx?bname=%e5%a5%a5%e5%b7%b4%e7%8e%9b">奥巴玛</a><a target="_blank" href="/ShopBrand.aspx?bname=%e8%89%be%e8%8a%99%e8%bf%aa">艾芙迪</a><a target="_blank" href="/ShopBrand.aspx?bname=%e8%89%be%e8%bf%aa%e5%8d%a1">艾迪卡</a><a target="_blank" href="/ShopBrand.aspx?bname=%e8%89%be%e8%8f%b2%e5%b0%94">艾菲尔</a><a target="_blank" href="/ShopBrand.aspx?bname=%e5%82%b2%e8%80%90">傲耐</a><a target="_blank" href="/ShopBrand.aspx?bname=%e6%be%b3%e7%8f%80">澳珀</a><a target="_blank" href="/ShopBrand.aspx?bname=%e7%88%b1%e8%88%92">爱舒</a><a target="_blank" href="/ShopBrand.aspx?bname=%e5%a5%a5%e8%8e%8e%e8%93%93%e4%b8%bd">奥莎蓓丽</a><a target="_blank" href="/ShopBrand.aspx?bname=%e9%98%bf%e9%a9%ac%e5%8f%b8">阿马司</a><a target="_blank" href="/ShopBrand.aspx?bname=%e8%89%be%e7%89%b9%e5%88%a9">艾特利</a><a target="_blank" href="/ShopBrand.aspx?bname=%e8%89%be%e4%b8%80%e7%8e%9b">艾一玛</a><a target="_blank" href="/ShopBrand.aspx?bname=%e7%88%b1%e5%87%a1">爱凡</a><a target="_blank" href="/ShopBrand.aspx?bname=%e8%89%be%e7%8e%9b%e8%8e%8e">艾玛莎</a><a target="_blank" href="/ShopBrand.aspx?bname=%e5%ae%89%e5%be%b7And">安德And</a><a target="_blank" href="/ShopBrand.aspx?bname=%e8%b4%9d%e6%9c%97%e5%ae%b6%e7%a7%81">贝朗家私</a><a target="_blank" href="/ShopBrand.aspx?bname=%e4%bf%9d%e7%bd%97%e8%b5%9b%e7%89%b9.%e8%8e%b1%e8%8c%b5">保罗赛特.莱茵</a><a target="_blank" href="/ShopBrand.aspx?bname=%e4%bf%9d%e7%bd%97%e8%b5%9b%e7%89%b9.%e5%a1%9e%e7%ba%b3">保罗赛特.塞纳</a><a target="_blank" href="/ShopBrand.aspx?bname=%e4%bf%9d%e7%bd%97%e8%b5%9b%e7%89%b9.%e6%96%b0%e5%b7%b4%e9%bb%8e">保罗赛特.新巴黎</a><a target="_blank" href="/ShopBrand.aspx?bname=%e5%8d%9a%e6%98%8e%e8%bd%a9">博明轩</a><a target="_blank" href="/ShopBrand.aspx?bname=%e5%8c%97%e6%ac%a7%e9%a3%8e%e6%83%85">北欧风情</a><a target="_blank" href="/ShopBrand.aspx?bname=%e6%9f%8f%e7%94%b0">柏田</a><a target="_blank" href="/ShopBrand.aspx?bname=%e6%9f%8f%e9%80%b8%e8%bd%a9">柏逸轩</a><a target="_blank" href="/ShopBrand.aspx?bname=%e7%99%be%e5%bc%ba">百强</a><a target="_blank" href="/ShopBrand.aspx?bname=%e7%99%be%e5%bc%ba.%e9%bb%91%e6%a3%ae%e6%9e%97">百强.黑森林</a><a target="_blank" href="/ShopBrand.aspx?bname=%e7%99%be%e5%bc%ba.%e6%ac%a7%e7%a6%8f%e8%8e%b1">百强.欧福莱</a><a target="_blank" href="/ShopBrand.aspx?bname=%e5%8c%97%e6%ac%a7E%e5%ae%b6">北欧E家</a><a target="_blank" href="/ShopBrand.aspx?bname=%e9%95%bf%e5%ae%9e.%e9%98%bf%e9%bb%98%e6%96%af%e7%89%b9">长实.阿默斯特</a><a target="_blank" href="/ShopBrand.aspx?bname=%e5%b7%9d%e6%b4%8b%e5%ae%b6%e7%a7%81">川洋家私</a><a target="_blank" href="/ShopBrand.aspx?bname=%e8%af%9a%e4%b8%b0">诚丰</a><a target="_blank" href="/ShopBrand.aspx?bname=%e7%a7%91%e9%bb%98COMO">科默COMO</a></div>
+                                <div class="inner-img">
+                                    <a href="http://www.jiajuks.com/company/136/index.aspx">
+                                        <img src="http://www.jiajuks.com/upload/brand/logo/340/20130607172438841210.jpg"></a>
+                                    <a href="http://www.jiajuks.com/company/84/index.aspx">
+                                        <img src="http://www.jiajuks.com/upload/brand/logo/26/20130607163039796565.jpg"></a>
+                                    <a href="http://www.jiajuks.com/company/84/index.aspx">
+                                        <img src="http://www.jiajuks.com/upload/brand/logo/27/20130607163926744345.jpg"></a>
+                                    <a href="http://www.jiajuks.com/company/84/index.aspx">
+                                        <img src="http://www.jiajuks.com/upload/brand/logo/28/20130607163837507808.jpg"></a>
+                                    <a href="http://www.jiajuks.com/company/285/index.aspx">
+                                        <img src="http://www.jiajuks.com/upload/brand/logo/479/20130607170959064141.jpg"></a>
+                                    <a href="http://www.jiajuks.com/company/84/index.aspx">
+                                        <img src="http://www.jiajuks.com/upload/brand/logo/454/20130607162434373504.jpg"></a>
+                                    <a href="http://www.jiajuks.com/company/197/index.aspx">
+                                        <img src="http://www.jiajuks.com/upload/brand/logo/401/20130607170000134017.jpg"></a>
+                                    <a href="http://www.jiajuks.com/company/202/index.aspx">
+                                        <img src="http://www.jiajuks.com/upload/brand/logo/318/20130607164839988311.jpg"></a>
+                                </div>
+                            </div>
+                        </dd>
+                    </dl>
+                </li>
+
+                <li class="li3">
+                    <a href="http://www.jiajuks.com/productlist.aspx?did=7" class="nav-item">卧室家具</a> <a href="#" class="trim"></a>    <dl class="hide" style=" min-height:300px">  <dd>        <div class="item">      <div class="inner" style=" min-height:145px;">          <table border="0">          <tbody><tr>             <td style="width: 50px" align="right">              <a href="http://www.jiajuks.com/productlist2.aspx?did=7&amp;ty=%e5%8d%a7%e5%ae%a4%e5%a5%97%e7%bb%84%e5%90%88" style="color: #9f1121">卧室套组合</a>              </td>               <td style="font-size: 12px; font-family: 宋体;">              &nbsp;              </td>           </tr>           </tbody></table>            <table>         <tbody><tr>             <td style="width: 50px" align="right">              <a href="http://www.jiajuks.com/productlist.aspx?xid=8&amp;did=7" style="color: #9f1121">床</a>              </td>               <td style="font-size: 12px; font-family: 宋体;">              <a href="http://www.jiajuks.com/productlist.aspx?xid=8&amp;did=7&amp;tid=61">上下床</a>                <a href="http://www.jiajuks.com/productlist.aspx?xid=8&amp;did=7&amp;tid=106">六尺床(宽1.8m)</a>                <a href="http://www.jiajuks.com/productlist.aspx?xid=8&amp;did=7&amp;tid=57">四尺床(宽1.2m)</a>                 <a href="http://www.jiajuks.com/productlist.aspx?xid=8&amp;did=7&amp;tid=58">五尺床(宽1.5m)</a>                 <a href="http://www.jiajuks.com/productlist.aspx?xid=8&amp;did=7&amp;tid=59">加大床</a>                <a href="http://www.jiajuks.com/productlist.aspx?xid=8&amp;did=7&amp;tid=60">折叠床</a>                </td>           </tr>           </tbody></table>            <table>         <tbody><tr>             <td style="width: 50px" align="right">              <a href="http://www.jiajuks.com/productlist.aspx?xid=14&amp;did=7" style="color: #9f1121">衣柜</a>                </td>               <td style="font-size: 12px; font-family: 宋体;">              <a href="http://www.jiajuks.com/productlist.aspx?xid=14&amp;did=7&amp;tid=74">六门衣柜</a>              <a href="http://www.jiajuks.com/productlist.aspx?xid=14&amp;did=7&amp;tid=75">四门衣柜</a>              <a href="http://www.jiajuks.com/productlist.aspx?xid=14&amp;did=7&amp;tid=76">三门衣柜</a>              <a href="http://www.jiajuks.com/productlist.aspx?xid=14&amp;did=7&amp;tid=77">二门衣柜</a>              <a href="http://www.jiajuks.com/productlist.aspx?xid=14&amp;did=7&amp;tid=91">单门衣柜</a>              <a href="http://www.jiajuks.com/productlist.aspx?xid=14&amp;did=7&amp;tid=92">五门衣柜</a>              <a href="http://www.jiajuks.com/productlist.aspx?xid=14&amp;did=7&amp;tid=127">组合衣柜</a>                 </td>           </tr>           </tbody></table>            <table>         <tbody><tr>             <td style="width: 50px" align="right">              <a href="http://www.jiajuks.com/productlist.aspx?xid=15&amp;did=7" style="color: #9f1121">斗柜</a>                </td>               <td style="font-size: 12px; font-family: 宋体;">              <a href="http://www.jiajuks.com/productlist.aspx?xid=15&amp;did=7&amp;tid=120">二斗柜</a>              <a href="http://www.jiajuks.com/productlist.aspx?xid=15&amp;did=7&amp;tid=85">三斗柜</a>               <a href="http://www.jiajuks.com/productlist.aspx?xid=15&amp;did=7&amp;tid=86">四斗柜</a>               <a href="http://www.jiajuks.com/productlist.aspx?xid=15&amp;did=7&amp;tid=87">五斗柜</a>               <a href="http://www.jiajuks.com/productlist.aspx?xid=15&amp;did=7&amp;tid=88">六斗柜</a>               <a href="http://www.jiajuks.com/productlist.aspx?xid=15&amp;did=7&amp;tid=89">七斗柜</a>               </td>           </tr>           </tbody></table>            <table>         <tbody><tr>             <td style="width: 50px" align="right">              <a href="http://www.jiajuks.com/productlist.aspx?xid=16&amp;did=7" style="color: #9f1121">梳妆台/镜</a>             </td>               <td style="font-size: 12px; font-family: 宋体;">              <a href="http://www.jiajuks.com/productlist.aspx?xid=16&amp;did=7&amp;tid=129">梳妆台/镜</a>                <a href="http://www.jiajuks.com/productlist.aspx?xid=16&amp;did=7&amp;tid=130">组合梳妆台/镜</a>              <a href="http://www.jiajuks.com/productlist.aspx?xid=16&amp;did=7&amp;tid=124">梳妆台</a>              <a href="http://www.jiajuks.com/productlist.aspx?xid=16&amp;did=7&amp;tid=125">梳妆镜</a>              </td>           </tr>           </tbody></table>            <table>         <tbody><tr>             <td style="width: 50px" align="right">              <a href="http://www.jiajuks.com/productlist.aspx?xid=21&amp;did=7" style="color: #9f1121">床垫</a>                </td>               <td style="font-size: 12px; font-family: 宋体;">              <a href="http://www.jiajuks.com/productlist.aspx?xid=21&amp;did=7&amp;tid=110">中硬</a>               <a href="http://www.jiajuks.com/productlist.aspx?xid=21&amp;did=7&amp;tid=111">柔软</a>               <a href="http://www.jiajuks.com/productlist.aspx?xid=21&amp;did=7&amp;tid=112">中软</a>               <a href="http://www.jiajuks.com/productlist.aspx?xid=21&amp;did=7&amp;tid=113">很软</a>               </td>           </tr>           </tbody></table>        </div>      <div class="inner-img">         <a href="/company/210/index.aspx"><img style="width: 120px; height: 45px;" src="/upload/brand/logo/414/20150121162613926433.png"></a>           <a href="/company/136/index.aspx"><img style="width: 120px; height: 45px;" src="/upload/brand/logo/340/20130607172438841210.jpg"></a>           <a href="/company/121/index.aspx"><img style="width: 120px; height: 45px;" src="/upload/brand/logo/61/20130608140415624904.jpg"></a>            <a href="/company/198/index.aspx"><img style="width: 120px; height: 45px;" src="/upload/brand/logo/322/20130607160115855265.jpg"></a>           <a href="/company/162/index.aspx"><img style="width: 120px; height: 45px;" src="/upload/brand/logo/365/20130608142529164872.jpg"></a>           <a href="/company/275/index.aspx"><img style="width: 120px; height: 45px;" src="/upload/brand/logo/470/20130608140035934460.jpg"></a>           <a href="/company/196/index.aspx"><img style="width: 120px; height: 45px;" src="/upload/brand/logo/400/20130607173842112509.jpg"></a>       </div>      </div>  </dd>    </dl>
+                </li>
+                <li class="li5"><a href="http://www.jiajuks.com/productlist.aspx?did=10" class="nav-item">餐厅家具</a> <a href="#" class="trim"></a>    <dl class="hide" style=" min-height:300px"> <dd>        <div class="item">      <div class="inner" style=" min-height:145px;">          <table border="0">          <tbody><tr>             <td style="width: 50px" align="right">              <a href="http://www.jiajuks.com/productlist2.aspx?did=10&amp;ty=%e9%a4%90%e5%8e%85%e5%a5%97%e7%bb%84%e5%90%88" style="color: #9f1121">餐厅套组合</a>             </td>               <td style="font-size: 12px; font-family: 宋体;">              &nbsp;              </td>           </tr>           </tbody></table>            <table>         <tbody><tr>             <td style="width: 50px" align="right">              <a href="http://www.jiajuks.com/productlist.aspx?xid=40&amp;did=10" style="color: #9f1121">餐桌</a>               </td>               <td style="font-size: 12px; font-family: 宋体;">              <a href="http://www.jiajuks.com/productlist.aspx?xid=40&amp;did=10&amp;tid=99">长餐桌</a>              <a href="http://www.jiajuks.com/productlist.aspx?xid=40&amp;did=10&amp;tid=100">圆餐桌</a>                 <a href="http://www.jiajuks.com/productlist.aspx?xid=40&amp;did=10&amp;tid=101">方餐桌</a>                 <a href="http://www.jiajuks.com/productlist.aspx?xid=40&amp;did=10&amp;tid=102">椭圆餐桌</a>                </td>           </tr>           </tbody></table>            <table>         <tbody><tr>             <td style="width: 50px" align="right">              <a href="http://www.jiajuks.com/productlist.aspx?xid=41&amp;did=10" style="color: #9f1121">餐椅</a>               </td>               <td style="font-size: 12px; font-family: 宋体;">              <a href="http://www.jiajuks.com/productlist.aspx?xid=41&amp;did=10&amp;tid=27">餐椅</a>               <a href="http://www.jiajuks.com/productlist.aspx?xid=41&amp;did=10&amp;tid=67">扶手椅</a>              <a href="http://www.jiajuks.com/productlist.aspx?xid=41&amp;did=10&amp;tid=68">无扶手椅</a>                 </td>           </tr>           </tbody></table>            <table>         <tbody><tr>             <td style="width: 50px" align="right">              <a href="http://www.jiajuks.com/productlist.aspx?xid=42&amp;did=10" style="color: #9f1121">餐边柜/镜</a>                </td>               <td style="font-size: 12px; font-family: 宋体;">              <a href="http://www.jiajuks.com/productlist.aspx?xid=42&amp;did=10&amp;tid=28">餐边柜/镜</a>                <a href="http://www.jiajuks.com/productlist.aspx?xid=42&amp;did=10&amp;tid=123">餐边柜</a>                 </td>           </tr>           </tbody></table>        </div>      <div class="inner-img">         <a href="/company/210/index.aspx"><img style="width: 120px; height: 45px;" src="/upload/brand/logo/414/20150121162613926433.png"></a>           <a href="/company/136/index.aspx"><img style="width: 120px; height: 45px;" src="/upload/brand/logo/340/20130607172438841210.jpg"></a>           <a href="/company/121/index.aspx"><img style="width: 120px; height: 45px;" src="/upload/brand/logo/61/20130608140415624904.jpg"></a>            <a href="/company/198/index.aspx"><img style="width: 120px; height: 45px;" src="/upload/brand/logo/322/20130607160115855265.jpg"></a>           <a href="/company/162/index.aspx"><img style="width: 120px; height: 45px;" src="/upload/brand/logo/365/20130608142529164872.jpg"></a>           <a href="/company/275/index.aspx"><img style="width: 120px; height: 45px;" src="/upload/brand/logo/470/20130608140035934460.jpg"></a>           <a href="/company/196/index.aspx"><img style="width: 120px; height: 45px;" src="/upload/brand/logo/400/20130607173842112509.jpg"></a>       </div>      </div>  </dd>    </dl></li>
+                <li class="li5"><a href="http://www.jiajuks.com/productlist.aspx?did=10" class="nav-item">餐厅家具</a> <a href="#" class="trim"></a>    <dl class="hide" style=" min-height:300px"> <dd>        <div class="item">      <div class="inner" style=" min-height:145px;">          <table border="0">          <tbody><tr>             <td style="width: 50px" align="right">              <a href="http://www.jiajuks.com/productlist2.aspx?did=10&amp;ty=%e9%a4%90%e5%8e%85%e5%a5%97%e7%bb%84%e5%90%88" style="color: #9f1121">餐厅套组合</a>             </td>               <td style="font-size: 12px; font-family: 宋体;">              &nbsp;              </td>           </tr>           </tbody></table>            <table>         <tbody><tr>             <td style="width: 50px" align="right">              <a href="http://www.jiajuks.com/productlist.aspx?xid=40&amp;did=10" style="color: #9f1121">餐桌</a>               </td>               <td style="font-size: 12px; font-family: 宋体;">              <a href="http://www.jiajuks.com/productlist.aspx?xid=40&amp;did=10&amp;tid=99">长餐桌</a>              <a href="http://www.jiajuks.com/productlist.aspx?xid=40&amp;did=10&amp;tid=100">圆餐桌</a>                 <a href="http://www.jiajuks.com/productlist.aspx?xid=40&amp;did=10&amp;tid=101">方餐桌</a>                 <a href="http://www.jiajuks.com/productlist.aspx?xid=40&amp;did=10&amp;tid=102">椭圆餐桌</a>                </td>           </tr>           </tbody></table>            <table>         <tbody><tr>             <td style="width: 50px" align="right">              <a href="http://www.jiajuks.com/productlist.aspx?xid=41&amp;did=10" style="color: #9f1121">餐椅</a>               </td>               <td style="font-size: 12px; font-family: 宋体;">              <a href="http://www.jiajuks.com/productlist.aspx?xid=41&amp;did=10&amp;tid=27">餐椅</a>               <a href="http://www.jiajuks.com/productlist.aspx?xid=41&amp;did=10&amp;tid=67">扶手椅</a>              <a href="http://www.jiajuks.com/productlist.aspx?xid=41&amp;did=10&amp;tid=68">无扶手椅</a>                 </td>           </tr>           </tbody></table>            <table>         <tbody><tr>             <td style="width: 50px" align="right">              <a href="http://www.jiajuks.com/productlist.aspx?xid=42&amp;did=10" style="color: #9f1121">餐边柜/镜</a>                </td>               <td style="font-size: 12px; font-family: 宋体;">              <a href="http://www.jiajuks.com/productlist.aspx?xid=42&amp;did=10&amp;tid=28">餐边柜/镜</a>                <a href="http://www.jiajuks.com/productlist.aspx?xid=42&amp;did=10&amp;tid=123">餐边柜</a>                 </td>           </tr>           </tbody></table>        </div>      <div class="inner-img">         <a href="/company/210/index.aspx"><img style="width: 120px; height: 45px;" src="/upload/brand/logo/414/20150121162613926433.png"></a>           <a href="/company/136/index.aspx"><img style="width: 120px; height: 45px;" src="/upload/brand/logo/340/20130607172438841210.jpg"></a>           <a href="/company/121/index.aspx"><img style="width: 120px; height: 45px;" src="/upload/brand/logo/61/20130608140415624904.jpg"></a>            <a href="/company/198/index.aspx"><img style="width: 120px; height: 45px;" src="/upload/brand/logo/322/20130607160115855265.jpg"></a>           <a href="/company/162/index.aspx"><img style="width: 120px; height: 45px;" src="/upload/brand/logo/365/20130608142529164872.jpg"></a>           <a href="/company/275/index.aspx"><img style="width: 120px; height: 45px;" src="/upload/brand/logo/470/20130608140035934460.jpg"></a>           <a href="/company/196/index.aspx"><img style="width: 120px; height: 45px;" src="/upload/brand/logo/400/20130607173842112509.jpg"></a>       </div>      </div>  </dd>    </dl></li>
+                <li class="li6"><a href="http://www.jiajuks.com/productlist.aspx?did=11" class="nav-item">书房家具</a> <a href="#" class="trim"></a>    <dl class="hide" style=" min-height:300px"> <dd>        <div class="item">      <div class="inner" style=" min-height:145px;">          <table border="0">          <tbody><tr>             <td style="width: 50px" align="right">              <a href="http://www.jiajuks.com/productlist2.aspx?did=11&amp;ty=%e4%b9%a6%e6%88%bf%e5%a5%97%e7%bb%84%e5%90%88" style="color: #9f1121">书房套组合</a>             </td>               <td style="font-size: 12px; font-family: 宋体;">              &nbsp;              </td>           </tr>           </tbody></table>            <table>         <tbody><tr>             <td style="width: 50px" align="right">              <a href="http://www.jiajuks.com/productlist.aspx?xid=48&amp;did=11" style="color: #9f1121">书桌/电脑桌</a>               </td>               <td style="font-size: 12px; font-family: 宋体;">              <a href="http://www.jiajuks.com/productlist.aspx?xid=48&amp;did=11&amp;tid=35">书桌</a>               <a href="http://www.jiajuks.com/productlist.aspx?xid=48&amp;did=11&amp;tid=38">电脑桌</a>              <a href="http://www.jiajuks.com/productlist.aspx?xid=48&amp;did=11&amp;tid=40">儿童桌</a>              </td>           </tr>           </tbody></table>            <table>         <tbody><tr>             <td style="width: 50px" align="right">              <a href="http://www.jiajuks.com/productlist.aspx?xid=49&amp;did=11" style="color: #9f1121">书/电脑椅</a>                </td>               <td style="font-size: 12px; font-family: 宋体;">              <a href="http://www.jiajuks.com/productlist.aspx?xid=49&amp;did=11&amp;tid=139">电脑椅</a>                 <a href="http://www.jiajuks.com/productlist.aspx?xid=49&amp;did=11&amp;tid=36">办公椅</a>              </td>           </tr>           </tbody></table>            <table>         <tbody><tr>             <td style="width: 50px" align="right">              <a href="http://www.jiajuks.com/productlist.aspx?xid=50&amp;did=11" style="color: #9f1121">书柜</a>               </td>               <td style="font-size: 12px; font-family: 宋体;">              <a href="http://www.jiajuks.com/productlist.aspx?xid=50&amp;did=11&amp;tid=78">六门书柜</a>                 <a href="http://www.jiajuks.com/productlist.aspx?xid=50&amp;did=11&amp;tid=79">四门书柜</a>                 <a href="http://www.jiajuks.com/productlist.aspx?xid=50&amp;did=11&amp;tid=80">三门书柜</a>                 <a href="http://www.jiajuks.com/productlist.aspx?xid=50&amp;did=11&amp;tid=81">二门书柜</a>                 <a href="http://www.jiajuks.com/productlist.aspx?xid=50&amp;did=11&amp;tid=82">组合书柜</a>                 <a href="http://www.jiajuks.com/productlist.aspx?xid=50&amp;did=11&amp;tid=98">单门书柜</a>                 <a href="http://www.jiajuks.com/productlist.aspx?xid=50&amp;did=11&amp;tid=93">五门书柜</a>                 <a href="http://www.jiajuks.com/productlist.aspx?xid=50&amp;did=11&amp;tid=138">其他书柜</a>                </td>           </tr>           </tbody></table>            <table>         <tbody><tr>             <td style="width: 50px" align="right">              <a href="http://www.jiajuks.com/productlist.aspx?xid=52&amp;did=11" style="color: #9f1121">书/报架</a>             </td>               <td style="font-size: 12px; font-family: 宋体;">              <a href="http://www.jiajuks.com/productlist.aspx?xid=52&amp;did=11&amp;tid=50">书报架</a>              <a href="http://www.jiajuks.com/productlist.aspx?xid=52&amp;did=11&amp;tid=140">报架</a>              <a href="http://www.jiajuks.com/productlist.aspx?xid=52&amp;did=11&amp;tid=55">书架</a>               </td>           </tr>           </tbody></table>            <table>         <tbody><tr>             <td style="width: 50px" align="right">              <a href="http://www.jiajuks.com/productlist.aspx?xid=54&amp;did=11" style="color: #9f1121">书房其他</a>             </td>               <td style="font-size: 12px; font-family: 宋体;">              <a href="http://www.jiajuks.com/productlist.aspx?xid=54&amp;did=11&amp;tid=134">主机架</a>                 </td>           </tr>           </tbody></table>        </div>      <div class="inner-img">         <a href="/company/210/index.aspx"><img style="width: 120px; height: 45px;" src="/upload/brand/logo/414/20150121162613926433.png"></a>           <a href="/company/136/index.aspx"><img style="width: 120px; height: 45px;" src="/upload/brand/logo/340/20130607172438841210.jpg"></a>           <a href="/company/121/index.aspx"><img style="width: 120px; height: 45px;" src="/upload/brand/logo/61/20130608140415624904.jpg"></a>            <a href="/company/198/index.aspx"><img style="width: 120px; height: 45px;" src="/upload/brand/logo/322/20130607160115855265.jpg"></a>           <a href="/company/162/index.aspx"><img style="width: 120px; height: 45px;" src="/upload/brand/logo/365/20130608142529164872.jpg"></a>           <a href="/company/275/index.aspx"><img style="width: 120px; height: 45px;" src="/upload/brand/logo/470/20130608140035934460.jpg"></a>           <a href="/company/196/index.aspx"><img style="width: 120px; height: 45px;" src="/upload/brand/logo/400/20130607173842112509.jpg"></a>       </div>      </div>  </dd>    </dl></li>
+                <li class="li7"><a href="http://www.jiajuks.com/productlist.aspx?did=12" class="nav-item">儿童家具</a> <a href="#" class="trim"></a>    <dl class="hide" style=" min-height:300px"> <dd>        <div class="item">      <div class="inner" style=" min-height:145px;">          <table border="0">          <tbody><tr>             <td style="width: 50px" align="right">              <a href="http://www.jiajuks.com/productlist2.aspx?did=12&amp;ty=%e5%84%bf%e7%ab%a5%e5%a5%97%e7%bb%84%e5%90%88" style="color: #9f1121">儿童套组合</a>             </td>               <td style="font-size: 12px; font-family: 宋体;">              &nbsp;              </td>           </tr>           </tbody></table>            <table>         <tbody><tr>             <td style="width: 50px" align="right">              <a href="http://www.jiajuks.com/productlist.aspx?xid=55&amp;did=12" style="color: #9f1121">儿童床</a>              </td>               <td style="font-size: 12px; font-family: 宋体;">              <a href="http://www.jiajuks.com/productlist.aspx?xid=55&amp;did=12&amp;tid=61">上下床</a>              <a href="http://www.jiajuks.com/productlist.aspx?xid=55&amp;did=12&amp;tid=5">婴儿床</a>               <a href="http://www.jiajuks.com/productlist.aspx?xid=55&amp;did=12&amp;tid=39">儿童床</a>              <a href="http://www.jiajuks.com/productlist.aspx?xid=55&amp;did=12&amp;tid=57">四尺床(宽1.2m)</a>               </td>           </tr>           </tbody></table>            <table>         <tbody><tr>             <td style="width: 50px" align="right">              <a href="http://www.jiajuks.com/productlist.aspx?xid=58&amp;did=12" style="color: #9f1121">儿童衣柜</a>             </td>               <td style="font-size: 12px; font-family: 宋体;">              <a href="http://www.jiajuks.com/productlist.aspx?xid=58&amp;did=12&amp;tid=6">衣柜</a>                <a href="http://www.jiajuks.com/productlist.aspx?xid=58&amp;did=12&amp;tid=42">儿童衣柜</a>                 <a href="http://www.jiajuks.com/productlist.aspx?xid=58&amp;did=12&amp;tid=76">三门衣柜</a>                 <a href="http://www.jiajuks.com/productlist.aspx?xid=58&amp;did=12&amp;tid=77">二门衣柜</a>                 </td>           </tr>           </tbody></table>        </div>      <div class="inner-img">         <a href="/company/210/index.aspx"><img style="width: 120px; height: 45px;" src="/upload/brand/logo/414/20150121162613926433.png"></a>           <a href="/company/136/index.aspx"><img style="width: 120px; height: 45px;" src="/upload/brand/logo/340/20130607172438841210.jpg"></a>           <a href="/company/121/index.aspx"><img style="width: 120px; height: 45px;" src="/upload/brand/logo/61/20130608140415624904.jpg"></a>            <a href="/company/198/index.aspx"><img style="width: 120px; height: 45px;" src="/upload/brand/logo/322/20130607160115855265.jpg"></a>           <a href="/company/162/index.aspx"><img style="width: 120px; height: 45px;" src="/upload/brand/logo/365/20130608142529164872.jpg"></a>           <a href="/company/275/index.aspx"><img style="width: 120px; height: 45px;" src="/upload/brand/logo/470/20130608140035934460.jpg"></a>           <a href="/company/196/index.aspx"><img style="width: 120px; height: 45px;" src="/upload/brand/logo/400/20130607173842112509.jpg"></a>       </div>      </div>  </dd>    </dl></li>
+            </ul>
+        </div>
+
+        <ul class="nav-title fl" id="j_menuTab">
+            <li id="linav_1"><a href="/" class="nav-item">首 页</a> </li>
+            <li id="linav_2" class="nav-brand" style="background-color: rgb(116, 7, 43);"><a href="http://www.jiajuks.com/companybrandlist.aspx" class="nav-item">品 牌</a>
+                <dl>
+                </dl>
+            </li>
+            <li id="linav_3"><a href="http://www.jiajuks.com/marketlist.aspx" class="nav-item" style="">
+                卖场</a> </li>
+            <li id="linav_4"><a href="#" class="nav-item">国际馆</a></li>
+        </ul>
+        <ul class="fr nav-title-right">
+            <li id="linav_5"><a href="http://www.jiajuks.com/productlisttbb.aspx">淘宝贝</a></li>
+            <li id="linav_6"><a href="/51/default.aspx" target="_blank">热门团购</a></li>
+            <li id="linav_7"><a href="http://www.jiajuks.com/guide.aspx">活动导购</a></li>
+            <li id="linav_8"><a href="http://www.jiajuks.com/news/list.aspx">行业资讯</a></li>
+        </ul>
+    </div>
+</div>
+<div class="site"><a href="/">家具快搜</a> &gt;卖场</div>
+
+<!--菜单结束-->
+<div class="main clearfix" style="margin-top:0px;">
+        <div class="mainz">
+            <div class="mainz1">
+                <dl>
+                    <strong>目前搜索到 <span>
+                        11</span> 个相关卖场 </strong>
+                </dl>
+                
+                <dl>
+                    <dt>区域： </dt>
+                    <dd>
+                        
+                        <a href="/market/list/--------1-_310113.aspx">
+                            宝山区</a>
+                        
+                        <a href="/market/list/--------1-_310105.aspx">
+                            长宁区</a>
+                        
+                        <a href="/market/list/--------1-_310109.aspx">
+                            虹口区</a>
+                        
+                        <a href="/market/list/--------1-_310114.aspx">
+                            嘉定区</a>
+                        
+                        <a href="/market/list/--------1-_310116.aspx">
+                            金山区</a>
+                        
+                        <a href="/market/list/--------1-_310112.aspx">
+                            闵行区</a>
+                        
+                        <a href="/market/list/--------1-_310115.aspx">
+                            浦东新区</a>
+                        
+                        <a href="/market/list/--------1-_310107.aspx">
+                            普陀区</a>
+                        
+                        <a href="/market/list/--------1-_310118.aspx">
+                            青浦区</a>
+                        
+                        <a href="/market/list/--------1-_310117.aspx">
+                            松江区</a>
+                        
+                        <a href="/market/list/--------1-_310104.aspx">
+                            徐汇区</a>
+                        
+                        <a href="/market/list/--------1-_310110.aspx">
+                            杨浦区</a>
+                        
+                        <a href="/market/list/--------1-_310108.aspx">
+                            闸北区</a>
+                        
+                    </dd>
+                </dl>
+                <dl style="max-height:180px;height:auto;mix-height:50px;">
+                <table border="1" style="">
+                            <tbody><tr>
+                                <td style="vertical-align: top; padding-top: 10px; width: 50px; text-align: right">
+                                    卖场：
+                                </td>
+                                <td>
+                                    <div style="float: right;" class="listy2">
+                                        <dl style="border: 0px solid #e7e3e7;">
+                                            <dd id="dd1">
+                                                <div class="pplm">
+                                                    <ul id="tabs" class="tabs">
+                                                        <li class="thistab"><a id="ddmcall" style="padding: 0 8px;" class="" href="#" onmouseover="selectletter('0')">不限</a></li>
+                                                            <li><a href="#" style="color: #c5c5c5;cursor: default;padding:0 7px;">A</a></li><li><a href="#" style="color: #c5c5c5;cursor: default;padding:0 7px;">B</a></li><li><a href="#" style="padding:0 7px;" onmouseover="selectletter('C')">C</a></li><li><a href="#" style="padding:0 7px;" onmouseover="selectletter('D')">D</a></li><li><a href="#" style="color: #c5c5c5;cursor: default;padding:0 7px;" class="">E</a></li><li><a href="#" style="color: #c5c5c5;cursor: default;padding:0 7px;">F</a></li><li><a href="#" style="color: #c5c5c5;cursor: default;padding:0 7px;">G</a></li><li><a href="#" style="padding:0 7px;" onmouseover="selectletter('H')">H</a></li><li><a href="#" style="color: #c5c5c5;cursor: default;padding:0 7px;">I</a></li><li><a href="#" style="padding:0 7px;" onmouseover="selectletter('J')">J</a></li><li><a href="#" style="color: #c5c5c5;cursor: default;padding:0 7px;">K</a></li><li><a href="#" style="color: #c5c5c5;cursor: default;padding:0 7px;">L</a></li><li><a href="#" style="padding:0 7px;" onmouseover="selectletter('M')">M</a></li><li><a href="#" style="color: #c5c5c5;cursor: default;padding:0 7px;">N</a></li><li><a href="#" style="padding:0 7px;" onmouseover="selectletter('O')">O</a></li><li><a href="#" style="color: #c5c5c5;cursor: default;padding:0 7px;">P</a></li><li><a href="#" style="color: #c5c5c5;cursor: default;padding:0 7px;">Q</a></li><li><a href="#" style="color: #c5c5c5;cursor: default;padding:0 7px;">R</a></li><li><a href="#" style="padding:0 7px;" onmouseover="selectletter('S')" class="">S</a></li><li><a href="#" style="padding:0 7px;" onmouseover="selectletter('T')">T</a></li><li><a href="#" style="color: #c5c5c5;cursor: default;padding:0 7px;">U</a></li><li><a href="#" style="color: #c5c5c5;cursor: default;padding:0 7px;">V</a></li><li><a href="#" style="color: #c5c5c5;cursor: default;padding:0 7px;">W</a></li><li><a href="#" style="padding:0 7px;" onmouseover="selectletter('X')">X</a></li><li><a href="#" style="padding:0 7px;" onmouseover="selectletter('Y')" class="hove">Y</a></li><li><a href="#" style="color: #c5c5c5;cursor: default;padding:0 7px;">Z</a></li>
+                                                             </ul>
+                                                    <ul style="width:788px" id="tab_conbox" class="tab_conbox">
+                                                        <li class="tab_con" style="display: list-item;">
+                                                        <table border="0" valign="top" style="text-align:top"><tbody><tr>
+                                                        <td>
+                                                        <div style="display:none;" id="divletterList">
+                                                        <li letter="H" style="display: none;"><a href="/market/8/index.aspx">红星美凯龙汶水路商场</a></li><li letter="J" style="display: none;"><a href="/market/14/index.aspx">建配龙国际家居</a></li><li letter="H" style="display: none;"><a href="/market/39/index.aspx">红星美凯龙浦东沪南路商场</a></li><li letter="M" style="display: none;"><a href="/market/40/index.aspx">美特龙国际家居生活广场</a></li><li letter="Y" style="display: none;"><a href="/market/41/index.aspx">月星家居广场澳门路店</a></li><li letter="J" style="display: none;"><a href="/market/43/index.aspx">金盛国际家居广场铜川路</a></li><li letter="J" style="display: none;"><a href="/market/45/index.aspx">吉盛伟邦曲阳路商场</a></li><li letter="J" style="display: none;"><a href="/market/46/index.aspx">剪刀石头布吴中店</a></li><li letter="S" style="display: none;"><a href="/market/47/index.aspx">盛源大地家居城</a></li><li letter="H" style="display: none;"><a href="/market/48/index.aspx">好百年家居广场东方店</a></li><li letter="J" style="display: none;"><a href="/market/49/index.aspx">吉盛伟邦虹桥国际家具博览中心</a></li><li letter="J" style="display: none;"><a href="/market/50/index.aspx">吉盛伟邦青浦国际家具村</a></li><li letter="H" style="display: none;"><a href="/market/51/index.aspx">红星美凯龙真北路商场</a></li><li letter="D" style="display: none;"><a href="/market/52/index.aspx">东明家居东明家具广场浦东店</a></li><li letter="C" style="display: none;"><a href="/market/53/index.aspx">春申江春申江家具曲阳商厦店</a></li><li letter="O" style="display: none;"><a href="/market/54/index.aspx">欧亚美浦东家具广场</a></li><li letter="H" style="display: none;"><a href="/market/55/index.aspx">沪杭家具城</a></li><li letter="H" style="display: none;"><a href="/market/56/index.aspx">好美家金桥店</a></li><li letter="J" style="display: none;"><a href="/market/57/index.aspx">金海马家具浦东沪南店</a></li><li letter="J" style="display: none;"><a href="/market/59/index.aspx">金海马家具吴中路店</a></li><li letter="J" style="display: none;"><a href="/market/60/index.aspx">九星家具城</a></li><li letter="D" style="display: none;"><a href="/market/61/index.aspx">东明家居东明家具广场沪太店</a></li><li letter="O" style="display: none;"><a href="/market/62/index.aspx">欧亚美嘉定建材家具广场</a></li><li letter="X" style="display: none;"><a href="/market/63/index.aspx">莘潮家居金山店</a></li><li letter="J" style="display: none;"><a href="/market/64/index.aspx">金盛国际家居银都路店</a></li><li letter="T" style="display: none;"><a href="/market/214/index.aspx">同福易家丽浦三路店</a></li><li letter="H" style="display: none;"><a href="/market/215/index.aspx">红星美凯龙浦东金桥路商场</a></li><li letter="M" style="display: none;"><a href="/market/217/index.aspx">美千居建材家居广场张扬北路</a></li><li letter="J" style="display: none;"><a href="/market/220/index.aspx">金海马家具吴中路</a></li><li letter="H" style="display: none;"><a href="/market/221/index.aspx">好美家天山</a></li><li letter="D" style="display: none;"><a href="/market/222/index.aspx">东明家居浦东</a></li><li letter="T" style="display: none;"><a href="/market/225/index.aspx">同福易家丽杨高南路店</a></li><li letter="T" style="display: none;"><a href="/market/226/index.aspx">同福易家丽松江店</a></li><li letter="H" style="display: none;"><a href="/market/227/index.aspx">红星美凯龙吴中路商场</a></li><li letter="T" style="display: none;"><a href="/market/228/index.aspx">同福易家丽金山店</a></li>
+                                                        </div>
+                                                        <div style="width:778px; height:100px; overflow-y: auto; overflow-x:hidden;  border:0px solid #000000;" id="divmarketlist"><a href="/market/41/index.aspx">月星家居广场澳门路店</a></div>
+                                                         </td>
+                                                        
+                                                        <td valign="top" style="text-align:center;display:none;">&nbsp;&nbsp;<label onclick="javascript:if($(this).html()==&quot;展开&quot;){$(&quot;#divmarket&quot;).show();$(this).html(&quot;收起&quot;);}else{$(this).html(&quot;展开&quot;);$(&quot;#divmarket&quot;).hide();};" style="color:#f89a05">收起</label></td>
+                                                        </tr></tbody></table>
+                                                        </li>
+                                                      
+                                                    </ul>
+                                                </div>
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody></table>
+
+                    <dt style="display:none;">卖场： </dt>
+                    <dd style="display:none;">
+                        <a href="/market/list/-------金盛-1-.aspx">
+                            金盛</a> <a href="/market/list/-------莘潮-1-.aspx">
+                                莘潮</a> <a href="/market/list/-------欧亚美-1-.aspx">
+                                    欧亚美</a> <a href="/market/list/-------东明-1-.aspx">
+                                        东明</a> <a href="/market/list/-------九星-1-.aspx">
+                                            九星</a> <a href="/market/list/-------红星美凯龙-1-.aspx">
+                                                红星美凯龙</a> <a href="/market/list/-------金海马-1-.aspx">
+                                                    金海马</a> <a href="/market/list/-------好美家-1-.aspx">
+                                                        好美家</a> <a href="/market/list/-------沪杭-1-.aspx">
+                                                            沪杭</a> <a href="/market/list/-------春申江-1-.aspx">
+                                                                春申江</a> <a href="/market/list/-------吉盛伟邦-1-.aspx">
+                                                                    吉盛伟邦</a> <a href="/market/list/-------好百年-1-.aspx">
+                                                                        好百年</a> <a href="/market/list/-------盛源大地-1-.aspx">
+                                                                            盛源大地</a> <a href="/market/list/-------剪刀石头布-1-.aspx">
+                                                                                剪刀石头布</a> <a href="/market/list/-------月星-1-.aspx">
+                                                                                    月星</a> <a href="/market/list/-------建配龙-1-.aspx">
+                                                                                        建配龙</a>
+                    </dd>
+                </dl>
+            </div>
+            
+            <div class="mainz3 clearfix">
+                <div class="flei">
+                    快速分类</div>
+                <div class="quyu">
+                    所有区域
+                    <ul>
+                        
+                        <li><a href="/market/list/--------1-_310113.aspx">
+                            宝山区</a></li>
+                        
+                        <li><a href="/market/list/--------1-_310105.aspx">
+                            长宁区</a></li>
+                        
+                        <li><a href="/market/list/--------1-_310109.aspx">
+                            虹口区</a></li>
+                        
+                        <li><a href="/market/list/--------1-_310114.aspx">
+                            嘉定区</a></li>
+                        
+                        <li><a href="/market/list/--------1-_310116.aspx">
+                            金山区</a></li>
+                        
+                        <li><a href="/market/list/--------1-_310112.aspx">
+                            闵行区</a></li>
+                        
+                        <li><a href="/market/list/--------1-_310115.aspx">
+                            浦东新区</a></li>
+                        
+                        <li><a href="/market/list/--------1-_310107.aspx">
+                            普陀区</a></li>
+                        
+                        <li><a href="/market/list/--------1-_310118.aspx">
+                            青浦区</a></li>
+                        
+                        <li><a href="/market/list/--------1-_310117.aspx">
+                            松江区</a></li>
+                        
+                        <li><a href="/market/list/--------1-_310104.aspx">
+                            徐汇区</a></li>
+                        
+                        <li><a href="/market/list/--------1-_310110.aspx">
+                            杨浦区</a></li>
+                        
+                        <li><a href="/market/list/--------1-_310108.aspx">
+                            闸北区</a></li>
+                        
+                    </ul>
+                </div>
+                <div class="quyu">
+                    推荐卖场
+                    <ul>
+                        
+                        <li><a target="_blank" href="/market/228/index.aspx">
+                            同福易家丽...</a></li>
+                        
+                        <li><a target="_blank" href="/market/227/index.aspx">
+                            红星美凯龙...</a></li>
+                        
+                        <li><a target="_blank" href="/market/226/index.aspx">
+                            同福易家丽...</a></li>
+                        
+                        <li><a target="_blank" href="/market/225/index.aspx">
+                            同福易家丽...</a></li>
+                        
+                        <li><a target="_blank" href="/market/222/index.aspx">
+                            东明家居浦...</a></li>
+                        
+                        <li><a target="_blank" href="/market/221/index.aspx">
+                            好美家天山</a></li>
+                        
+                        <li><a target="_blank" href="/market/220/index.aspx">
+                            金海马家具...</a></li>
+                        
+                        <li><a target="_blank" href="/market/217/index.aspx">
+                            美千居建材...</a></li>
+                        
+                        <li><a target="_blank" href="/market/215/index.aspx">
+                            红星美凯龙...</a></li>
+                        
+                        <li><a target="_blank" href="/market/214/index.aspx">
+                            同福易家丽...</a></li>
+                        
+                        <li><a target="_blank" href="/market/64/index.aspx">
+                            金盛国际家...</a></li>
+                        
+                        <li><a target="_blank" href="/market/63/index.aspx">
+                            莘潮家居金...</a></li>
+                        
+                        <li><a target="_blank" href="/market/62/index.aspx">
+                            欧亚美嘉定...</a></li>
+                        
+                        <li><a target="_blank" href="/market/61/index.aspx">
+                            东明家居东...</a></li>
+                        
+                        <li><a target="_blank" href="/market/60/index.aspx">
+                            九星家具城</a></li>
+                        
+                        <li><a target="_blank" href="/market/59/index.aspx">
+                            金海马家具...</a></li>
+                        
+                        <li><a target="_blank" href="/market/57/index.aspx">
+                            金海马家具...</a></li>
+                        
+                        <li><a target="_blank" href="/market/56/index.aspx">
+                            好美家金桥...</a></li>
+                        
+                        <li><a target="_blank" href="/market/55/index.aspx">
+                            沪杭家具城</a></li>
+                        
+                        <li><a target="_blank" href="/market/54/index.aspx">
+                            欧亚美浦东...</a></li>
+                        
+                        <li><a target="_blank" href="/market/53/index.aspx">
+                            春申江春申...</a></li>
+                        
+                        <li><a target="_blank" href="/market/52/index.aspx">
+                            东明家居东...</a></li>
+                        
+                        <li><a target="_blank" href="/market/51/index.aspx">
+                            红星美凯龙...</a></li>
+                        
+                        <li><a target="_blank" href="/market/50/index.aspx">
+                            吉盛伟邦青...</a></li>
+                        
+                        <li><a target="_blank" href="/market/49/index.aspx">
+                            吉盛伟邦虹...</a></li>
+                        
+                        <li><a target="_blank" href="/market/48/index.aspx">
+                            好百年家居...</a></li>
+                        
+                        <li><a target="_blank" href="/market/47/index.aspx">
+                            盛源大地家...</a></li>
+                        
+                        <li><a target="_blank" href="/market/46/index.aspx">
+                            剪刀石头布...</a></li>
+                        
+                        <li><a target="_blank" href="/market/45/index.aspx">
+                            吉盛伟邦曲...</a></li>
+                        
+                        <li><a target="_blank" href="/market/43/index.aspx">
+                            金盛国际家...</a></li>
+                        
+                        <li><a target="_blank" href="/market/41/index.aspx">
+                            月星家居广...</a></li>
+                        
+                        <li><a target="_blank" href="/market/40/index.aspx">
+                            美特龙国际...</a></li>
+                        
+                        <li><a target="_blank" href="/market/39/index.aspx">
+                            红星美凯龙...</a></li>
+                        
+                        <li><a target="_blank" href="/market/14/index.aspx">
+                            建配龙国际...</a></li>
+                        
+                        <li><a target="_blank" href="/market/8/index.aspx">
+                            红星美凯龙...</a></li>
+                        
+                    </ul>
+                </div>
+            </div>
+            <div class="mainz4 clearfix">
+
+                
+
+
+                    <!--------集团 begin------------>
+      <div class="mainmc"><div class="mainmcz"> <div class="mainmcz1"><a href="/market/marketclique.aspx?id=4" target="_blank"><img width="218" height="67" src="http://jiajuks.oss-cn-hangzhou.aliyuncs.com/2015_4/20150417194628283oVU.jpg" border="0"></a> <span>吉盛伟邦集团</span><br> 地址：<a href="#" title="中国上海市青浦赵巷嘉松中路5369号">中国上海市青浦赵巷嘉松中</a> <br>电话：86-21-69755600 </div><div class="mainmcz2 mainmcz2z "><a href="/market/marketclique.aspx?id=4" target="_blank"><img width="447" height="199" src="http://jiajuks.oss-cn-hangzhou.aliyuncs.com/2015_4/201504172223552672V4.jpg" border="0"></a> <span>集团简介</span><br>
+    创建于1989年的吉盛伟邦，以其中、高档的市场定位、一如既往的诚信品质、不断推陈出新的创新精神领衔于中国家居市场，被视为中国家居流通领域的成功典范。目前吉盛伟邦的商业网络遍布经济发达的长三角、富庶的珠三角以及以长春为中心的东北地区，拥有：
+
+</div></div><div class="mainmcy"><h1>旗下卖场</h1><input type="hidden" value="3" id="funcount4"><input type="hidden" value="1" id="pageindex4"><div style="position:relative;overflow:hidden;width:440px;height:260px;"><div style="position:absolute;z-index:600;left:0px;padding-top:110px;"><img src="/resource/images/left.jpg" style="cursor:pointer" onclick="funnpra('pageindex4','funcount4','divid_4_')"></div><div style="position:absolute;z-index:600;right:0px;padding-top:110px;"><img src="/resource/images/right.jpg" style="cursor:pointer" onclick="funnext('pageindex4','funcount4','divid_4_')"></div><div class="mainmcp mainmcppp" style="position:absolute;z-index:0;" id="divid_4_1"><a href="/market/45/index.aspx" target="_blank"><img width="209" height="94" alt="" src="http://jiajuks.oss-cn-hangzhou.aliyuncs.com/2015_4/201504172246430506En.jpg"></a><div class="mainmcp1 mainmcp11"><a href="/market/45/about.aspx" target="_blank">卖场介绍</a> <a href="/market/45/index.aspx" target="_blank">卖场品牌</a><a href="/market/45/product.aspx" target="_blank">卖场产品</a></div><div class="mainmcp2 mainmcp22">吉盛伟邦曲阳路商场</div><div class="mainmcp3" style="background-color:#ffffff;">曲阳路800号（中山北二路口） 电话：65538682</div></div><div class="mainmcp mainmcppp" style="position:absolute;z-index:0;" id="divid_4_2"><a href="/market/49/index.aspx" target="_blank"><img width="209" height="94" alt="" src="http://jiajuks.oss-cn-hangzhou.aliyuncs.com/2015_4/201504172212503689xf.png"></a><div class="mainmcp1 mainmcp11"><a href="/market/49/about.aspx" target="_blank">卖场介绍</a> <a href="/market/49/index.aspx" target="_blank">卖场品牌</a><a href="/market/49/product.aspx" target="_blank">卖场产品</a></div><div class="mainmcp2 mainmcp22">吉盛伟邦虹桥国际家具博览中心</div><div class="mainmcp3" style="background-color:#ffffff;">娄山关路75号（兴义路口） 电话：021-62369097</div></div><div class="mainmcp mainmcppp" style="position:absolute;z-index:0;" id="divid_4_3"><a href="/market/50/index.aspx" target="_blank"><img width="209" height="94" alt="" src="http://jiajuks.oss-cn-hangzhou.aliyuncs.com/2015_4/20150417214032671fuN.jpg"></a><div class="mainmcp1 mainmcp11"><a href="/market/50/about.aspx" target="_blank">卖场介绍</a> <a href="/market/50/index.aspx" target="_blank">卖场品牌</a><a href="/market/50/product.aspx" target="_blank">卖场产品</a></div><div class="mainmcp2 mainmcp22">吉盛伟邦青浦国际家具村</div><div class="mainmcp3" style="background-color:#ffffff;">赵巷嘉松中路5369号 电话：021-69755600</div></div></div></div></div><div class="mainmc"><div class="mainmcz" onclick="messagedshow(event)"> <div class="mainmcz1"><a href="javascript:void(0);"><img width="218" height="67" src="http://jiajuks.oss-cn-hangzhou.aliyuncs.com/2015_4/201504222041244551RG.png" border="0"></a> <span>剪刀石头布集团</span><br> 地址：<a href="#" title="上海市闵行区吴中路1263号（合川路口）">上海市闵行区吴中路1263号</a> <br>电话：400 820 6880 </div><div class="mainmcz2 mainmcz2z "><a href="javascript:void(0);"><img width="447" height="199" src="http://jiajuks.oss-cn-hangzhou.aliyuncs.com/2015_4/20150422204132893fJK.jpg" border="0"></a> <span>集团简介</span><br>上海剪刀石头布家居实业有限公司成立于1998年，以布艺起家，集十多年的零售、批发、进出口贸易的综合零售经验并发展壮大，成为沪上知名一站式购物的家居生活广场，经营范围涵盖了家居软装行业的所有业态。
+吴中旗舰店位于上海市闵行区吴中路1263号，为面积52</div></div><div class="mainmcy"><h1>旗下卖场</h1><input type="hidden" value="1" id="funcount13"><input type="hidden" value="1" id="pageindex13"><div style="position:relative;overflow:hidden;width:440px;height:260px;"><div class="mainmcp mainmcppp" style="position:absolute;z-index:0;" id="divid_13_1"><a href="javascript:void(0);"><img width="209" height="94" alt="" src="http://jiajuks.oss-cn-hangzhou.aliyuncs.com/2015_4/20150422203918923sJ1.jpg" onclick="messagedshow(event)"></a><div class="mainmcp1 mainmcp11" onclick="messagedshow(event)"><a href="javascript:void(0);">卖场介绍</a> <a href="javascript:void(0);">卖场品牌</a><a href="javascript:void(0);">卖场产品</a></div><div class="mainmcp2 mainmcp22">剪刀石头布吴中店</div><div class="mainmcp3" style="background-color:#ffffff;">吴中路1263号（近合川路） 电话：021-64056890</div></div></div></div></div><div class="mainmc"><div class="mainmcz" onclick="messagedshow(event)"> <div class="mainmcz1"><a href="javascript:void(0);"><img width="218" height="67" src="http://jiajuks.oss-cn-hangzhou.aliyuncs.com/2015_4/20150422200949134TrQ.png" border="0"></a> <span>东明家居集团</span><br> 地址：<a href="#" title="上海浦东新区杨高南路4099号">上海浦东新区杨高南路4099</a> <br>电话：021－58530222 </div><div class="mainmcz2 mainmcz2z "><a href="javascript:void(0);"><img width="447" height="199" src="http://jiajuks.oss-cn-hangzhou.aliyuncs.com/2015_4/20150422201400684p0a.jpg" border="0"></a> <span>集团简介</span><br>
+    上海东明家居（集团）有限公司是上海家具行业具有品牌知名度的私营企业，成立于2002年1月。在十多年的风雨历程中，集团公司得到了快速的发展，经济效益和社会效益得到了同步增长。2005年12月上海东明家具浦西广场顺利开业，2007年10月上海兴明建材市场开业</div></div><div class="mainmcy"><h1>旗下卖场</h1><input type="hidden" value="3" id="funcount12"><input type="hidden" value="1" id="pageindex12"><div style="position:relative;overflow:hidden;width:440px;height:260px;"><div style="position:absolute;z-index:600;left:0px;padding-top:110px;"><img src="/resource/images/left.jpg" style="cursor:pointer" onclick="funnpra('pageindex12','funcount12','divid_12_')"></div><div style="position:absolute;z-index:600;right:0px;padding-top:110px;"><img src="/resource/images/right.jpg" style="cursor:pointer" onclick="funnext('pageindex12','funcount12','divid_12_')"></div><div class="mainmcp mainmcppp" style="position:absolute;z-index:0;" id="divid_12_1"><a href="javascript:void(0);"><img width="209" height="94" alt="" src="/upload/market/surface/52/2012060415304217.jpg" onclick="messagedshow(event)"></a><div class="mainmcp1 mainmcp11" onclick="messagedshow(event)"><a href="javascript:void(0);">卖场介绍</a> <a href="javascript:void(0);">卖场品牌</a><a href="javascript:void(0);">卖场产品</a></div><div class="mainmcp2 mainmcp22">东明家居东明家具广场浦东店</div><div class="mainmcp3" style="background-color:#ffffff;">杨高南路4099号 电话：021-58530222</div></div><div class="mainmcp mainmcppp" style="position:absolute;z-index:0;" id="divid_12_2"><a href="javascript:void(0);"><img width="209" height="94" alt="" src="/upload/market/surface/61/2012060417212370.jpg" onclick="messagedshow(event)"></a><div class="mainmcp1 mainmcp11" onclick="messagedshow(event)"><a href="javascript:void(0);">卖场介绍</a> <a href="javascript:void(0);">卖场品牌</a><a href="javascript:void(0);">卖场产品</a></div><div class="mainmcp2 mainmcp22">东明家居东明家具广场沪太店</div><div class="mainmcp3" style="background-color:#ffffff;">沪太路4301号 电话：021-58537770</div></div><div class="mainmcp mainmcppp" style="position:absolute;z-index:0;" id="divid_12_3"><a href="javascript:void(0);"><img width="209" height="94" alt="" src="http://jiajuks.oss-cn-hangzhou.aliyuncs.com/2015_4/2015042220231766075O.jpg" onclick="messagedshow(event)"></a><div class="mainmcp1 mainmcp11" onclick="messagedshow(event)"><a href="javascript:void(0);">卖场介绍</a> <a href="javascript:void(0);">卖场品牌</a><a href="javascript:void(0);">卖场产品</a></div><div class="mainmcp2 mainmcp22">东明家居浦东</div><div class="mainmcp3" style="background-color:#ffffff;">浦三路2558号 电话：021-58531111</div></div></div></div></div><div class="mainmc"><div class="mainmcz" onclick="messagedshow(event)"> <div class="mainmcz1"><a href="javascript:void(0);"><img width="218" height="67" src="http://jiajuks.oss-cn-hangzhou.aliyuncs.com/2015_4/20150422194731805fcO.png" border="0"></a> <span>好美家集团</span><br> 地址：<a href="#" title="上海市新昌路80号6楼">上海市新昌路80号6楼</a> <br>电话：021-63276330 </div><div class="mainmcz2 mainmcz2z "><a href="javascript:void(0);"><img width="447" height="199" src="http://jiajuks.oss-cn-hangzhou.aliyuncs.com/2015_4/20150422195400216nKW.jpg" border="0"></a> <span>集团简介</span><br>好美家装潢建材有限公司成立于1998年，是一家全国性专业连锁超市公司，在上海、北京、广州、南京、成都、武汉、宁波等9个中国最主要的城市共有29家好美家建材大卖场。好美家隶属于中国最大的商业集团——百联集团，也是中国第一家引进欧式风格的本土品牌装潢</div></div><div class="mainmcy"><h1>旗下卖场</h1><input type="hidden" value="2" id="funcount11"><input type="hidden" value="1" id="pageindex11"><div style="position:relative;overflow:hidden;width:440px;height:260px;"><div style="position:absolute;z-index:600;left:0px;padding-top:110px;"><img src="/resource/images/left.jpg" style="cursor:pointer" onclick="funnpra('pageindex11','funcount11','divid_11_')"></div><div style="position:absolute;z-index:600;right:0px;padding-top:110px;"><img src="/resource/images/right.jpg" style="cursor:pointer" onclick="funnext('pageindex11','funcount11','divid_11_')"></div><div class="mainmcp mainmcppp" style="position:absolute;z-index:0;" id="divid_11_1"><a href="javascript:void(0);"><img width="209" height="94" alt="" src="/upload/market/surface/56/2012060416270662.jpg" onclick="messagedshow(event)"></a><div class="mainmcp1 mainmcp11" onclick="messagedshow(event)"><a href="javascript:void(0);">卖场介绍</a> <a href="javascript:void(0);">卖场品牌</a><a href="javascript:void(0);">卖场产品</a></div><div class="mainmcp2 mainmcp22">好美家金桥店</div><div class="mainmcp3" style="background-color:#ffffff;">金高路1296弄151号（近巨峰路易初莲花旁） 电话：021-50317881</div></div><div class="mainmcp mainmcppp" style="position:absolute;z-index:0;" id="divid_11_2"><a href="javascript:void(0);"><img width="209" height="94" alt="" src="http://jiajuks.oss-cn-hangzhou.aliyuncs.com/2015_4/20150422195907876FKN.gif" onclick="messagedshow(event)"></a><div class="mainmcp1 mainmcp11" onclick="messagedshow(event)"><a href="javascript:void(0);">卖场介绍</a> <a href="javascript:void(0);">卖场品牌</a><a href="javascript:void(0);">卖场产品</a></div><div class="mainmcp2 mainmcp22">好美家天山</div><div class="mainmcp3" style="background-color:#ffffff;">北虹路1068号(近天山路) 电话：021-32082770</div></div></div></div></div><div class="mainmc"><div class="mainmcz" onclick="messagedshow(event)"> <div class="mainmcz1"><a href="javascript:void(0);"><img width="218" height="67" src="http://jiajuks.oss-cn-hangzhou.aliyuncs.com/2015_4/20150422192000752RXY.jpg" border="0"></a> <span>金海马家具集团</span><br> 地址：<a href="#" title="广州市番禺区锦绣香江花园会所">广州市番禺区锦绣香江花园</a> <br>电话：4006-538-038 </div><div class="mainmcz2 mainmcz2z "><a href="javascript:void(0);"><img width="447" height="199" src="http://jiajuks.oss-cn-hangzhou.aliyuncs.com/2015_4/20150422190900228Ahd.jpg" border="0"></a> <span>集团简介</span><br>
+    金海马集团目前中国最大的家具产品代理商和经销商,是中国家具行业最大的连锁商业机构和行业领跑者。
+目前，金海马集团连锁网点遍布华南、华东、华北、华中几大区域数十个大中城市，构成全国第一的规模大、覆盖面广、经营管理统一的庞大连锁销售网络。金海</div></div><div class="mainmcy"><h1>旗下卖场</h1><input type="hidden" value="2" id="funcount10"><input type="hidden" value="1" id="pageindex10"><div style="position:relative;overflow:hidden;width:440px;height:260px;"><div style="position:absolute;z-index:600;left:0px;padding-top:110px;"><img src="/resource/images/left.jpg" style="cursor:pointer" onclick="funnpra('pageindex10','funcount10','divid_10_')"></div><div style="position:absolute;z-index:600;right:0px;padding-top:110px;"><img src="/resource/images/right.jpg" style="cursor:pointer" onclick="funnext('pageindex10','funcount10','divid_10_')"></div><div class="mainmcp mainmcppp" style="position:absolute;z-index:0;" id="divid_10_1"><a href="javascript:void(0);"><img width="209" height="94" alt="" src="/upload/market/surface/57/2012060416443973.jpg" onclick="messagedshow(event)"></a><div class="mainmcp1 mainmcp11" onclick="messagedshow(event)"><a href="javascript:void(0);">卖场介绍</a> <a href="javascript:void(0);">卖场品牌</a><a href="javascript:void(0);">卖场产品</a></div><div class="mainmcp2 mainmcp22">金海马家具浦东沪南店</div><div class="mainmcp3" style="background-color:#ffffff;">沪南路5391号 电话：021-58143588</div></div><div class="mainmcp mainmcppp" style="position:absolute;z-index:0;" id="divid_10_2"><a href="javascript:void(0);"><img width="209" height="94" alt="" src="http://jiajuks.oss-cn-hangzhou.aliyuncs.com/2015_4/201504221923290368uT.jpg" onclick="messagedshow(event)"></a><div class="mainmcp1 mainmcp11" onclick="messagedshow(event)"><a href="javascript:void(0);">卖场介绍</a> <a href="javascript:void(0);">卖场品牌</a><a href="javascript:void(0);">卖场产品</a></div><div class="mainmcp2 mainmcp22">金海马家具吴中路</div><div class="mainmcp3" style="background-color:#ffffff;">吴中路1245号(近合川路)</div></div></div></div></div><div class="mainmc"><div class="mainmcz" onclick="messagedshow(event)"> <div class="mainmcz1"><a href="javascript:void(0);"><img width="218" height="67" src="http://jiajuks.oss-cn-hangzhou.aliyuncs.com/2015_4/20150422181436832Sii.jpeg" border="0"></a> <span>建配龙集团</span><br> 地址：<a href="#" title="上海市宝山区长逸路15号建配龙国际家居商场">上海市宝山区长逸路15号建</a> <br>电话：021-56466890 </div><div class="mainmcz2 mainmcz2z "><a href="javascript:void(0);"><img width="447" height="199" src="http://jiajuks.oss-cn-hangzhou.aliyuncs.com/2015_4/20150422182100678HgD.jpg" border="0"></a> <span>集团简介</span><br>
+    上海建配龙建材配送有限公司由知名企业家郑良贤先生于1999年创建成立。
+
+
+    建配龙在国内外有十余个控股公司和分支机构，10年来秉承“诚信经商、服务兴业”的经营传统，坚持“商品诚信重质量、价格诚信不欺诈、服务诚信重承诺、宣传诚信不夸大”的四项“</div></div><div class="mainmcy"><h1>旗下卖场</h1><input type="hidden" value="1" id="funcount9"><input type="hidden" value="1" id="pageindex9"><div style="position:relative;overflow:hidden;width:440px;height:260px;"><div class="mainmcp mainmcppp" style="position:absolute;z-index:0;" id="divid_9_1"><a href="javascript:void(0);"><img width="209" height="94" alt="" src="http://jiajuks.oss-cn-hangzhou.aliyuncs.com/2016_3/20160325170720957xOz.jpg" onclick="messagedshow(event)"></a><div class="mainmcp1 mainmcp11" onclick="messagedshow(event)"><a href="javascript:void(0);">卖场介绍</a> <a href="javascript:void(0);">卖场品牌</a><a href="javascript:void(0);">卖场产品</a></div><div class="mainmcp2 mainmcp22">建配龙国际家居</div><div class="mainmcp3" style="background-color:#ffffff;">长逸路15号（靠近逸仙路） 电话：021-56466890</div></div></div></div></div><div class="mainmc"><div class="mainmcz" onclick="messagedshow(event)"> <div class="mainmcz1"><a href="javascript:void(0);"><img width="218" height="67" src="http://jiajuks.oss-cn-hangzhou.aliyuncs.com/2015_4/20150420203549670DwX.jpg" border="0"></a> <span>金盛国际集团</span><br> 地址：<a href="#" title="南京市汉中路89号金鹰国际商城29楼">南京市汉中路89号金鹰国际</a> <br>电话：025-51806018 </div><div class="mainmcz2 mainmcz2z "><a href="javascript:void(0);"><img width="447" height="199" src="http://jiajuks.oss-cn-hangzhou.aliyuncs.com/2015_4/20150420203609858m37.jpg" border="0"></a> <span>集团简介</span><br>自二十世纪九十年代初创立以来，金盛集团锐意进取，创造了连续高速发展的传奇。从一家卖场到全国多个重点城市完成战略布点。从单一的家居建材，到以金盛国际家居连锁为主业，百货、地产、建设四大产业共同发展的多元化产业布局。从产业规模扩张，到兼并收购国</div></div><div class="mainmcy"><h1>旗下卖场</h1><input type="hidden" value="1" id="funcount8"><input type="hidden" value="1" id="pageindex8"><div style="position:relative;overflow:hidden;width:440px;height:260px;"><div class="mainmcp mainmcppp" style="position:absolute;z-index:0;" id="divid_8_1"><a href="javascript:void(0);"><img width="209" height="94" alt="" src="http://jiajuks.oss-cn-hangzhou.aliyuncs.com/2015_4/201504202050444473wE.jpg" onclick="messagedshow(event)"></a><div class="mainmcp1 mainmcp11" onclick="messagedshow(event)"><a href="javascript:void(0);">卖场介绍</a> <a href="javascript:void(0);">卖场品牌</a><a href="javascript:void(0);">卖场产品</a></div><div class="mainmcp2 mainmcp22">金盛国际家居广场铜川路</div><div class="mainmcp3" style="background-color:#ffffff;">铜川路185号（岚皋路桥） 电话：021-80082050</div></div></div></div></div><div class="mainmc"><div class="mainmcz" onclick="messagedshow(event)"> <div class="mainmcz1"><a href="javascript:void(0);"><img width="218" height="67" src="http://jiajuks.oss-cn-hangzhou.aliyuncs.com/2015_4/20150422180957689y75.jpg" border="0"></a> <span>美千居建材家居广场集团</span><br> 地址：<a href="#" title="上海市浦东新区张扬北路4001号">上海市浦东新区张扬北路40</a> <br>电话：400-820-6595 </div><div class="mainmcz2 mainmcz2z "><a href="javascript:void(0);"><img width="447" height="199" src="http://jiajuks.oss-cn-hangzhou.aliyuncs.com/2015_4/20150420183037574GRa.jpg" border="0"></a> <span>集团简介</span><br>
+    美千居引进国内外知名品牌，倾力打造三大主题体验馆：品牌建材馆、精品家具馆、经典红木馆；规划总面积8万平米，总投资近1.8亿；按照国际shopping
+mall的规划理念进行空间布局，真正为消费者提供现代购物环境；成为浦东专业化、体验式建材、家具一站式的</div></div><div class="mainmcy"><h1>旗下卖场</h1><input type="hidden" value="1" id="funcount7"><input type="hidden" value="1" id="pageindex7"><div style="position:relative;overflow:hidden;width:440px;height:260px;"><div class="mainmcp mainmcppp" style="position:absolute;z-index:0;" id="divid_7_1"><a href="javascript:void(0);"><img width="209" height="94" alt="" src="http://jiajuks.oss-cn-hangzhou.aliyuncs.com/2015_4/20150422102109820Fu9.jpg" onclick="messagedshow(event)"></a><div class="mainmcp1 mainmcp11" onclick="messagedshow(event)"><a href="javascript:void(0);">卖场介绍</a> <a href="javascript:void(0);">卖场品牌</a><a href="javascript:void(0);">卖场产品</a></div><div class="mainmcp2 mainmcp22">美千居建材家居广场张扬北路</div><div class="mainmcp3" style="background-color:#ffffff;">张扬北路4001号 电话：400-820-6595</div></div></div></div></div><div class="mainmc"><div class="mainmcz"> <div class="mainmcz1"><a href="/market/marketclique.aspx?id=6" target="_blank"><img width="218" height="67" src="http://jiajuks.oss-cn-hangzhou.aliyuncs.com/2015_4/20150420182845135KK3.jpg" border="0"></a> <span>同福易家丽集团</span><br> 地址：<a href="#" title="上海市浦东新区浦三路1515号">上海市浦东新区浦三路1515</a> <br>电话：021-50102800 </div><div class="mainmcz2 mainmcz2z "><a href="/market/marketclique.aspx?id=6" target="_blank"><img width="447" height="199" src="http://jiajuks.oss-cn-hangzhou.aliyuncs.com/2015_8/20150806163405761GFX.jpg" border="0"></a> <span>集团简介</span><br>
+    上海同福易家丽投资控股有限公司是一家以商业地产为主营，集大型商业中心、专业市场投资、运营、管理于一体的大型企业集团。企业创建于1998年。公司秉承“和谐、忠诚、开拓、奋进”的企业精神，经过16年的发展，形成了以商业地产为主，家具产业、酒店业为</div></div><div class="mainmcy"><h1>旗下卖场</h1><input type="hidden" value="4" id="funcount6"><input type="hidden" value="1" id="pageindex6"><div style="position:relative;overflow:hidden;width:440px;height:260px;"><div style="position:absolute;z-index:600;left:0px;padding-top:110px;"><img src="/resource/images/left.jpg" style="cursor:pointer" onclick="funnpra('pageindex6','funcount6','divid_6_')"></div><div style="position:absolute;z-index:600;right:0px;padding-top:110px;"><img src="/resource/images/right.jpg" style="cursor:pointer" onclick="funnext('pageindex6','funcount6','divid_6_')"></div><div class="mainmcp mainmcppp" style="position:absolute;z-index:0;" id="divid_6_1"><a href="/market/214/index.aspx" target="_blank"><img width="209" height="94" alt="" src="http://jiajuks.oss-cn-hangzhou.aliyuncs.com/2015_4/20150420173025887wrb.png"></a><div class="mainmcp1 mainmcp11"><a href="/market/214/about.aspx" target="_blank">卖场介绍</a> <a href="/market/214/index.aspx" target="_blank">卖场品牌</a><a href="/market/214/product.aspx" target="_blank">卖场产品</a></div><div class="mainmcp2 mainmcp22">同福易家丽浦三路店</div><div class="mainmcp3" style="background-color:#ffffff;">上海市浦东新区浦三路1515号(板泉路口 电话：021-50102601</div></div><div class="mainmcp mainmcppp" style="position:absolute;z-index:0;" id="divid_6_2"><a href="/market/225/index.aspx" target="_blank"><img width="209" height="94" alt="" src="http://jiajuks.oss-cn-hangzhou.aliyuncs.com/2015_6/20150612165401305B42.jpg"></a><div class="mainmcp1 mainmcp11"><a href="/market/225/about.aspx" target="_blank">卖场介绍</a> <a href="/market/225/index.aspx" target="_blank">卖场品牌</a><a href="/market/225/product.aspx" target="_blank">卖场产品</a></div><div class="mainmcp2 mainmcp22">同福易家丽杨高南路店</div><div class="mainmcp3" style="background-color:#ffffff;">杨高南路3303号 电话：021-50780000</div></div><div class="mainmcp mainmcppp" style="position:absolute;z-index:0;" id="divid_6_3"><a href="/market/226/index.aspx" target="_blank"><img width="209" height="94" alt="" src="http://jiajuks.oss-cn-hangzhou.aliyuncs.com/2015_11/20151125144852477cBO.jpg"></a><div class="mainmcp1 mainmcp11"><a href="/market/226/about.aspx" target="_blank">卖场介绍</a> <a href="/market/226/index.aspx" target="_blank">卖场品牌</a><a href="/market/226/product.aspx" target="_blank">卖场产品</a></div><div class="mainmcp2 mainmcp22">同福易家丽松江店</div><div class="mainmcp3" style="background-color:#ffffff;">上海市松江区松卫北路295号（沪杭高速南侧） 电话：021-37012222</div></div><div class="mainmcp mainmcppp" style="position:absolute;z-index:0;" id="divid_6_4"><a href="/market/228/index.aspx" target="_blank"><img width="209" height="94" alt="" src="http://jiajuks.oss-cn-hangzhou.aliyuncs.com/2015_12/20151208164100556sDI.jpg"></a><div class="mainmcp1 mainmcp11"><a href="/market/228/about.aspx" target="_blank">卖场介绍</a> <a href="/market/228/index.aspx" target="_blank">卖场品牌</a><a href="/market/228/product.aspx" target="_blank">卖场产品</a></div><div class="mainmcp2 mainmcp22">同福易家丽金山店</div><div class="mainmcp3" style="background-color:#ffffff;">城河路330号易家中心1号楼 电话：021-37909333</div></div></div></div></div><div class="mainmc"><div class="mainmcz" onclick="messagedshow(event)"> <div class="mainmcz1"><a href="javascript:void(0);"><img width="218" height="67" src="http://jiajuks.oss-cn-hangzhou.aliyuncs.com/2015_4/20150420151104249xhJ.jpg" border="0"></a> <span>红星美凯龙集团</span><br> 地址：<a href="#" title="真北路1263号新长征商务大厦11层">真北路1263号新长征商务大</a> <br>电话：4008-213-213 </div><div class="mainmcz2 mainmcz2z "><a href="javascript:void(0);"><img width="447" height="199" src="http://jiajuks.oss-cn-hangzhou.aliyuncs.com/2015_4/20150420162944809eSx.jpg" border="0"></a> <span>集团简介</span><br>
+    红星美凯龙家居集团股份有限公司（简称：红星美凯龙）连续5年跻身中国民营企业500强前50位，自1986年创业以来，始终以建设温馨、和谐的家园，提升消费者的居家生活品味为己任。
+
+
+    截至目前，已在北京、上海、广州、深圳等90多个城市开办了130家商场。
+</div></div><div class="mainmcy"><h1>旗下卖场</h1><input type="hidden" value="5" id="funcount5"><input type="hidden" value="1" id="pageindex5"><div style="position:relative;overflow:hidden;width:440px;height:260px;"><div style="position:absolute;z-index:600;left:0px;padding-top:110px;"><img src="/resource/images/left.jpg" style="cursor:pointer" onclick="funnpra('pageindex5','funcount5','divid_5_')"></div><div style="position:absolute;z-index:600;right:0px;padding-top:110px;"><img src="/resource/images/right.jpg" style="cursor:pointer" onclick="funnext('pageindex5','funcount5','divid_5_')"></div><div class="mainmcp mainmcppp" style="position:absolute;z-index:0;" id="divid_5_1"><a href="javascript:void(0);"><img width="209" height="94" alt="" src="/upload/market/surface/8/20130609141005883561.jpg" onclick="messagedshow(event)"></a><div class="mainmcp1 mainmcp11" onclick="messagedshow(event)"><a href="javascript:void(0);">卖场介绍</a> <a href="javascript:void(0);">卖场品牌</a><a href="javascript:void(0);">卖场产品</a></div><div class="mainmcp2 mainmcp22">红星美凯龙汶水路商场</div><div class="mainmcp3" style="background-color:#ffffff;">汶水路1555号 电话：4008-213-213</div></div><div class="mainmcp mainmcppp" style="position:absolute;z-index:0;" id="divid_5_2"><a href="javascript:void(0);"><img width="209" height="94" alt="" src="http://jiajuks.oss-cn-hangzhou.aliyuncs.com/2015_4/20150420155959849X71.jpg" onclick="messagedshow(event)"></a><div class="mainmcp1 mainmcp11" onclick="messagedshow(event)"><a href="javascript:void(0);">卖场介绍</a> <a href="javascript:void(0);">卖场品牌</a><a href="javascript:void(0);">卖场产品</a></div><div class="mainmcp2 mainmcp22">红星美凯龙浦东沪南路商场</div><div class="mainmcp3" style="background-color:#ffffff;">沪南公路2178号（临御路518号） 电话：4008-213-213</div></div><div class="mainmcp mainmcppp" style="position:absolute;z-index:0;" id="divid_5_3"><a href="javascript:void(0);"><img width="209" height="94" alt="" src="http://jiajuks.oss-cn-hangzhou.aliyuncs.com/2015_4/20150420155720222Ob3.jpg" onclick="messagedshow(event)"></a><div class="mainmcp1 mainmcp11" onclick="messagedshow(event)"><a href="javascript:void(0);">卖场介绍</a> <a href="javascript:void(0);">卖场品牌</a><a href="javascript:void(0);">卖场产品</a></div><div class="mainmcp2 mainmcp22">红星美凯龙真北路商场</div><div class="mainmcp3" style="background-color:#ffffff;">真北路1208号（靠近梅川路） 电话：4008-213-213</div></div><div class="mainmcp mainmcppp" style="position:absolute;z-index:0;" id="divid_5_4"><a href="javascript:void(0);"><img width="209" height="94" alt="" src="http://jiajuks.oss-cn-hangzhou.aliyuncs.com/2015_4/20150420160908012wit.jpg" onclick="messagedshow(event)"></a><div class="mainmcp1 mainmcp11" onclick="messagedshow(event)"><a href="javascript:void(0);">卖场介绍</a> <a href="javascript:void(0);">卖场品牌</a><a href="javascript:void(0);">卖场产品</a></div><div class="mainmcp2 mainmcp22">红星美凯龙浦东金桥路商场</div><div class="mainmcp3" style="background-color:#ffffff;">金藏路100号(碧云） 电话：4008-213-213</div></div><div class="mainmcp mainmcppp" style="position:absolute;z-index:0;" id="divid_5_5"><a href="javascript:void(0);"><img width="209" height="94" alt="" src="http://jiajuks.oss-cn-hangzhou.aliyuncs.com/2016_3/20160330193854009TdY.jpg" onclick="messagedshow(event)"></a><div class="mainmcp1 mainmcp11" onclick="messagedshow(event)"><a href="javascript:void(0);">卖场介绍</a> <a href="javascript:void(0);">卖场品牌</a><a href="javascript:void(0);">卖场产品</a></div><div class="mainmcp2 mainmcp22">红星美凯龙吴中路商场</div><div class="mainmcp3" style="background-color:#ffffff;">吴中路1388号（地铁10号线龙柏新村站） 电话：4008-213-213</div></div></div></div></div>
+      
+                    <!--------集团 begin--------->
+            </div>
+            <div class="digg">
+                
+<!-- AspNetPager 7.3.2  Copyright:2003-2010 Webdiyer (www.webdiyer.com) -->
+<div id="AspNetPager1" class="ks-pager">
+<a disabled="disabled" style="margin-right:5px;">&lt;&lt;</a><a disabled="disabled" style="margin-right:5px;">&lt;</a><span class="disabled" style="margin-right:5px;">1</span><a href="/market/list/--------2-.aspx" style="margin-right:5px;">2</a><a href="/market/list/--------2-.aspx" style="margin-right:5px;">&gt;</a><a href="/market/list/--------2-.aspx" style="margin-right:5px;">&gt;&gt;</a>
+</div>
+<!-- AspNetPager 7.3.2  Copyright:2003-2010 Webdiyer (www.webdiyer.com) -->
+
+
+            </div>
+        </div>
+        <table>
+            <tbody><tr>
+                <td>
+                    <!-- 卖场查询工具 start -->
+                    
+                    <!-- 卖场查询工具 end   -->
+                    <div class="mainy">
+                        <h3>
+                            推荐卖场</h3>
+                        <div style="padding: 15px;">
+                            
+                            <a target="_blank" href="/market/45/index.aspx">
+                                <img style="width: 196px; height: 70px;" src="resource/web/images/brand/brand-1.png"></a>&nbsp;&nbsp;
+                            
+                         <a target="_blank" href="/market/45/index.aspx">
+                            <img style="width: 196px; height: 70px;" src="resource/web/images/brand/brand-1.png"></a>&nbsp;&nbsp;
+                        <a target="_blank" href="/market/45/index.aspx">
+                             <img style="width: 196px; height: 70px;" src="resource/web/images/brand/brand-1.png"></a>&nbsp;&nbsp;
+                         <a target="_blank" href="/market/45/index.aspx">
+                             <img style="width: 196px; height: 70px;" src="resource/web/images/brand/brand-1.png"></a>&nbsp;&nbsp;
+                         <a target="_blank" href="/market/45/index.aspx">
+                             <img style="width: 196px; height: 70px;" src="resource/web/images/brand/brand-1.png"></a>&nbsp;&nbsp;
+                         <a target="_blank" href="/market/45/index.aspx">
+                        <img style="width: 196px; height: 70px;" src="resource/web/images/brand/brand-1.png"></a>&nbsp;&nbsp;
+                        </div>
+                    </div>
+                    <div class="mainy" style="margin-top: 5px;display:none;">
+                        <h3>
+                            优质商家</h3>
+                        
+                        
+                    </div>
+                    <div class="mainy" style="margin-top: 5px;display:none;">
+                        <a href="/shop/38/index.aspx" target="_blank"><img style="width: 228px; height: 170px;" src="/upload/show/thumb/61/20150313215042466568.png"></a>
+                    </div>
+                </td>
+            </tr>
+        </tbody></table>
+    </div>
+</div>
+
+</div>
+<style>
+.backToTop
+{
+display: none;
+padding: 26px;
+background-image: url(http://www.jiajuks.com/resource/images/backtop.gif);
+background-repeat: no-repeat;
+vertical-align: middle;
+position: fixed;
+_position: absolute;
+right: 5px;
+bottom: 5px;
+_bottom: "auto";
+cursor: pointer;
+opacity: .8;
+filter: Alpha(opacity=60);
+}
+</style>
+<div class="footer">
+<div style="position:relative;">
+<div style="position:absolute;right:100px;">
+<table border="0">
+<tbody><tr><td>家具快搜订阅号：jiajuks</td> </tr>
+<tr><td><img src="/resource/images/weixin.jpg"> </td> </tr>
+</tbody></table>
+</div>
+ </div>
+    <p class="p1">
+        <a href="http://www.jiajuks.com/yqlj.aspx">友情链接</a> | <a href="#">标签云</a> | <a target="_blank" href="http://www.jiajuks.com/gywm.aspx">
+                企业介绍</a> | <a target="_blank" href="http://www.jiajuks.com/lxwm.aspx">
+                    联系我们</a> | <a href="#">招聘纳士</a> | <a href="#">网站地图</a> | <a href="http://www.jiajuks.com/reg.aspx" target="_blank">供应商加盟</a> | <a href="http://www.jiajuks.com/reg.aspx?r=l" target="_blank">供应商登录</a>
+    </p>
+    <p class="p3">
+        Copyright © <a href="http://www.jiajuks.com/">家具快搜</a>（www.jiajuks.com） &nbsp;沪ICP备12034118号</p>
+<p class="p4">
+    <p>
+        <img src="http://www.jiajuks.com/resource/web/images/index_130.jpg">
+        <a href="#">
+        <img src="http://www.jiajuks.com/resource/web/images/index-08.jpg"></a> <a href="#">
+    <img src="http://www.jiajuks.com/resource/web/images/index-09.jpg"></a>
+    <a href="#">
+    <img src="http://www.jiajuks.com/resource/web/images/index-10.jpg"></a>
+</p>
+</p>
+</div>
+<div class="backToTop" title="" style="display: none;">
+</div>
+<input type="hidden" id='hidmc' value='' />
+<input type="hidden" id='hidcz' value='' />
+<input type="hidden" id='hidfg' value='' />
+<input type="hidden" id='hidkey' value='' />
+</form>
+
+</body>
+</html>
