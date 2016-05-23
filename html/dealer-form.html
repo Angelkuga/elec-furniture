@@ -1,0 +1,619 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1">
+<title>
+后台-经销商
+</title>
+<link rel="stylesheet" type="text/css" href="../css/style.css">
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/jquery.form.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/additional-methods.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/messages_cn.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//My97DatePicker/WdatePicker.js"></script><link href="http://www.jiajuks.com//resource//My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/jquery.area.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//editor/kindeditor/kindeditor-min.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/fileupload.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            //表单验证JS
+            $("#form1").validate({
+                //出错时添加的标签
+                errorElement: "span",
+                showErrors: function (errorMap, errorList) {
+                    if (errorList.length > 0) {
+                        if ($("#" + errorList[0].element.id).next() != null) {
+                            $("#" + errorList[0].element.id).next().remove();
+                        }
+                    }
+                    this.defaultShowErrors();
+                },
+                success: function (label) {
+                    //正确时的样式
+                    label.text(" ").addClass("success");
+                }
+            });
+            var editor;
+            KindEditor.ready(function (K) {
+                editor = K.create('#txtdescript', {
+                    allowPreviewEmoticons: true,
+                    allowImageUpload: true,
+                    allowFileManager: true,
+                    
+                    allowMediaUpload: true,
+                    items: [
+						'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+						'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+						'insertunorderedlist', '|', 'image', 'flash', 'media', 'link', 'fullscreen']
+                });
+            });
+
+            $("#btnSearch").click(function () {
+                    $.ajax({
+                        url: "http://www.jiajuks.com//ajax/ajaxuser.ashx",
+                        data: "type=getnoaddmember&v=" + $("#txtSearch").val(),
+                        dataType: "json",
+                        success: function (data) {
+                            if (data != "") {
+                                $("#ddlmember").html();
+                                $("#ddlmember").html("<option value=\"\">请选择</option>");
+                                $.each(data, function (i) {
+                                    $("#ddlmember").append("<option value=\"" + data[i].id + "\">" + data[i].name + "</option>");
+                                });
+                            }
+                        }
+                    })
+            })
+
+            $("#ddlPro").live("change", function () {
+                if ($(this).val() != "" && $(this).val() != "0") {
+                    $.ajax({
+                        url: "http://www.jiajuks.com//ajaxtools/ajaxarea.ashx",
+                        data: "type=c&p=" + $(this).val(),
+                        success: function (data) {
+                            $("#ddlregcity").html(data)
+                        },
+                        error: function (d, m) {
+                            alert(m);
+                        }
+                    });
+                }
+            })
+        });
+    </script>
+    <style type="text/css">
+        .formTable
+        {
+            border: 1px solid #ccc;
+        }
+        .formTable tr th
+        {
+            background: #ededed;
+            text-align: left;
+        }
+        .formTable tr td
+        {
+            border: none;
+            padding-top: 8px;
+            padding-bottom: 8px;
+        }
+    </style>
+<link href="http://www.jiajuks.com//resource//editor/kindeditor/themes/default/default.css" rel="stylesheet"></head>
+<body style="padding: 10px;">
+    <form name="form1" method="post" action="dealerinfo.aspx" id="form1" enctype="multipart/form-data" novalidate="novalidate">
+<div>
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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">
+</div>
+
+    <div class="navigation">
+        <span class="back"><a href="dealerlist.aspx">返回列表</a></span><b>您当前的位置：首页 &gt; 成员管理 &gt;
+            登陆账号管理</b>
+    </div>
+    <div class="spClear">
+    </div>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="msgtable">
+        <tbody><tr>
+            <th colspan="3" align="left">
+                登陆账号信息
+            </th>
+        </tr>
+        <tr>
+            <td width="390px" valign="top">
+                <table class="formTable" width="380px">
+                    <tbody><tr>
+                        <th colspan="2">
+                            账号信息：
+                        </th>
+                    </tr>
+                    
+                    <tr>
+                        <td align="right" width="70">
+                            会员查找：
+                        </td>
+                        <td>
+                            <input name="txtSearch" type="text" id="txtSearch" class="w160 input">&nbsp;<input type="button" class="submit" value="查找" id="btnSearch">
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td align="right">
+                            登陆账号：
+                        </td>
+                        <td>
+                            <select name="ddlmember" id="ddlmember" class="select selectNone" style="width:160px;">
+	<option value="">请选择</option>
+	<option value="0">无联联账号</option>
+	<option value="849">美居范</option>
+	<option value="847">广达</option>
+	<option value="846">梵思豪宅</option>
+	<option value="845">兰柏慈</option>
+	<option value="844">芭乐比欧</option>
+	<option value="843">塞特维那</option>
+	<option value="842">璞罗蒙</option>
+	<option value="841">MASSIMO</option>
+	<option value="839">添美人生</option>
+	<option value="838">EPOCA</option>
+	<option value="837">TURRI</option>
+	<option value="836">英豪绣庄</option>
+	<option value="835">永固</option>
+	<option value="834">馥古</option>
+	<option value="833">永固</option>
+	<option value="832">御檀房</option>
+	<option value="831">杰妮亚</option>
+	<option value="830">芙兰奈曲</option>
+	<option value="829">阿玛尼</option>
+	<option value="828">阿斯那</option>
+	<option value="827">玛荷尼</option>
+	<option value="826">富士</option>
+	<option value="825">柚木大师</option>
+	<option value="824">艺雕</option>
+	<option value="823">帝国艺匠</option>
+	<option value="822">爱舍</option>
+	<option value="821">欧迪堡</option>
+	<option value="820">高点印象</option>
+	<option value="819">金凯莎</option>
+	<option value="818">元亨利</option>
+	<option value="817">艺尊轩</option>
+	<option value="816">陆市</option>
+	<option value="815">古佰年</option>
+	<option value="814">弘木印象</option>
+	<option value="813">红光柚木</option>
+	<option value="812">欧品</option>
+	<option value="811">高家工艺</option>
+	<option value="810">青木堂</option>
+	<option value="809">英伦华庄</option>
+	<option value="808">康乐</option>
+	<option value="807">欧宜风</option>
+	<option value="806">皇家臻品</option>
+	<option value="805">罗曼迪卡</option>
+	<option value="804">洛世奇</option>
+	<option value="803">诺曼帝</option>
+	<option value="802">玛赫格尼</option>
+	<option value="801">左岸艺术</option>
+	<option value="800">我爱我家</option>
+	<option value="799">震旦</option>
+	<option value="798">亚梭</option>
+	<option value="797">桔子小屋</option>
+	<option value="796">哈尼贝贝</option>
+	<option value="795">61</option>
+	<option value="791">佐顿美家</option>
+	<option value="790">木玛</option>
+	<option value="788">美欧美家</option>
+	<option value="786">尤宜美家品智</option>
+	<option value="783">欧卡</option>
+	<option value="781">伊甸园</option>
+	<option value="780">凯美忆</option>
+	<option value="777">舒曼</option>
+	<option value="776">阳光小屋</option>
+	<option value="767">迪诺雅</option>
+	<option value="766">华林凯迪</option>
+	<option value="761">印象北美</option>
+	<option value="760">博尔卡特</option>
+	<option value="755">乐至宝</option>
+	<option value="754">蒂芬妮</option>
+	<option value="752">蕾丝</option>
+	<option value="750">AG10</option>
+	<option value="749">朗乐福</option>
+	<option value="748">造梦者</option>
+	<option value="747">席梦思</option>
+	<option value="746">丝涟</option>
+	<option value="743">康宝</option>
+	<option value="742">布兰卡</option>
+	<option value="741">意迪森</option>
+	<option value="740">希尔巴赫</option>
+	<option value="739">宝恩</option>
+	<option value="738">茂荣</option>
+	<option value="737">宝泊</option>
+	<option value="736">NATUZZI</option>
+	<option value="733">斯林白兰</option>
+	<option value="730">异同</option>
+	<option value="729">自由空间</option>
+	<option value="727">巴博罗</option>
+	<option value="726">柯意玛</option>
+	<option value="691">好人家</option>
+	<option value="680">dashu86</option>
+	<option value="679">dashu66</option>
+	<option value="678">dashu89</option>
+	<option value="671">好美家</option>
+	<option value="670">金海马</option>
+	<option value="669">新东明集团</option>
+	<option value="668">建配龙</option>
+	<option value="665">金盛国际</option>
+	<option value="662">月星</option>
+	<option value="661">同福集团</option>
+	<option value="660">美千居集团</option>
+	<option value="659">sh红星浦江店</option>
+	<option value="657">红星</option>
+	<option value="655">jswb</option>
+	<option value="654">hejinaa2</option>
+	<option value="652">hejinaa1</option>
+	<option value="639">浦东月星</option>
+	<option value="638">耐特月星</option>
+	<option value="635">manghong2</option>
+	<option value="625">maichang</option>
+	<option value="620">ylkmk</option>
+	<option value="613">shenyongyue</option>
+	<option value="612">ffffff</option>
+	<option value="598">qq1</option>
+	<option value="595">ylk</option>
+	<option value="592">zzy2</option>
+	<option value="591">zzy111</option>
+	<option value="541">cds</option>
+	<option value="540">qwe</option>
+	<option value="448">金海马吴中路</option>
+	<option value="407">春申江彭浦店</option>
+	<option value="406">春申江沪太店</option>
+	<option value="405">春申江五角场</option>
+	<option value="404">春申江浦东</option>
+	<option value="403">春申江家具</option>
+	<option value="386">吉盛伟邦不夜城</option>
+	<option value="385">吉盛伟邦金玉兰</option>
+	<option value="370">fghfghfghfgh</option>
+	<option value="369">qweqweqweqwe</option>
+	<option value="368">234234234234</option>
+	<option value="367">asdasdasdasdasdasdas</option>
+	<option value="364">asdasdasdasdasdasd</option>
+	<option value="362">zxczxczxc</option>
+	<option value="361">asdasdadasdasd</option>
+	<option value="360">gtyhh</option>
+	<option value="359">dddsss</option>
+	<option value="357">dddddds</option>
+	<option value="356">asdasdasdasd</option>
+	<option value="355">asdddddd</option>
+	<option value="332">tt</option>
+	<option value="324">阿斯打算打算的dmin</option>
+	<option value="299">放松放松放松地方</option>
+	<option value="297">qwqwqw</option>
+	<option value="278">艾森堡家具</option>
+	<option value="276">asdasdasd</option>
+	<option value="274">fgdfgdgd </option>
+	<option value="272">就解决就解决</option>
+	<option value="271">gggggg</option>
+	<option value="270">黑哈哈哈和</option>
+	<option value="269">777777</option>
+	<option value="267">7777777</option>
+	<option value="266">666666</option>
+	<option value="262">随碟附送方式</option>
+	<option value="232">xxxxxx</option>
+	<option value="185">dddd</option>
+	<option value="184">dududu</option>
+	<option value="183">asdasd</option>
+	<option value="182">zzzzzz</option>
+	<option value="181">四福</option>
+	<option value="180">三福</option>
+	<option value="179">qqqqqq</option>
+	<option value="178">jingxiaoshang</option>
+	<option value="177">cjxs</option>
+	<option value="176">经销商1</option>
+	<option value="175">卖场1</option>
+	<option value="174">jingxiangshang2</option>
+	<option value="173">撒旦法萨芬</option>
+	<option value="171">maichang3</option>
+	<option value="83">梦璐</option>
+
+</select>
+                        </td>
+                    </tr>
+                </tbody></table>
+                <div class="spClear">
+                </div>
+                <table class="formTable" width="380px">
+                    <tbody><tr>
+                        <th colspan="2">
+                            企业信息：
+                        </th>
+                    </tr>
+                    <tr>
+                        <td width="70px" align="right">
+                            推荐属性：
+                        </td>
+                        <td>
+                            <span id="chkattribute"><input id="chkattribute_0" type="checkbox" name="chkattribute$0"><label for="chkattribute_0">首页置顶</label><input id="chkattribute_1" type="checkbox" name="chkattribute$1"><label for="chkattribute_1">推荐</label><input id="chkattribute_2" type="checkbox" name="chkattribute$2"><label for="chkattribute_2">热门</label><input id="chkattribute_3" type="checkbox" name="chkattribute$3"><label for="chkattribute_3">精华</label><input id="chkattribute_4" type="checkbox" name="chkattribute$4"><label for="chkattribute_4">幻灯</label><input id="chkattribute_5" type="checkbox" name="chkattribute$5"><label for="chkattribute_5">高亮</label></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            店铺名称：
+                        </td>
+                        <td>
+                            <input name="txttitle" type="text" id="txttitle" class="input required w160">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            企业组 ：
+                        </td>
+                        <td>
+                            <select name="ddldealergroup" id="ddldealergroup" class="select selectNone" style="width:160px;">
+	<option value="">请选择</option>
+	<option value="1">普通经销商</option>
+
+</select>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td width="76px" align="right">
+                            是否vip ：
+                        </td>
+                        <td>
+                            <input name="txtvip" type="text" value="0" id="txtvip" class="input required" style="width:45px;"><label>(1-10值越大级别越高,0为不是vip)</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right" style="width: 110px;">
+                            代理证书上传：
+                        </td>
+                        <td>
+                            <div class="fileUpload" path="/upload/dealer/dbook//">
+                                <input type="hidden" name="hfDBook" id="hfDBook">
+                                <div class="fileTools" style="width: 310px">
+                                    <input type="text" class="input w160 filedisplay">
+                                    <a href="javascript:;" class="files">
+                                        <input name="FileDBook" type="file" id="FileDBook" class="upload" onchange="_upfile(this)"></a>
+                                    <span class="uploading">上传中</span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                </tbody></table>
+            </td>
+            <td width="380px" valign="top">
+                <table class="formTable" width="380px">
+                    <tbody><tr>
+                        <th colspan="2">
+                            联系信息：
+                        </th>
+                    </tr>
+                    <tr>
+                        <td align="right" width="70px">
+                            地区：
+                        </td>
+                        <td>
+                            <div class="_droparea" id="ddlareacode" title=""><select id="ddlareacode_province" name="ddlareacode_province"><option value="">请选择省份</option><option value="110000">北京市</option><option value="120000">天津市</option><option value="130000">河北省</option><option value="140000">山西省</option><option value="150000">内蒙古自治区</option><option value="230000">黑龙江省</option><option value="210000">辽宁省</option><option value="220000">吉林省</option><option value="330000">浙江省</option><option value="310000">上海市</option><option value="320000">江苏省</option><option value="640000">宁夏回族自治区</option><option value="650000">新疆维吾尔自治区</option><option value="620000">甘肃省</option><option value="540000">西藏自治区</option><option value="630000">青海省</option><option value="610000">陕西省</option><option value="530000">云南省</option><option value="520000">贵州省</option><option value="460000">海南省</option><option value="500000">重庆市</option><option value="510000">四川省</option><option value="450000">广西壮族自治区</option><option value="440000">广东省</option><option value="430000">湖南省</option><option value="420000">湖北省</option><option value="410000">河南省</option><option value="360000">江西省</option><option value="340000">安徽省</option><option value="370000">山东省</option><option value="350000">福建省</option></select><select id="ddlareacode_city" name="ddlareacode_city" style="display: none;"><option value="">请选择城市</option></select><select id="ddlareacode_district" name="ddlareacode_district" style="display: none;"><option value="">请选择地区</option></select><select id="ddlareacode_town" name="ddlareacode_town" style="display: none;"></select><input type="hidden" id="ddlareacode_value" name="ddlareacode_value" value="" runat="server"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            地址：
+                        </td>
+                        <td>
+                            <input name="txtaddress" type="text" id="txtaddress" class="input w250 required">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            联系人：
+                        </td>
+                        <td>
+                            <input name="txtlinkman" type="text" id="txtlinkman" class="input w160">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            手机 ：
+                        </td>
+                        <td>
+                            <input name="txtmphone" type="text" id="txtmphone" class="input w160">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            电话 ：
+                        </td>
+                        <td>
+                            <input name="txtphone" type="text" id="txtphone" class="input w160">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            传真 ：
+                        </td>
+                        <td>
+                            <input name="txtfax" type="text" id="txtfax" class="input w160">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            邮箱 ：
+                        </td>
+                        <td>
+                            <input name="txtemail" type="text" id="txtemail" class="input w160">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            邮编 ：
+                        </td>
+                        <td>
+                            <input name="txtpostcode" type="text" id="txtpostcode" class="input w160">
+                        </td>
+                    </tr>
+                    
+                </tbody></table>
+                <div class="spClear">
+                </div>
+                
+                 <table class="formTable" width="380">
+                    <tbody><tr>
+                        <th colspan="2">
+                            企业状态:
+                        </th>
+                    </tr>
+                    <tr>
+                        <td width="90px" align="right">
+                            审核：
+                        </td>
+                        <td>
+                            <select name="ddlauditstatus" id="ddlauditstatus" class="select selectNone" style="width:160px;">
+	<option value="">请选择</option>
+	<option value="0">待审核</option>
+	<option value="-1">正在审核</option>
+	<option value="1">通过</option>
+	<option value="-99">未通过</option>
+
+</select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            上/下线：
+                        </td>
+                        <td>
+                            <select name="ddllinestatus" id="ddllinestatus" class="select selectNone" style="width:160px;">
+	<option value="">请选择</option>
+	<option value="0">未上线</option>
+	<option value="1">己上线</option>
+
+</select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            排序 ：
+                        </td>
+                        <td>
+                            <input name="txtsort" type="text" value="0" id="txtsort" class="input w160 required digits">
+                        </td>
+                    </tr>
+                    
+                </tbody></table>
+            </td>
+            <td valign="top">
+                <table class="formTable" width="380">
+                    <tbody><tr>
+                        <th colspan="2">
+                            优化及配置：
+                        </th>
+                    </tr>
+                    <tr>
+                        <td width="70px" align="right">
+                            关&nbsp;键&nbsp;&nbsp;字：
+                        </td>
+                        <td>
+                            <textarea name="txtkeywords" rows="2" cols="20" id="txtkeywords" class="input w160" style="height:200px;width:250px;"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                    <td></td>
+                    <td><span style="color:red;">↑ 格式：title | keywords | description</span></td>
+                     </tr>
+                    <tr>
+                        <td align="right">
+                            配置域名：
+                        </td>
+                        <td>
+                            <input name="txtdomain" type="text" id="txtdomain" class="input w160">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            配置IP：
+                        </td>
+                        <td>
+                            <input name="txtdomainip" type="text" id="txtdomainip" class="input w160">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            ICP备案：
+                        </td>
+                        <td>
+                            <input name="txticp" type="text" id="txticp" class="input w160">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            企业风格：
+                        </td>
+                        <td>
+                            <select name="ddltemplate" id="ddltemplate">
+	<option value="0">默认风格</option>
+	<option value="1">级别1</option>
+
+</select>
+                        </td>
+                    </tr>
+                </tbody></table>
+                <div class="spClear">
+                </div>
+                <table class="formTable" width="380">
+                    <tbody><tr>
+                        <th colspan="2">
+                            企业描述:
+                        </th>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                         <div class="ke-container ke-container-default" style="width: 360px;">
+                                <div style="display:block;" class="ke-toolbar" unselectable="on">
+                                    <span class="ke-outline" data-name="fontname" title="字体" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-fontname" unselectable="on"></span></span>
+                                    <span class="ke-outline" data-name="fontsize" title="文字大小" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-fontsize" unselectable="on"></span></span>
+                                    <span class="ke-inline-block ke-separator"></span>
+                                    <span class="ke-outline" data-name="forecolor" title="文字颜色" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-forecolor" unselectable="on"></span></span>
+                                    <span class="ke-outline" data-name="hilitecolor" title="文字背景" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-hilitecolor" unselectable="on"></span></span>
+                                    <span class="ke-outline" data-name="bold" title="粗体(Ctrl+B)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-bold" unselectable="on"></span></span>
+                                    <span class="ke-outline" data-name="italic" title="斜体(Ctrl+I)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-italic" unselectable="on"></span></span>
+                                    <span class="ke-outline" data-name="underline" title="下划线(Ctrl+U)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-underline" unselectable="on"></span></span>
+                                    <span class="ke-outline" data-name="removeformat" title="删除格式" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-removeformat" unselectable="on"></span></span>
+                                    <span class="ke-inline-block ke-separator"></span>
+                                    <span class="ke-outline" data-name="justifyleft" title="左对齐" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-justifyleft" unselectable="on"></span></span>
+                                    <span class="ke-outline" data-name="justifycenter" title="居中" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-justifycenter" unselectable="on"></span></span>
+                                    <span class="ke-outline" data-name="justifyright" title="右对齐" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-justifyright" unselectable="on"></span></span>
+                                    <span class="ke-outline" data-name="insertorderedlist" title="编号" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-insertorderedlist" unselectable="on"></span></span>
+                                    <span class="ke-outline" data-name="insertunorderedlist" title="项目符号" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-insertunorderedlist" unselectable="on"></span></span>
+                                    <span class="ke-inline-block ke-separator"></span>
+                                    <span class="ke-outline" data-name="image" title="图片" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-image" unselectable="on"></span></span>
+                                    <span class="ke-outline" data-name="flash" title="Flash" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-flash" unselectable="on"></span></span>
+                                    <span class="ke-outline" data-name="media" title="视音频" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-media" unselectable="on"></span></span>
+                                    <span class="ke-outline" data-name="link" title="超级链接" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-link" unselectable="on"></span></span>
+                                    <span class="ke-outline" data-name="fullscreen" title="全屏显示(Esc)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-fullscreen" unselectable="on"></span></span>
+                                </div>
+                                <div style="display: block; height: 100px;" class="ke-edit">
+                                    <iframe class="ke-edit-iframe" hidefocus="true" frameborder="0" style="width: 100%; height: 100px;"></iframe>
+                                    <textarea class="ke-edit-textarea" hidefocus="true" style="width: 100%; height: 100px; display: none;"></textarea>
+                                </div>
+                                <div class="ke-statusbar">
+                                    <span class="ke-inline-block ke-statusbar-center-icon"></span>
+                                    <span class="ke-inline-block ke-statusbar-right-icon"></span>
+                                </div>
+                            </div>
+                            <textarea name="txtdescript" rows="5" cols="20" id="txtdescript" class="textarea required" style="width: 360px; display: none;"></textarea>
+                            <span for="txtdescript" generated="true" class="error success"> </span>
+        
+                        </td>
+                    </tr>
+                </tbody></table>
+                <div class="spClear">
+                </div>
+               
+            </td>
+        </tr>
+    </tbody></table>
+    <div style="margin-top: 10px; margin-left: 180px">
+        <input type="submit" name="btnSave" value="确认保存" id="btnSave" class="submit"><input name="重置" type="reset" class="submit" value="重置">
+    </div>
+    </form>
+
+
+</body></html>

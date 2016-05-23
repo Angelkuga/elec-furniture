@@ -1,0 +1,214 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1">
+<title>
+后台-卖场级别
+</title>
+<link rel="stylesheet" type="text/css" href="../css/style.css">
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/jquery.form.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/additional-methods.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/messages_cn.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//My97DatePicker/WdatePicker.js"></script><link href="http://www.jiajuks.com//resource//My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript">
+        $(function () {
+            //表单验证JS
+            $("#form1").validate({
+                //出错时添加的标签
+                errorElement: "span",
+                showErrors: function (errorMap, errorList) {
+                    if (errorList.length > 0) {
+                        if ($("#" + errorList[0].element.id).next() != null) {
+                            $("#" + errorList[0].element.id).next().remove();
+                        }
+                    }
+                    this.defaultShowErrors();
+                },
+                success: function (label) {
+                    //正确时的样式
+                    label.text(" ").addClass("success");
+                }
+            });
+        });
+    </script>
+    <style type="text/css">
+        .formTable{border:1px solid #ccc;}
+        .formTable tr th{background:#ededed; text-align:left;}
+        .formTable tr td{border:none; padding-top:8px; padding-bottom:8px;}
+    </style>
+</head>
+<body style="padding:10px;">
+<form name="form1" method="post" action="marketgroupinfo.aspx" id="form1" novalidate="novalidate">
+<div>
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTE0NTg2Mjk0NmRk9qJii1hVCL4SI/feqNVD1Fdc3Sg=">
+</div>
+
+    <div class="navigation">
+      <span class="back"><a href="marketgrouplist.aspx">返回列表</a></span><b>您当前的位置：首页 &gt; 卖场管理 &gt; 卖场组管理</b>
+    </div>
+    <div class="spClear"></div>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="msgtable">
+        <tbody><tr>
+            <th colspan="3" align="left">卖场组信息</th>
+        </tr>
+        <tr>
+            <td width="120" align="right">
+                名称 ：
+            </td>
+            <td align="left">
+                <input name="txttitle" type="text" id="txttitle" class="w160 input required">
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                颜色 ：
+            </td>
+            <td align="left">
+                <input name="txtcolor" type="text" id="txtcolor" class="w160 input">
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                组图标 ：
+            </td>
+            <td align="left">
+                <input name="txtavatar" type="text" id="txtavatar" class="w160 input">
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                积分 ：
+            </td>
+            <td align="left">
+                <input name="txtintegral" type="text" value="0" id="txtintegral" class="w160 input required number">
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                金钱 ：
+            </td>
+            <td align="left">
+                <input name="txtmoney" type="text" value="0" id="txtmoney" class="w160 input required number">
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                广告数量 ：
+            </td>
+            <td align="left">
+                <input name="txtadcount" type="text" value="0" id="txtadcount" class="w160 input required digits">
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                店铺数量 ：
+            </td>
+            <td align="left">
+                <input name="txtshopcount" type="text" value="0" id="txtshopcount" class="w160 input required digits">
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                品牌数量 ：
+            </td>
+            <td align="left">
+                <input name="txtbrandcount" type="text" value="0" id="txtbrandcount" class="w160 input required digits">
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                促销数量 ：
+            </td>
+            <td align="left">
+                <input name="txtpromotioncount" type="text" value="0" id="txtpromotioncount" class="w160 input required digits">
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                广告推荐数量 ：
+            </td>
+            <td align="left">
+                <input name="txtadrecommend" type="text" value="0" id="txtadrecommend" class="w160 input required digits">
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                店铺推荐数量 ：
+            </td>
+            <td align="left">
+                <input name="txtshoprecommend" type="text" value="0" id="txtshoprecommend" class="w160 input required digits valid"><span for="txtshoprecommend" generated="true" class="error success"> </span>
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                品牌推荐数量 ：
+            </td>
+            <td align="left">
+                <input name="txtbrandrecommend" type="text" value="0" id="txtbrandrecommend" class="w160 input required digits">
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                促销推荐数量 ：
+            </td>
+            <td align="left">
+                <input name="txtpromotionrecommend" type="text" value="0" id="txtpromotionrecommend" class="w160 input required digits">
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                楼层数量 ：
+            </td>
+            <td align="left">
+                <input name="txtstoreycount" type="text" value="0" id="txtstoreycount" class="w160 input required digits">
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                楼层店铺数量 ：
+            </td>
+            <td align="left">
+                <input name="txtstoreyshopcount" type="text" value="0" id="txtstoreyshopcount" class="w160 input required digits">
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                权限 ：
+            </td>
+            <td align="left">
+                <input name="txtpermissions" type="text" id="txtpermissions" class="w160 input">
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                级别 ：
+            </td>
+            <td align="left">
+                <input name="txtlev" type="text" value="1" id="txtlev" class="w160 input required digits">
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                描述 ：
+            </td>
+            <td align="left">
+                <textarea name="txtdescript" rows="3" cols="20" id="txtdescript" class=" w380 textarea"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                排序 ：
+            </td>
+            <td align="left">
+                <input name="txtsort" type="text" value="0" id="txtsort" class="w160 input required digits">
+            </td>
+        </tr>
+    </tbody></table>
+    
+    <div style="margin-top:10px; margin-left:140px">
+  <input type="submit" name="btnSave" value="确认保存" id="btnSave" class="submit"><input name="重置" type="reset" class="submit" value="重置">
+</div>
+</form>
+
+
+</body></html>
