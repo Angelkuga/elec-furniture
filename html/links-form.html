@@ -1,0 +1,93 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>
+	新增工厂招商信息
+</title><link rel="stylesheet" type="text/css" href="../css/style.css">
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/jquery.form.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/additional-methods.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/messages_cn.js"></script>
+    <script type="text/javascript" src="../script/admin.js"></script>
+    <style type="text/css">
+        .formTable
+        {
+            border: 1px solid #ccc;
+        }
+        .formTable tr th
+        {
+            background: #ededed;
+            text-align: left;
+        }
+        .formTable tr td
+        {
+            border: none;
+            padding-top: 8px;
+            padding-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+    <form name="form1" method="post" action="linksinfo.aspx" id="form1">
+<div>
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="">
+</div>
+
+    <div class="navigation">
+        <span class="back"><a href="newslist.aspx">返回列表</a></span><b>您当前的位置：首页 &gt; 友情连接 &gt;
+            友情连接</b>
+    </div>
+    <div class="spClear">
+    </div>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="msgtable">
+        <tbody><tr>
+            <th colspan="2" align="left">
+                友情连接
+            </th>
+        </tr>
+        <tr>
+            <td>
+                <table class="formTable" width="770">
+                    <tbody><tr>
+                        <th colspan="2">
+                            友情连接：
+                        </th>
+                    </tr>
+                    <tr>
+                        <td align="right" width="70">
+                            名称：
+                        </td>
+                        <td>
+                            <input name="tbTitle" type="text" id="tbTitle" style="width:300px;">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right" width="70">
+                            连接：
+                        </td>
+                        <td>
+                            <input name="tblink" type="text" id="tblink" class="textarea required" style="width:650px;">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            上/下线：
+                        </td>
+                        <td>
+                            <select name="ddllinestatus" id="ddllinestatus" class="select selectNone" style="width:160px;">
+                            	<option value="">请选择</option>
+                            	<option value="0">未上线</option>
+                            	<option value="1">己上线</option>
+
+                            </select>
+                        </td>
+                    </tr>
+                </tbody></table>
+            </td>
+        </tr>
+    </tbody></table>
+    <div style="margin-top: 10px; margin-left: 180px">
+        <input type="submit" name="btnSave" value="确认保存" id="btnSave" class="submit"><input name="重置" type="reset" class="submit" value="重置">
+    </div>
+    </form>
+
+
+</body></html>

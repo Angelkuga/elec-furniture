@@ -1,0 +1,869 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head id="Head1"><title>
+
+</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <script type="text/javascript" src="http://www.jiajuks.com//resource/script/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource/script/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource/script/jquery.form.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource/script/additional-methods.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource/script/messages_cn.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource/My97DatePicker/WdatePicker.js"></script><link href="http://www.jiajuks.com//resource/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="http://www.jiajuks.com//resource/editor/kindeditor/kindeditor-min.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource/script/fileupload.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource/altdialog/artDialog.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource/altdialog/plugins/iframeTools.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource/script/json2.js"></script>
+    <style type="text/css">
+        .formTable
+        {
+            border: 1px solid #ccc;
+        }
+        .formTable tr th
+        {
+            background: #ededed;
+            text-align: left;
+        }
+        .formTable tr td
+        {
+            border: none;
+            padding-top: 8px;
+            padding-bottom: 8px;
+        }
+        #productattributelist ul
+        {
+            margin-left: 36px;
+        }
+        #productattributelist ul li
+        {
+            background: #f3f3f3;
+            display: block;
+            float: left;
+            height: 30px;
+            line-height: 30px;
+            border-bottom: dotted 1px #bbbbbb;
+            margin-bottom: 2px;
+            width: 100%;
+        }
+        #productattributelist ul li span
+        {
+            display: block;
+            float: left;
+            padding: 0px 5px;
+            line-height: 30px;
+            height: 30px;
+            width: 100px;
+            overflow: hidden;
+        }
+    </style>
+    <script type="text/javascript">
+        $(function () {
+
+            //分类下拉绑定产品类型
+            $("#ddlproductcategory").live("change",function(){
+                if($("#ddlproductcategory").val()!="")
+                {
+                    $.ajax({
+                        url:'http://www.jiajuks.com//ajax/ajaxproduct.ashx',
+                        data:'type=getcategorytype&v='+$("#ddlproductcategory").val(),
+                        dataType:'json',
+                        success:function(data){
+                            $("#ddltype").html("").hide().show();
+                            $("#ddltype").append("<option value=\"\">请选择</option>");
+                            $.each(data,function(i){
+                                $("#ddltype").append("<option value=\""+data[i].id+"\">"+data[i].title+"</option>");
+                            });
+                        }
+                    });
+                }
+            });
+
+            //品牌下拉。获得系列及绑定品牌数据
+            $("#ddlbrand").live("change",function(){
+                $.ajax({
+                        url:'http://www.jiajuks.com//ajax/ajaxuser.ashx',
+                        data:'type=getbrands&v='+$("#ddlbrand").val(),
+                        dataType:'json',
+                        success:function(data){
+                            $("#ddlbrands").html("").hide().show();
+                            $("#ddlbrands").append("<option value=\"\">请选择</option>");
+                            var m="";
+                            var s="";
+                            var c="";
+                            $.each(data,function(i){
+                                if(data[i].id!=""&& data[i].title!="")
+                                {
+                                    $("#ddlbrands").append("<option value=\""+data[i].id+"\">"+data[i].title+"</option>");
+                                }
+                                s=data[i].s;
+                                m=data[i].m;
+                                c=data[i].c;
+                            });
+                            $("#ddlstyle").val(s);
+                            $("#ddlmaterial").val(m);
+                            $("#ddlcolor").val(c);
+                        }
+                    });
+            })
+
+            //表单验证JS
+            $("#form1").validate({
+                //出错时添加的标签
+                errorElement: "span",
+                showErrors: function (errorMap, errorList) {
+                    if (errorList.length > 0) {
+                        if ($("#" + errorList[0].element.id).next() != null) {
+                            $("#" + errorList[0].element.id).next().remove();
+                        }
+                    }
+                    this.defaultShowErrors();
+                },
+                success: function (label) {
+                    //正确时的样式
+                    label.text(" ").addClass("success");
+                }
+            });
+
+            //编辑器
+            var editor1,editor2,editor3,editor4,editor5;
+            KindEditor.ready(function (K) {
+                editor1 = K.create('#txt101', {
+                    allowPreviewEmoticons: true,
+                    allowImageUpload: true,
+                    allowFileManager: true,
+                    
+                    allowMediaUpload: true,
+                    items: [
+                        'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+                        'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+                        'insertunorderedlist', '|', 'image', 'flash', 'media', 'link', 'fullscreen']
+                });
+                editor2 = K.create('#txt102', {
+                    allowPreviewEmoticons: true,
+                    allowImageUpload: true,
+                    allowFileManager: true,
+                    
+                    allowMediaUpload: true,
+                    items: [
+                        'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+                        'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+                        'insertunorderedlist', '|', 'image', 'flash', 'media', 'link', 'fullscreen']
+                });
+                editor3 = K.create('#txt103', {
+                    allowPreviewEmoticons: true,
+                    allowImageUpload: true,
+                    allowFileManager: true,
+                    
+                    allowMediaUpload: true,
+                    items: [
+                        'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+                        'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+                        'insertunorderedlist', '|', 'image', 'flash', 'media', 'link', 'fullscreen']
+                });
+                editor4 = K.create('#txt104', {
+                    allowPreviewEmoticons: true,
+                    allowImageUpload: true,
+                    allowFileManager: true,
+                    
+                    allowMediaUpload: true,
+                    items: [
+                        'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+                        'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+                        'insertunorderedlist', '|', 'image', 'flash', 'media', 'link', 'fullscreen']
+                });
+                editor5 = K.create('#txt105', {
+                    allowPreviewEmoticons: true,
+                    allowImageUpload: true,
+                    allowFileManager: true,
+                    
+                    allowMediaUpload: true,
+                    items: [
+                        'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+                        'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+                        'insertunorderedlist', '|', 'image', 'flash', 'media', 'link', 'fullscreen']
+                });
+                editordescript = K.create('#txtdescript', {
+                    allowPreviewEmoticons: true,
+                    allowImageUpload: true,
+                    allowFileManager: true,
+                    
+                    allowMediaUpload: true,
+                    items: [
+                        'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+                        'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+                        'insertunorderedlist', '|', 'image', 'flash', 'media', 'link', 'fullscreen']
+                });
+            });
+            
+            //类型名新增js操作效果
+            $("#selecttypename").toggle(function(){
+                 $("#txtatypename").css("display","block");
+                 $(this).text("关闭添加").css("color","#f60");
+                 $("#ddltype").val("0");
+                 $("#ddltype").val("");
+            },function(){
+                $("#txtatypename").css("display","none");
+                $(this).text("添加其它").css("color","#282828");
+            });
+
+            //属性添加按钮
+            $("#btnAddAttribute").click(function(){
+                var htmlJson="";
+                var listHtml="";
+
+                var productType="";
+                var productTypeName="";
+                var productMaterial="";
+                var phfacolor="";
+                var pcolortitle="";
+                var pacolorimg="";
+                var plength="";
+                var pawidth="";
+                var paheight="";
+                var pacbm="";
+                var pmarketprice="";
+
+                if(($("#ddltype").val()==""||$("#ddltype").val()=="0") && $("#txtatypename").val()=="")
+                {
+                    alert("请选择分类-->选择类型,或点击其它新增");
+                    return false;
+                }
+
+                if($("#ddltype").val()!="" && $("#ddltype").val()!="0"){
+                    productType="\"typeid\":\""+$("#ddltype").val()+"\",";
+                    productTypeName="\"typename\":\""+$("#ddltype").find("option:selected").text()+"\",";
+                    listHtml+="<span>"+$("#ddltype").find("option:selected").text()+"<strong>[类型]</strong></span>";
+                }
+                else
+                {
+                    productType="\"typeid\":\"0\",";
+                    productTypeName="\"typename\":\""+$("#txtatypename").val()+"\",";
+                    listHtml+="<span>"+$("#txtatypename").val()+"<strong>[类型]</strong></span>";
+                }
+                productMaterial="\"pmaterial\":\""+$("#txtamaterial").val()+"\",";
+                phfacolor="\"pacolor\":\""+$("#hfacolor").val()+"\",";
+                pcolortitle="\"pcolortitle\":\""+$("#hfacolortitle").val()+"\",";
+                pacolorimg="\"pcimg\":\""+$("#hfacolorimg").val()+"\",";
+                plength="\"plength\":\""+$("#txtalength").val()+"\",";
+                pawidth="\"pwidth\":\""+$("#txtawidth").val()+"\",";
+                paheight="\"pheight\":\""+$("#txtaheight").val()+"\",";
+                pacbm="\"pcbm\":\""+$("#txtacbm").val()+"\",";
+                pmarketprice="\"pmprice\":\""+$("#txtmarketprice").val()+"\"";
+
+                htmlJson='{'+productType+productTypeName+productMaterial+phfacolor+pcolortitle+pacolorimg+plength+paheight+pawidth+pacbm+pmarketprice+'},';
+                $("#hfproductattribute").attr("value",$("#hfproductattribute").attr("value")+htmlJson);
+                
+                listHtml+="<span>"+$("#txtamaterial").val()+"<strong>[材质]</strong></span>";
+                listHtml+="<div style=\"float:left; background:#ccc;  width:140px; margin-right:20px; height:30px; line-height:30px;\">";
+                listHtml+="<img src=\"http://www.jiajuks.com//upload/temp//"+$("#hfacolorimg").val().substring(0,$("#hfacolorimg").val().length-1)+"\" width='24' line-height:24px; height='24' style='display:block; float:left' />";
+                listHtml+="<span style='display:block; float:left; width:60px;  color:"+$("#hfacolor").val()+"; margin-left:3px;'>"+$("#hfacolortitle").val()+"</span>";
+                listHtml+="<strong>[颜色]</strong></div>";
+                listHtml+="<span>"+$("#txtalength").val()+"<strong>[长]</strong></span>";
+                listHtml+="<span>"+$("#txtawidth").val()+"<strong>[宽]</strong></span>";
+                listHtml+="<span>"+$("#txtaheight").val()+"<strong>[高]</strong></span>";
+                listHtml+="<span>"+$("#txtacbm").val()+"<strong>[体积]</strong></span>";
+                listHtml+="<span>"+$("#txtmarketprice").val()+"<strong>[市场价]</strong></span>";
+
+                $("#productattributelist >ul").append("<li title='"+htmlJson+"'>"+listHtml+"<span style='width:20px; color:#f60; text-decoration:underline; cursor:pointer' class='del'  onclick='delattribute(this)' >删</span><span style='width:20px; color:#f60; text-decoration:underline; cursor:pointer'></span></li>");
+                //alert($("#hfproductattribute").attr("value"));
+            });
+
+        });
+
+
+        //设置图片信息
+        function openImg(i)
+        {
+            art.dialog.open('productattribute.aspx', {
+            title: '设置颜色',
+            width:'380px',
+            height:'150px',
+            ok: function () {
+                var iframe = this.iframe.contentWindow;
+                if (!iframe.document.body) {
+                    alert('iframe还没加载完毕呢')
+                    return false;
+                };
+                var form = iframe.document.getElementById('form1'),
+                ctitle = iframe.document.getElementById('ctitle'),
+                cvalue = iframe.document.getElementById('cvalue'),
+                cimg = iframe.document.getElementById('hfsurface');
+                
+                $("#hfacolor").attr("value",$(cvalue).val())
+                $("#hfacolortitle").attr("value",$(ctitle).val())
+                $("#hfacolorimg").attr("value",$(cimg).attr("value"));
+                
+                var nHtml="";
+                nHtml="<img src=\"http://www.jiajuks.com//upload/temp//"+$(cimg).attr("value").substring(0,$(cimg).attr("value").length-1)+"\" width='24' line-height:24px; height='24' style='display:block; float:left' />";
+                nHtml+="<span' style='display:block; float:left;  color:"+$(cvalue).val()+"; margin-left:3px;'>"+$(ctitle).val()+"</span>";
+                $($(i)).parent().find(".colorSee").html("").hide().show();
+                $($(i)).parent().find(".colorSee").html(nHtml);
+                return true;
+            },
+            cancel: true});
+        }
+
+        //删除属性
+        function delattribute(i)
+        {
+            if($($(i)).attr("title")=='undefined'||$($(i)).attr("title")==null ||$($(i)).attr("title")=="")
+            {
+                if(confirm("是否确认删除规格!")){
+                    $("#hfproductattribute").attr("value",$("#hfproductattribute").attr("value").replace($($(i)).parent().attr("title"),""));
+                    $($(i)).parent().remove();
+                }
+                return false;
+            }
+            if($($(i)).attr("title")!="" && $($(i)).attr("title")!='undefined')
+            {
+                if(confirm("是否确认删除规格,该数据原保存，删除后不可恢复! 且与该数据相关店铺价格也会清除!"))
+                {
+                     $.ajax({
+                        url:'http://www.jiajuks.com//ajax/ajaxproduct.ashx',
+                        data:'type=deleteproductattribute&v='+$($(i)).attr("title"),
+                        success:function(data){
+                            if(data=="1")
+                            {
+                                $($(i)).parent().remove();
+                            }
+                            else
+                            {
+                                alert("删除错误，找不到数据");
+                            }
+                        }
+                    });
+                }
+            }
+        }
+
+        function editattribute(i)
+        {
+            if($("#ddlproductcategory").val()=="")
+            {
+                alert("请选择产品所属分类再修改规格");
+                return false;
+            }
+            art.dialog.data('categoryid', $("#ddlproductcategory").val());
+            art.dialog.data('productattributeid',$($(i)).attr("title"));
+            art.dialog.open('productattributeedit.aspx?id='+$($(i)).attr("title")+"&c="+$("#ddlproductcategory").val(), {
+            title: '修改规格',
+            width:'500px',
+            height:'400px',
+            ok: function () {
+                var iframe = this.iframe.contentWindow;
+                if (!iframe.document.body) {
+                    alert('页面正在加载……')
+                    return false;
+                };
+                var form = iframe.document.getElementById('form1'),
+                ctitle = iframe.document.getElementById('ctitle'),
+                cvalue = iframe.document.getElementById('cvalue'),
+                cimg = iframe.document.getElementById('hfcimg');
+                ctypeid=iframe.document.getElementById('ddltype');
+                ctypetxtname=iframe.document.getElementById('txttypename');
+                ctypl=iframe.document.getElementById('txtlength');
+                ctypw=iframe.document.getElementById('txtwidth');
+                ctyph=iframe.document.getElementById('txtheight');
+                ctypcbm=iframe.document.getElementById('txtcbm');
+                ctypmp=iframe.document.getElementById('hfcimg');
+
+
+
+                $("#hfacolor").attr("value",$(cvalue).val())
+                $("#hfacolortitle").attr("value",$(ctitle).val())
+                $("#hfacolorimg").attr("value",$(cimg).attr("value"));
+                
+                var nHtml="";
+
+
+                $($(i)).parent().find(".colorSee").html("").hide().show();
+                $($(i)).parent().find(".colorSee").html(nHtml);
+                return true;
+            },
+            cancel: true});
+        }
+    </script>
+<link href="http://www.jiajuks.com//resource/editor/kindeditor/themes/default/default.css" rel="stylesheet"></head>
+<body style="padding: 10px;">
+  <div class="" style="display: none; position: absolute;">
+   <div class="aui_outer">
+    <table class="aui_border">
+     <tbody>
+      <tr>
+       <td class="aui_nw"></td>
+       <td class="aui_n"></td>
+       <td class="aui_ne"></td>
+      </tr>
+      <tr>
+       <td class="aui_w"></td>
+       <td class="aui_c">
+        <div class="aui_inner">
+         <table class="aui_dialog">
+          <tbody>
+           <tr>
+            <td colspan="2" class="aui_header">
+             <div class="aui_titleBar">
+              <div class="aui_title" style="cursor: move; display: block;"></div>
+              <a class="aui_close" href="javascript:/*artDialog*/;" style="display: block;">&times;</a>
+             </div></td>
+           </tr>
+           <tr>
+            <td class="aui_icon" style="display: none;">
+             <div class="aui_iconBg" style="background: none;"></div></td>
+            <td class="aui_main" style="width: auto; height: auto;">
+             <div class="aui_content" style="padding: 20px 25px;"></div></td>
+           </tr>
+           <tr>
+            <td colspan="2" class="aui_footer">
+             <div class="aui_buttons" style="display: none;"></div></td>
+           </tr>
+          </tbody>
+         </table>
+        </div></td>
+       <td class="aui_e"></td>
+      </tr>
+      <tr>
+       <td class="aui_sw"></td>
+       <td class="aui_s"></td>
+       <td class="aui_se" style="cursor: se-resize;"></td>
+      </tr>
+     </tbody>
+    </table>
+   </div>
+  </div> 
+  <form name="form1" method="post" action="productinfo.aspx" id="form1" enctype="multipart/form-data" novalidate="novalidate"> 
+   <div> 
+    <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="" /> 
+   </div> 
+   <div class="navigation"> 
+    <span class="back"><a href="productlist.aspx">返回列表</a></span>
+    <b>您当前的位置：首页 &gt; 产品管理 &gt; 产品管理</b> 
+   </div> 
+   <div class="spClear"> 
+   </div> 
+   <table width="100%" border="0" cellspacing="0" cellpadding="0" class="msgtable"> 
+    <tbody>
+     <tr> 
+      <th colspan="3" align="left"> 产品信息 </th> 
+     </tr> 
+     <tr> 
+      <td width="770px" valign="top"> 
+       <table class="formTable" width="770px"> 
+        <tbody>
+         <tr> 
+          <th colspan="2"> 基本信息： </th> 
+         </tr> 
+         <tr> 
+          <td align="right" width="70"> 产品名称： </td> 
+          <td> <input name="txttitle" type="text" id="txttitle" class="input" /> <label> &nbsp;&nbsp;&nbsp;&nbsp;产品编号：</label> <input name="txtsku" type="text" id="txtsku" class="input required" /> <label> &nbsp;&nbsp;&nbsp;&nbsp;定制：</label> <span id="racustomize"><input id="racustomize_0" type="radio" name="racustomize" value="0" checked="checked" /><label for="racustomize_0">否</label><input id="racustomize_1" type="radio" name="racustomize" value="1" /><label for="racustomize_1">是</label></span> </td> 
+         </tr> 
+         <tr> 
+          <td align="right"> 产品分类： </td> 
+          <td> <select name="ddlproductcategory" id="ddlproductcategory" class="select selectNone"> <option value="7">|--卧室家具</option> <option value="8">|----床</option> <option value="13">|----床头柜</option> <option value="14">|----衣柜</option> <option value="15">|----斗柜</option> <option value="16">|----梳妆台/镜</option> <option value="17">|----梳妆凳</option> <option value="18">|----床尾凳</option> <option value="19">|----衣架</option> <option value="20">|----穿衣镜</option> <option value="21">|----床垫</option> <option value="22">|----床屏</option> <option value="23">|----床头板</option> <option value="24">|----卧室其他</option> <option value="64">|----卧室套组合</option> </select> </td> 
+         </tr> 
+         <tr> 
+          <td align="right"> 福家网对应ID： </td> 
+          <td> <input name="txtFID" type="text" value="0" id="txtFID" /> </td> 
+         </tr> 
+        </tbody>
+       </table> 
+       <div class="spClear"> 
+       </div> 
+       <table class="formTable" width="770px"> 
+        <tbody>
+         <tr> 
+          <th colspan="2"> 品牌信息: </th> 
+         </tr> 
+         <tr> 
+          <td width="70" align="right"> 选择品牌： </td> 
+          <td> 
+          <select name="ddlbrand" id="ddlbrand" class="select selectNone"> 
+          <option value="">请选择品牌</option>
+           <option value="772">6月1号</option> 
+           <option value="768">ABC</option>
+            <option value="806">AsnaghiInteriors</option> <option value="814">Bedont</option> 
+            <option value="812">Bertolini</option> <option value="780">C&amp;C</option> 
+            <option value="805">calligaris</option> <option value="850">CBD</option> 
+            <option value="804">Chateaud’AxMD</option> <option value="813">Ciacexport</option> 
+            <option value="746">Cor</option> <option value="547">ddddd</option> 
+            <option value="747">DeAngeli</option> <option value="495">DiamondSofa</option> 
+            <option value="749">DomusMobili</option> <option value="764">Ecus</option> 
+             </select> </td> 
+         </tr> 
+         <tr> 
+          <td width="70" align="right"> 系列： </td> 
+          <td> <select name="ddlbrands" id="ddlbrands" class="select selectNone"> <option value="">请选择系列</option> </select> </td> 
+         </tr> 
+        </tbody>
+       </table> </td> 
+      <td valign="top"> 
+       <table class="formTable" width="380"> 
+        <tbody>
+         <tr> 
+          <th colspan="2"> 图片信息: </th> 
+         </tr> 
+         <tr> 
+          <td align="right"> 缩略图： </td> 
+          <td> 
+           <div class="fileUpload" path="/upload/product/thumb//"> 
+            <input type="hidden" name="hfthumb" id="hfthumb" /> 
+            <div class="fileTools"> 
+             <input type="text" class="input w160 filedisplay" /> 
+             <a href="javascript:;" class="files"> <input name="File3" type="file" id="File3" class="upload" onchange="_upfile(this)" /></a> 
+             <span class="uploading">正在上传，请稍后……</span> 
+            </div> 
+           </div> </td> 
+         </tr> 
+         <tr> 
+          <td align="right"> 详细图： </td> 
+          <td> 
+           <div class="fileUpload m" path="/upload/product/banner//"> 
+            <input type="hidden" name="hfbannel" id="hfbannel" /> 
+            <div class="fileTools"> 
+             <input type="text" class="input w160 filedisplay" /> 
+             <a href="javascript:;" class="files"> <input name="File4" type="file" id="File4" class="upload" onchange="_upfile(this)" /></a> 
+             <span class="uploading">正在上传，请稍后……</span> 
+            </div> 
+           </div> </td> 
+         </tr> 
+         <tr> 
+          <td align="right"> 首页展示： </td> 
+          <td> 
+           <div class="fileUpload" path="/upload/product/homepageimg//"> 
+            <input type="hidden" name="hfhomepageimg" id="hfhomepageimg" /> 
+            <div class="fileTools"> 
+             <input type="text" class="input w160 filedisplay" /> 
+             <a href="javascript:;" class="files"> <input name="File6" type="file" id="File6" class="upload" onchange="_upfile(this)" /></a> 
+             <span class="uploading">正在上传，请稍后……</span> 
+            </div> 
+           </div> </td> 
+         </tr> 
+         <tr> 
+          <td align="right" valign="top"> 形&nbsp;象&nbsp;&nbsp;图： </td> 
+          <td> 
+           <div class="fileUpload" path="/upload/product/surface//"> 
+            <input type="hidden" name="hfsurface" id="hfsurface" /> 
+            <div class="fileTools"> 
+             <input type="text" class="input w160 filedisplay" /> 
+             <a href="javascript:;" class="files"> <input name="File1" type="file" id="File1" class="upload" onchange="_upfile(this)" /></a> 
+             <span class="uploading">正在上传，请稍后……</span> 
+            </div> 
+           </div> </td> 
+         </tr> 
+         <tr> 
+          <td width="70px" align="right"> 企业标志： </td> 
+          <td> 
+           <div class="fileUpload" path="/upload/product/logo//"> 
+            <input type="hidden" name="hflogo" id="hflogo" /> 
+            <div class="fileTools"> 
+             <input type="text" class="input w160 filedisplay" /> 
+             <a href="javascript:;" class="files"> <input name="File2" type="file" id="File2" class="upload" onchange="_upfile(this)" /></a> 
+             <span class="uploading">正在上传，请稍后……</span> 
+            </div> 
+           </div> </td> 
+         </tr> 
+         <tr> 
+          <td align="right"> 企业展示： </td> 
+          <td> 
+           <div class="fileUpload m" path="/upload/product/desimage//"> 
+            <input type="hidden" name="hfdesimage" id="hfdesimage" /> 
+            <div class="fileTools"> 
+             <input type="text" class="input w160 filedisplay" /> 
+             <a href="javascript:;" class="files"> <input name="File5" type="file" id="File5" class="upload" onchange="_upfile(this)" /></a> 
+             <span class="uploading">正在上传，请稍后……</span> 
+            </div> 
+           </div> </td> 
+         </tr> 
+        </tbody>
+       </table> 
+       <div class="spClear"> 
+       </div> </td> 
+     </tr> 
+     <tr> 
+      <td colspan="2"> 
+       <div class="spClear"> 
+       </div> 
+       <table class="formTable" width="1150px"> 
+        <tbody>
+         <tr> 
+          <th> 规格信息:<input type="hidden" name="hfproductattribute" id="hfproductattribute" /> </th> 
+         </tr> 
+         <tr> 
+          <td align="right" style="position: relative; display: block; height: 30px;"> <label> 类型：</label><select name="ddltype" id="ddltype" class="select" style="width:100px;"> <option value="">请选择</option> </select> <a href="javascript:;" id="selecttypename" style="display: block; float: left; width: 48px;
+                                                line-height: 24px;">添加其它</a> <input type="text" class="input" id="txtatypename" style="width: 94px; display: none;
+                                                border-color: #f60; position: absolute; left: 39px; top: 8px;" /> <label style="margin-left: 10px;"> &nbsp;选材：</label><input type="text" class="input" id="txtamaterial" /> <label style="margin-left: 10px;"> &nbsp;颜色：</label> 
+           <div class="colorSee" style="float: left; background: #ccc; width: 100px; height: 24px;
+                                                        line-height: 24px;"> 
+           </div> <a href="javascript:;" style="display: block; float: left; width: 30px; line-height: 24px;" onclick="openImg(this)">设置</a> <input type="hidden" class="input" id="hfacolor" style="width: 60px; display: none;" /> <input type="hidden" class="input" id="hfacolortitle" style="display: none; width: 60px;" /> <input type="hidden" class="input" id="hfacolorimg" style="display: none; width: 60px;" /> <label style="margin-left: 10px;"> &nbsp;长：</label><input type="text" class="input" id="txtalength" value="0" style="width: 45px;" /> <label> &nbsp;宽：</label><input type="text" class="input" id="txtawidth" value="0" style="width: 45px" /> <label> &nbsp;高：</label><input type="text" class="input" id="txtaheight" value="0" style="width: 45px" /> <label> &nbsp;体积：</label><input type="text" class="input" id="txtacbm" value="0" style="width: 45px" /> <label> &nbsp;市场价：</label><input type="text" class="input" id="txtmarketprice" value="0" style="width: 45px" /> <input type="button" class="submit" value="增加" id="btnAddAttribute" /> </td> 
+         </tr> 
+         <tr> 
+          <td id="productattributelist"> 
+           <ul> 
+           </ul> </td> 
+         </tr> 
+        </tbody>
+       </table> </td> 
+     </tr> 
+     <tr> 
+      <td colspan="2"> 
+       <table class="formTable"> 
+        <tbody>
+         <tr> 
+          <th colspan="3"> 产品描述: </th> 
+         </tr> 
+         <tr> 
+          <td colspan="3"> 
+           <div class="ke-container ke-container-default" style="width: 960px;">
+            <div style="display:block;" class="ke-toolbar" unselectable="on">
+             <span class="ke-outline" data-name="fontname" title="字体" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-fontname" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="fontsize" title="文字大小" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-fontsize" unselectable="on"></span></span>
+             <span class="ke-inline-block ke-separator"></span>
+             <span class="ke-outline" data-name="forecolor" title="文字颜色" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-forecolor" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="hilitecolor" title="文字背景" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-hilitecolor" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="bold" title="粗体(Ctrl+B)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-bold" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="italic" title="斜体(Ctrl+I)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-italic" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="underline" title="下划线(Ctrl+U)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-underline" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="removeformat" title="删除格式" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-removeformat" unselectable="on"></span></span>
+             <span class="ke-inline-block ke-separator"></span>
+             <span class="ke-outline ke-selected" data-name="justifyleft" title="左对齐" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-justifyleft" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="justifycenter" title="居中" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-justifycenter" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="justifyright" title="右对齐" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-justifyright" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="insertorderedlist" title="编号" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-insertorderedlist" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="insertunorderedlist" title="项目符号" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-insertunorderedlist" unselectable="on"></span></span>
+             <span class="ke-inline-block ke-separator"></span>
+             <span class="ke-outline" data-name="image" title="图片" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-image" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="flash" title="Flash" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-flash" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="media" title="视音频" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-media" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="link" title="超级链接" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-link" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="fullscreen" title="全屏显示(Esc)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-fullscreen" unselectable="on"></span></span>
+            </div>
+            <div style="display: block; height: 100px;" class="ke-edit">
+             <iframe class="ke-edit-iframe" hidefocus="true" frameborder="0" style="width: 100%; height: 100px;"></iframe>
+             <textarea class="ke-edit-textarea" hidefocus="true" style="width: 100%; height: 100px; display: none;"></textarea>
+            </div>
+            <div class="ke-statusbar">
+             <span class="ke-inline-block ke-statusbar-center-icon"></span>
+             <span class="ke-inline-block ke-statusbar-right-icon"></span>
+            </div>
+           </div><textarea name="txtdescript" rows="5" cols="20" id="txtdescript" class="textarea required kinkeditor" style="width: 960px; display: none;"></textarea> </td> 
+         </tr> 
+         <tr> 
+          <td width="382" align="left"> 风格特点： </td> 
+          <td width="382" align="left"> 产品细节： </td> 
+          <td align="left"> 材质工艺： </td> 
+         </tr> 
+         <tr> 
+          <td> 
+           <div class="ke-container ke-container-default" style="width: 360px;">
+            <div style="display:block;" class="ke-toolbar" unselectable="on">
+             <span class="ke-outline" data-name="fontname" title="字体" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-fontname" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="fontsize" title="文字大小" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-fontsize" unselectable="on"></span></span>
+             <span class="ke-inline-block ke-separator"></span>
+             <span class="ke-outline" data-name="forecolor" title="文字颜色" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-forecolor" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="hilitecolor" title="文字背景" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-hilitecolor" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="bold" title="粗体(Ctrl+B)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-bold" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="italic" title="斜体(Ctrl+I)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-italic" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="underline" title="下划线(Ctrl+U)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-underline" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="removeformat" title="删除格式" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-removeformat" unselectable="on"></span></span>
+             <span class="ke-inline-block ke-separator"></span>
+             <span class="ke-outline" data-name="justifyleft" title="左对齐" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-justifyleft" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="justifycenter" title="居中" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-justifycenter" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="justifyright" title="右对齐" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-justifyright" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="insertorderedlist" title="编号" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-insertorderedlist" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="insertunorderedlist" title="项目符号" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-insertunorderedlist" unselectable="on"></span></span>
+             <span class="ke-inline-block ke-separator"></span>
+             <span class="ke-outline" data-name="image" title="图片" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-image" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="flash" title="Flash" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-flash" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="media" title="视音频" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-media" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="link" title="超级链接" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-link" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="fullscreen" title="全屏显示(Esc)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-fullscreen" unselectable="on"></span></span>
+            </div>
+            <div style="display: block; height: 100px;" class="ke-edit">
+             <iframe class="ke-edit-iframe" hidefocus="true" frameborder="0" style="width: 100%; height: 100px;"></iframe>
+             <textarea class="ke-edit-textarea" hidefocus="true" style="width: 100%; height: 100px; display: none;"></textarea>
+            </div>
+            <div class="ke-statusbar">
+             <span class="ke-inline-block ke-statusbar-center-icon"></span>
+             <span class="ke-inline-block ke-statusbar-right-icon"></span>
+            </div>
+           </div><textarea name="txt101" rows="5" cols="20" id="txt101" class="textarea required kinkeditor" style="width: 360px; display: none;"></textarea> </td> 
+          <td> 
+           <div class="ke-container ke-container-default" style="width: 360px;">
+            <div style="display:block;" class="ke-toolbar" unselectable="on">
+             <span class="ke-outline" data-name="fontname" title="字体" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-fontname" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="fontsize" title="文字大小" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-fontsize" unselectable="on"></span></span>
+             <span class="ke-inline-block ke-separator"></span>
+             <span class="ke-outline" data-name="forecolor" title="文字颜色" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-forecolor" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="hilitecolor" title="文字背景" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-hilitecolor" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="bold" title="粗体(Ctrl+B)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-bold" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="italic" title="斜体(Ctrl+I)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-italic" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="underline" title="下划线(Ctrl+U)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-underline" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="removeformat" title="删除格式" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-removeformat" unselectable="on"></span></span>
+             <span class="ke-inline-block ke-separator"></span>
+             <span class="ke-outline" data-name="justifyleft" title="左对齐" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-justifyleft" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="justifycenter" title="居中" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-justifycenter" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="justifyright" title="右对齐" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-justifyright" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="insertorderedlist" title="编号" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-insertorderedlist" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="insertunorderedlist" title="项目符号" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-insertunorderedlist" unselectable="on"></span></span>
+             <span class="ke-inline-block ke-separator"></span>
+             <span class="ke-outline" data-name="image" title="图片" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-image" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="flash" title="Flash" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-flash" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="media" title="视音频" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-media" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="link" title="超级链接" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-link" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="fullscreen" title="全屏显示(Esc)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-fullscreen" unselectable="on"></span></span>
+            </div>
+            <div style="display: block; height: 100px;" class="ke-edit">
+             <iframe class="ke-edit-iframe" hidefocus="true" frameborder="0" style="width: 100%; height: 100px;"></iframe>
+             <textarea class="ke-edit-textarea" hidefocus="true" style="width: 100%; height: 100px; display: none;"></textarea>
+            </div>
+            <div class="ke-statusbar">
+             <span class="ke-inline-block ke-statusbar-center-icon"></span>
+             <span class="ke-inline-block ke-statusbar-right-icon"></span>
+            </div>
+           </div><textarea name="txt102" rows="5" cols="20" id="txt102" class="textarea required kinkeditor" style="width: 360px; display: none;"></textarea> </td> 
+          <td> 
+           <div class="ke-container ke-container-default" style="width: 360px;">
+            <div style="display:block;" class="ke-toolbar" unselectable="on">
+             <span class="ke-outline" data-name="fontname" title="字体" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-fontname" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="fontsize" title="文字大小" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-fontsize" unselectable="on"></span></span>
+             <span class="ke-inline-block ke-separator"></span>
+             <span class="ke-outline" data-name="forecolor" title="文字颜色" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-forecolor" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="hilitecolor" title="文字背景" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-hilitecolor" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="bold" title="粗体(Ctrl+B)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-bold" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="italic" title="斜体(Ctrl+I)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-italic" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="underline" title="下划线(Ctrl+U)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-underline" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="removeformat" title="删除格式" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-removeformat" unselectable="on"></span></span>
+             <span class="ke-inline-block ke-separator"></span>
+             <span class="ke-outline" data-name="justifyleft" title="左对齐" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-justifyleft" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="justifycenter" title="居中" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-justifycenter" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="justifyright" title="右对齐" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-justifyright" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="insertorderedlist" title="编号" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-insertorderedlist" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="insertunorderedlist" title="项目符号" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-insertunorderedlist" unselectable="on"></span></span>
+             <span class="ke-inline-block ke-separator"></span>
+             <span class="ke-outline" data-name="image" title="图片" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-image" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="flash" title="Flash" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-flash" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="media" title="视音频" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-media" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="link" title="超级链接" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-link" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="fullscreen" title="全屏显示(Esc)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-fullscreen" unselectable="on"></span></span>
+            </div>
+            <div style="display: block; height: 100px;" class="ke-edit">
+             <iframe class="ke-edit-iframe" hidefocus="true" frameborder="0" style="width: 100%; height: 100px;"></iframe>
+             <textarea class="ke-edit-textarea" hidefocus="true" style="width: 100%; height: 100px; display: none;"></textarea>
+            </div>
+            <div class="ke-statusbar">
+             <span class="ke-inline-block ke-statusbar-center-icon"></span>
+             <span class="ke-inline-block ke-statusbar-right-icon"></span>
+            </div>
+           </div><textarea name="txt103" rows="5" cols="20" id="txt103" class="textarea required kinkeditor" style="width: 360px; display: none;"></textarea> </td> 
+         </tr> 
+         <tr> 
+          <td align="left"> 保养说明： </td> 
+          <td align="left"> 配送周期： </td> 
+          <td> </td> 
+         </tr> 
+         <tr> 
+          <td> 
+           <div class="ke-container ke-container-default" style="width: 360px;">
+            <div style="display:block;" class="ke-toolbar" unselectable="on">
+             <span class="ke-outline" data-name="fontname" title="字体" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-fontname" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="fontsize" title="文字大小" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-fontsize" unselectable="on"></span></span>
+             <span class="ke-inline-block ke-separator"></span>
+             <span class="ke-outline" data-name="forecolor" title="文字颜色" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-forecolor" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="hilitecolor" title="文字背景" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-hilitecolor" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="bold" title="粗体(Ctrl+B)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-bold" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="italic" title="斜体(Ctrl+I)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-italic" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="underline" title="下划线(Ctrl+U)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-underline" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="removeformat" title="删除格式" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-removeformat" unselectable="on"></span></span>
+             <span class="ke-inline-block ke-separator"></span>
+             <span class="ke-outline" data-name="justifyleft" title="左对齐" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-justifyleft" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="justifycenter" title="居中" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-justifycenter" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="justifyright" title="右对齐" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-justifyright" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="insertorderedlist" title="编号" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-insertorderedlist" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="insertunorderedlist" title="项目符号" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-insertunorderedlist" unselectable="on"></span></span>
+             <span class="ke-inline-block ke-separator"></span>
+             <span class="ke-outline" data-name="image" title="图片" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-image" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="flash" title="Flash" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-flash" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="media" title="视音频" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-media" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="link" title="超级链接" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-link" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="fullscreen" title="全屏显示(Esc)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-fullscreen" unselectable="on"></span></span>
+            </div>
+            <div style="display: block; height: 100px;" class="ke-edit">
+             <iframe class="ke-edit-iframe" hidefocus="true" frameborder="0" style="width: 100%; height: 100px;"></iframe>
+             <textarea class="ke-edit-textarea" hidefocus="true" style="width: 100%; height: 100px; display: none;"></textarea>
+            </div>
+            <div class="ke-statusbar">
+             <span class="ke-inline-block ke-statusbar-center-icon"></span>
+             <span class="ke-inline-block ke-statusbar-right-icon"></span>
+            </div>
+           </div><textarea name="txt104" rows="5" cols="20" id="txt104" class="textarea required kinkeditor" style="width: 360px; display: none;"></textarea> </td> 
+          <td> 
+           <div class="ke-container ke-container-default" style="width: 360px;">
+            <div style="display:block;" class="ke-toolbar" unselectable="on">
+             <span class="ke-outline" data-name="fontname" title="字体" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-fontname" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="fontsize" title="文字大小" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-fontsize" unselectable="on"></span></span>
+             <span class="ke-inline-block ke-separator"></span>
+             <span class="ke-outline" data-name="forecolor" title="文字颜色" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-forecolor" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="hilitecolor" title="文字背景" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-hilitecolor" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="bold" title="粗体(Ctrl+B)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-bold" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="italic" title="斜体(Ctrl+I)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-italic" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="underline" title="下划线(Ctrl+U)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-underline" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="removeformat" title="删除格式" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-removeformat" unselectable="on"></span></span>
+             <span class="ke-inline-block ke-separator"></span>
+             <span class="ke-outline" data-name="justifyleft" title="左对齐" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-justifyleft" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="justifycenter" title="居中" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-justifycenter" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="justifyright" title="右对齐" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-justifyright" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="insertorderedlist" title="编号" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-insertorderedlist" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="insertunorderedlist" title="项目符号" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-insertunorderedlist" unselectable="on"></span></span>
+             <span class="ke-inline-block ke-separator"></span>
+             <span class="ke-outline" data-name="image" title="图片" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-image" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="flash" title="Flash" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-flash" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="media" title="视音频" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-media" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="link" title="超级链接" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-link" unselectable="on"></span></span>
+             <span class="ke-outline" data-name="fullscreen" title="全屏显示(Esc)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-fullscreen" unselectable="on"></span></span>
+            </div>
+            <div style="display: block; height: 100px;" class="ke-edit">
+             <iframe class="ke-edit-iframe" hidefocus="true" frameborder="0" style="width: 100%; height: 100px;"></iframe>
+             <textarea class="ke-edit-textarea" hidefocus="true" style="width: 100%; height: 100px; display: none;"></textarea>
+            </div>
+            <div class="ke-statusbar">
+             <span class="ke-inline-block ke-statusbar-center-icon"></span>
+             <span class="ke-inline-block ke-statusbar-right-icon"></span>
+            </div>
+           </div><textarea name="txt105" rows="5" cols="20" id="txt105" class="textarea required kinkeditor" style="width: 360px; display: none;"></textarea> </td> 
+          <td> 
+           <table class="formTable" width="380"> 
+            <tbody>
+             <tr> 
+              <th colspan="2"> 产品分类状态: </th> 
+             </tr> 
+             <tr> 
+              <td align="right"> 推荐属性： </td> 
+              <td> <span id="chkattribute"><input id="chkattribute_0" type="checkbox" name="chkattribute$0" /><label for="chkattribute_0">首页置顶</label><input id="chkattribute_1" type="checkbox" name="chkattribute$1" /><label for="chkattribute_1">推荐</label><input id="chkattribute_2" type="checkbox" name="chkattribute$2" /><label for="chkattribute_2">热门</label></span> </td> 
+             </tr> 
+             <tr> 
+              <td align="right"> 审核状态： </td> 
+              <td> <select name="ddlauditstatus" id="ddlauditstatus" class="select selectNone" style="width:160px;"> <option value="">请选择</option> <option value="0">待审核</option> <option value="-1">正在审核</option> <option value="1">通过</option> <option value="-99">未通过</option> </select> </td> 
+             </tr> 
+             <tr> 
+              <td align="right"> 上/下线： </td> 
+              <td> <select name="ddllinestatus" id="ddllinestatus" class="select selectNone" style="width:160px;"> <option value="">请选择</option> <option value="0">未上线</option> <option value="1">己上线</option> </select> </td> 
+             </tr> 
+             <tr> 
+              <td align="right"> 排序 ： </td> 
+              <td> <input name="txtsort" type="text" value="0" id="txtsort" class="input w160 required digits" /> </td> 
+             </tr> 
+            </tbody>
+           </table> </td> 
+         </tr> 
+        </tbody>
+       </table> </td> 
+     </tr> 
+    </tbody>
+   </table> 
+   <div style="margin-top: 10px; margin-left: 180px"> 
+    <input type="submit" name="btnSave" value="确认保存" id="btnSave" class="submit" />
+    <input name="重置" type="reset" class="submit" value="重置" /> 
+   </div> 
+  </form> 
+  <div style="display: none; position: fixed; left: 0px; top: 0px; width: 100%; height: 100%; cursor: move; opacity: 0; background: rgb(255, 255, 255);"></div>
+ </body>
+</html>

@@ -1,0 +1,122 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head id="Head1"><title>
+
+</title><link rel="stylesheet" type="text/css" href="../css/style.css">
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/jquery.form.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/additional-methods.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/messages_cn.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            //表单验证JS
+            $("#form1").validate({
+                //出错时添加的标签
+                errorElement: "span",
+                showErrors: function (errorMap, errorList) {
+                    if (errorList.length > 0) {
+                        if ($("#" + errorList[0].element.id).next() != null) {
+                            $("#" + errorList[0].element.id).next().remove();
+                        }
+                    }
+                    this.defaultShowErrors();
+                },
+                success: function (label) {
+                    //正确时的样式
+                    label.text(" ").addClass("success");
+                }
+            });
+        });
+    </script>
+</head>
+<body style="padding:10px;">
+<form name="form1" method="post" action="membergroupinfo.aspx" id="form1" novalidate="novalidate">
+<div>
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTE1NTcxMDU3MzVkZHgxHLblJun/JkZNiK/Hq1mL+s5D">
+</div>
+
+    <div class="navigation">
+      <span class="back"><a href="actionlist.aspx">返回列表</a></span><b>您当前的位置：首页 &gt; 会员管理 &gt; 会员组</b>
+    </div>
+    <div class="spClear"></div>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="msgtable">
+        <tbody><tr>
+            <th colspan="2" align="left">会员组</th>
+        </tr>
+        <tr>
+            <td width="100px" align="right">会员组名称：</td>
+            <td>
+                <input name="txttitle" type="text" id="txttitle" class="input w160 required">
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                颜色 ：
+            </td>
+            <td height="25" width="*">
+                <input name="txtcolor" type="text" id="txtcolor" class="w160 input">
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                组图片 ：
+            </td>
+            <td height="25" width="*">
+                <input name="txtavatar" type="text" id="txtavatar" class="w160 input">
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                积分 ：
+            </td>
+            <td height="25" width="*">
+                <input name="txtintegral" type="text" value="0" id="txtintegral" class="w160 input required number">
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                金额 ：
+            </td>
+            <td height="25" width="*">
+                <input name="txtmoney" type="text" value="0" id="txtmoney" class="w160 input required number">
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                权限 ：
+            </td>
+            <td height="25" width="*">
+                <input name="txtpermissions" type="text" id="txtpermissions" class="w160 input">
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                级别 ：
+            </td>
+            <td height="25" width="*">
+                <input name="txtlev" type="text" value="1" id="txtlev" class="w160 input required digits">
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                描述 ：
+            </td>
+            <td height="25" width="*">
+                <textarea name="txtdescript" rows="3" cols="20" id="txtdescript" class=" w380 textarea"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                排序：
+            </td>
+            <td>
+                <input name="txtsort" type="text" value="0" id="txtsort" class="input required digits" style="width:40px;">
+            </td>
+        </tr>
+    </tbody></table>
+    <div style="margin-top:10px; margin-left:110px">
+  <input type="submit" name="btnSave" value="确认保存" id="btnSave" class="submit"><input name="重置" type="reset" class="submit" value="重置">
+</div>
+</form>
+
+
+</body></html>

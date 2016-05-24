@@ -1,0 +1,647 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head id="Head1"><title>
+
+</title><link rel="stylesheet" type="text/css" href="../css/style.css">
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/jquery.form.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/additional-methods.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/messages_cn.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//My97DatePicker/WdatePicker.js"></script><link href="http://www.jiajuks.com//resource//My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/jquery.area.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//editor/kindeditor/kindeditor-min.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/fileupload.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            //表单验证JS
+            $("#form1").validate({
+                //出错时添加的标签
+                errorElement: "span",
+                showErrors: function (errorMap, errorList) {
+                    if (errorList.length > 0) {
+                        if ($("#" + errorList[0].element.id).next() != null) {
+                            $("#" + errorList[0].element.id).next().remove();
+                        }
+                    }
+                    this.defaultShowErrors();
+                },
+                success: function (label) {
+                    //正确时的样式
+                    label.text(" ").addClass("success");
+                }
+            });
+            var editor;
+            KindEditor.ready(function (K) {
+                editor = K.create('#txtdescript', {
+                    allowPreviewEmoticons: true,
+                    allowImageUpload: true,
+                    allowFileManager: true,
+                     
+                     fileManagerJson:"http://www.jiajuks.com//resource//editor/kindeditor/ashx/file_manager_json.ashx?m=shop&id=1145",
+                    
+                    allowMediaUpload: true,
+                    items: [
+                        'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+                        'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+                        'insertunorderedlist', '|', 'image', 'flash', 'media', 'link', 'fullscreen']
+                });
+            });
+
+            $("#btnSearch").click(function () {
+                $.ajax({
+                    url: "http://www.jiajuks.com//ajax/ajaxuser.ashx",
+                    data: "type=getnoaddmember&v=" + $("#txtSearch").val(),
+                    dataType: "json",
+                    success: function (data) {
+                        if (data != "") {
+                            $("#ddlmember").html();
+                            $("#ddlmember").html("<option value=\"\">请选择</option>");
+                            $.each(data, function (i) {
+                                $("#ddlmember").append("<option value=\"" + data[i].id + "\">" + data[i].name + "</option>");
+                            });
+                        }
+                    }
+                })
+            });
+
+            $("#btnmarketsearch").click(function () {
+                $.ajax({
+                    url: "http://www.jiajuks.com//ajax/ajaxuser.ashx",
+                    data: "type=getnoaddmarket&v=" + $("#txtmarketsearch").val(),
+                    dataType: "json",
+                    success: function (data) {
+                        if (data != "") {
+                            $("#ddlmarket").html();
+                            $("#ddlmarket").html("<option value=\"\">请选择</option>");
+                            $("#ddlmarket").append("<option value=\"0\">未加入卖场</option>");
+                            $.each(data, function (i) {
+                                $("#ddlmarket").append("<option value=\"" + data[i].id + "\">" + data[i].name + "</option>");
+                            });
+                        }
+                    }
+                })
+            });
+
+            $("#btnctypsearch").click(function () {
+                if($("#ddlctype").val()!="")
+                {
+                    $.ajax({
+                        url: "http://www.jiajuks.com//ajax/ajaxuser.ashx",
+                        data: "type=getcompanyordealertoshop&v=" + $("#txtctype").val()+"&t="+$("#ddlctype").val(),
+                        dataType: "json",
+                        success: function (data) {
+                            if (data != "") {
+                                $("#ddlc").hide();
+                                $("#ddlc").show();
+                                $("#ddlc").html("<option value=\"\">请选择</option>");
+                                $("#ddlc").append("<option value=\"0\">未加企业</option>");
+                                $.each(data, function (i) {
+                                    $("#ddlc").append("<option value=\"" + data[i].id + "\">" + data[i].name + "</option>");
+                                });
+                            }
+                        }
+                    });
+                }
+                else
+                {
+                    alert("请选择要加入的企业类型");
+                }    
+            });
+
+            $("#ddlc").change(function () {
+                if ($(this).val() != "" && $(this).val() != "0")
+                {
+                    $.ajax({
+                        url: "http://www.jiajuks.com//ajax/ajaxuser.ashx",
+                        data: "type=getbrandbycid&v=" + $(this).val()+"&t="+$("#ddlctype").val(),
+                        dataType: "json",
+                        success: function (data) {
+                            if (data != "") {
+                                $("#brandlist").show();
+                                $("#Brandid").html("");
+                                $.each(data, function (i) {
+                                    $("#Brandid").append(data[i].name+"<input type=\"checkbox\" name=\"ckcal\" value=\"" + data[i].id + "\" />");
+                                });
+                            }
+                            else
+                            {
+                                $("#brandlist").hide();
+                            }
+                        }
+                    });
+                }  
+                else
+                {
+                    $("#brandlist").hide();
+                }
+            });
+
+
+            $("#ddlPro").live("change", function () {
+                if ($(this).val() != "" && $(this).val() != "0") {
+                    $.ajax({
+                        url: "http://www.jiajuks.com//ajaxtools/ajaxarea.ashx",
+                        data: "type=c&p=" + $(this).val(),
+                        success: function (data) {
+                            $("#ddlregcity").html(data)
+                        },
+                        error: function (d, m) {
+                            alert(m);
+                        }
+                    });
+                }
+            })
+        });
+    </script>
+    <style type="text/css">
+        .formTable
+        {
+            border: 1px solid #ccc;
+        }
+        .formTable tr th
+        {
+            background: #ededed;
+            text-align: left;
+        }
+        .formTable tr td
+        {
+            border: none;
+            padding-top: 8px;
+            padding-bottom: 8px;
+        }
+    </style>
+<link href="http://www.jiajuks.com//resource//editor/kindeditor/themes/default/default.css" rel="stylesheet"></head>
+<body style="padding: 10px;">
+    <form name="form1" method="post" action="shopinfo.aspx?edit=1&amp;id=1145" id="form1" enctype="multipart/form-data" novalidate="novalidate">
+        <div>
+            <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="">
+        </div>
+        <div class="navigation">
+            <span class="back"><a href="shoplist.aspx">返回列表</a></span><b>您当前的位置：首页 &gt; 成员管理 &gt;
+            登陆账号管理</b>
+        </div>
+        <div class="spClear">
+        </div>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="msgtable">
+            <tbody><tr>
+                <th colspan="3" align="left">
+                    登陆账号信息
+                </th>
+            </tr>
+            <tr>
+                <td width="390px" valign="top">
+                    <table class="formTable" width="380px">
+                        <tbody><tr>
+                            <th colspan="2">
+                                账号信息：
+                            </th>
+                        </tr>
+                        
+                        <tr>
+                            <td align="right" width="70">
+                                通&nbsp;行&nbsp;&nbsp;证：
+                            </td>
+                            <td>
+                                2012031420141696
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td align="right">
+                                登陆账号：
+                            </td>
+                            <td>
+                                <select name="ddlmember" id="ddlmember" disabled="disabled" class="select selectNone" style="width:160px;">
+                                    <option selected="selected" value="765">百强</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </tbody></table>
+                    <div class="spClear">
+                    </div>
+                    <table class="formTable" width="380px">
+                        <tbody><tr>
+                            <th colspan="2">
+                                企业信息：
+                            </th>
+                        </tr>
+                        <tr>
+                            <td width="70px" align="right">
+                                推荐属性：
+                            </td>
+                            <td>
+                                <span id="chkattribute"><input id="chkattribute_0" type="checkbox" name="chkattribute$0"><label for="chkattribute_0">首页置顶</label><input id="chkattribute_1" type="checkbox" name="chkattribute$1"><label for="chkattribute_1">推荐</label><input id="chkattribute_2" type="checkbox" name="chkattribute$2"><label for="chkattribute_2">热门</label><input id="chkattribute_3" type="checkbox" name="chkattribute$3"><label for="chkattribute_3">精华</label><input id="chkattribute_4" type="checkbox" name="chkattribute$4"><label for="chkattribute_4">幻灯</label><input id="chkattribute_5" type="checkbox" name="chkattribute$5"><label for="chkattribute_5">高亮</label></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">
+                                店铺名称：
+                            </td>
+                            <td>
+                                <input name="txttitle" type="text" value="百强.黑森林红星美凯龙真北路店南馆C8091" id="txttitle" class="input required w160">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">
+                                企业组 ：
+                            </td>
+                            <td>
+                                <select name="ddlshopgroup" id="ddlshopgroup" class="select selectNone valid" style="width:160px;">
+                                    <option value="">请选择</option>
+                                    <option selected="selected" value="1">普通店铺组</option>
+                                    </select><span for="ddlshopgroup" generated="true" class="error success"> </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right">
+                                    名称索引：
+                                </td>
+                                <td>
+                                    <input name="txtletter" type="text" id="txtletter" class="input required w160">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="76px" align="right">
+                                    是否vip ：
+                                </td>
+                                <td>
+                                    <input name="txtvip" type="text" value="0" id="txtvip" class="input required" style="width:45px;"><label>(1-10值越大级别越高,0为不是vip)</label>
+                                </td>
+                            </tr>
+                            
+                        </tbody></table>
+                        <div class="spClear">
+                        </div>
+                        <table class="formTable" width="380">
+                            <tbody><tr>
+                                <th colspan="2">
+                                    企业状态:
+                                </th>
+                            </tr>
+                            <tr>
+                                <td width="90px" align="right">
+                                    审核：
+                                </td>
+                                <td>
+                                    <select name="ddlauditstatus" id="ddlauditstatus" class="select selectNone" style="width:160px;">
+                                        <option value="">请选择</option>
+                                        <option value="0">待审核</option>
+                                        <option value="-1">正在审核</option>
+                                        <option selected="selected" value="1">通过</option>
+                                        <option value="-99">未通过</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right">
+                                    上/下线：
+                                </td>
+                                <td>
+                                    <select name="ddllinestatus" id="ddllinestatus" class="select selectNone" style="width:160px;">
+                                        <option value="">请选择</option>
+                                        <option value="0">未上线</option>
+                                        <option selected="selected" value="1">己上线</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right">
+                                    排序 ：
+                                </td>
+                                <td>
+                                    <input name="txtsort" type="text" value="0" id="txtsort" class="input w160 required digits">
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td align="right">
+                                    点击量 ：
+                                </td>
+                                <td>
+                                    <input name="txthits" type="text" value="0" id="txthits" class="input w160 required digits">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right">
+                                    最后修改 ：
+                                </td>
+                                <td>
+                                    <input name="txtlastedittime" type="text" value="2016-3-31 11:17:34" id="txtlastedittime" class="input Wdate w160 required" onfocus="WdatePicker()">
+                                </td>
+                            </tr>
+                            
+                            
+                        </tbody></table>
+                    </td>
+                    <td width="380px" valign="top">
+                        <table class="formTable" width="380px">
+                            <tbody><tr>
+                                <th colspan="2">
+                                    联系信息：
+                                </th>
+                            </tr>
+                            <tr>
+                                <td align="right">
+                                    是否归属卖场：
+                                </td>
+                                <td>
+                                    <span id="rodIsMarket"><label for="rodIsMarket_0">是</label><input id="rodIsMarket_0" type="radio" name="rodIsMarket" value="1" checked="checked"><label for="rodIsMarket_1">&nbsp;&nbsp;&nbsp;否</label><input id="rodIsMarket_1" type="radio" name="rodIsMarket" value="0"></span>
+                                </td>
+                            </tr>
+                            <tr id="Zmarket">
+                                <td align="right" width="70">
+                                    卖场查找：
+                                </td>
+                                <td>
+                                    <input name="txtmarketsearch" type="text" id="txtmarketsearch" class="w160 input">&nbsp;<input type="button" class="submit" value="查找" id="btnmarketsearch">
+                                </td>
+                            </tr>
+                            <tr id="marketJ">
+                                <td align="right">
+                                    选择卖场：
+                                </td>
+                                <td>
+                                    <select name="ddlmarket" id="ddlmarket" class="select selectNone" style="width:160px;">
+                                        <option value="">请选择</option>
+                                        <option value="0">未加入卖场</option>
+                                        <option value="228">同福易家丽金山店</option>
+                                        <option value="227">红星美凯龙吴中路商场</option>
+                                        <option value="226">同福易家丽松江店</option>
+                                        <option value="225">同福易家丽杨高南路店</option>
+                                        <option value="222">东明家居浦东</option>
+                                        <option value="221">好美家天山</option>
+                                        <option value="220">金海马家具吴中路</option>
+                                        <option value="217">美千居建材家居广场张扬北路</option>
+                                        <option value="215">红星美凯龙浦东金桥路商场</option>
+                                        <option value="214">同福易家丽浦三路店</option>
+                                        <option value="196">华展展览有限公司</option>
+                                        <option value="191">常州店</option>
+                                        <option value="190">金盛松江店</option>
+                                        <option value="189">浦东好百年店</option>
+                                        <option value="187">银都金盛样品折扣店</option>
+                                        <option value="186">南桥中意店</option>
+                                        <option value="185">嘉定欧亚美店</option>
+                                        <option value="184">汉斯麦尔浦西店</option>
+                                        <option value="182">测试卖场</option>
+                                        <option value="180">北欧E家南桥店</option>
+                                        <option selected="selected" value="51">红星美凯龙真北路商场</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr id="cityid" style="display: none;">
+                                <td align="right" width="70px">
+                                    地区：
+                                </td>
+                                <td>
+                                    <div class="_droparea" id="ddlareacode" title="310107"><select id="ddlareacode_province" name="ddlareacode_province"><option value="">请选择省份</option><option value="110000">北京市</option><option value="120000">天津市</option><option value="130000">河北省</option><option value="140000">山西省</option><option value="150000">内蒙古自治区</option><option value="230000">黑龙江省</option><option value="210000">辽宁省</option><option value="220000">吉林省</option><option value="330000">浙江省</option><option value="310000" selected="true">上海市</option><option value="320000">江苏省</option><option value="640000">宁夏回族自治区</option><option value="650000">新疆维吾尔自治区</option><option value="620000">甘肃省</option><option value="540000">西藏自治区</option><option value="630000">青海省</option><option value="610000">陕西省</option><option value="530000">云南省</option><option value="520000">贵州省</option><option value="460000">海南省</option><option value="500000">重庆市</option><option value="510000">四川省</option><option value="450000">广西壮族自治区</option><option value="440000">广东省</option><option value="430000">湖南省</option><option value="420000">湖北省</option><option value="410000">河南省</option><option value="360000">江西省</option><option value="340000">安徽省</option><option value="370000">山东省</option><option value="350000">福建省</option></select><select id="ddlareacode_city" name="ddlareacode_city" style="display: block;"><option value="">请选择城市</option><option value="310100" selected="true">市辖区</option></select><select id="ddlareacode_district" name="ddlareacode_district" style="display: block;"><option value="">请选择地区</option><option value="310107" selected="true">普陀区</option></select><select id="ddlareacode_town" name="ddlareacode_town" style="display: none;"></select><input type="hidden" id="ddlareacode_value" name="ddlareacode_value" value="310107" runat="server"></div>
+                                </td>
+                            </tr>
+                            <tr id="addressid" style="display: none;">
+                                <td align="right">
+                                    地址：
+                                </td>
+                                <td>
+                                    <input name="txtaddress" type="text" value="真北路1208号（靠近梅川路）" id="txtaddress" class="input w250">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right" width="70">
+                                    所属企业：
+                                </td>
+                                <td>
+                                    <select name="ddlctype" id="ddlctype" class="select" style="width:160px;">
+                                        <option value="">请选择</option>
+                                        <option selected="selected" value="101">工厂企业</option>
+                                        <option value="102">经销商</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right" width="70">
+                                    查找企业：
+                                </td>
+                                <td>
+                                    <input name="txtctype" type="text" id="txtctype" class="w160 input">&nbsp;<input type="button" class="submit" value="查找" id="btnctypsearch">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right" width="70">
+                                    选择企业：
+                                </td>
+                                <td>
+                                    <select name="ddlc" id="ddlc" class="select selectNone" style="width:160px;">
+                                        <option value="">请选择</option>
+                                        <option value="0">未加入企业</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr id="brandlist">
+                                <td align="right" width="70">
+                                    选择品牌：
+                                </td>
+                                <td id="Brandid">
+                                    百强.黑森林<input type="checkbox" name="ckcal" checked="checked" value="857">
+                                </td>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td align="right">
+                                    电话 ：
+                                </td>
+                                <td>
+                                    <input name="txtphone" type="text" value="021-32510005" id="txtphone" class="input w160">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right">
+                                    传真 ：
+                                </td>
+                                <td>
+                                    <input name="txtfax" type="text" id="txtfax" class="input w160">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right">
+                                    邮箱 ：
+                                </td>
+                                <td>
+                                    <input name="txtemail" type="text" id="txtemail" class="input w160">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right">
+                                    客服QQ ：
+                                </td>
+                                <td>
+                                    <input name="txtqq" type="text" maxlength="13" id="txtqq" class="input w160">
+                                </td>
+                            </tr>
+                            
+                        </tbody></table>
+                        <div class="spClear">
+                        </div>
+                        <table class="formTable" width="380">
+                            
+                            <tbody><tr>
+                                <td align="right">
+                                    店铺门口照：
+                                </td>
+                                <td>
+                                    <div class="fileUpload" path="/upload/shop/thumb/1145/">
+                                        <input type="hidden" name="hfthumb" id="hfthumb" value="20160331111728339493.jpg,">
+                                        <div class="fileTools">
+                                            <input type="text" class="input w160 filedisplay">
+                                            <a href="javascript:;" class="files">
+                                                <input name="File3" type="file" id="File3" class="upload" onchange="_upfile(this,'0')"></a>
+                                                <span class="uploading">正在上传，请稍后……</span>
+                                                <a href="javascript:;" class="_filedel" onclick="_updel(this,'edit_/upload/shop/thumb/1145/')">删除</a><a href="javascript:;" class="_filesee" onclick="_upsee(this,'edit_/upload/shop/thumb/1145/')">预览</a></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="right">
+                                            店铺内景：
+                                        </td>
+                                        <td>
+                                            <div class="fileUpload m" path="/upload/shop/banner/1145/">
+                                                <input type="hidden" name="hfbannel" id="hfbannel">
+                                                <div class="fileTools">
+                                                    <input type="text" class="input w160 filedisplay">
+                                                    <a href="javascript:;" class="files">
+                                                        <input name="File4" type="file" id="File4" class="upload" onchange="_upfile(this)"></a>
+                                                        <span class="uploading">正在上传，请稍后……</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        
+                                    </tbody></table>
+                                </td>
+                                <td valign="top">
+                                    <table class="formTable" width="380">
+                                        <tbody><tr>
+                                            <th colspan="2">
+                                                优化及配置：
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <td width="70px" align="right">
+                                                关&nbsp;键&nbsp;&nbsp;字：
+                                            </td>
+                                            <td>
+                                                <textarea name="txtkeywords" rows="2" cols="20" id="txtkeywords" class="input w160" style="height:200px;width:250px;"></textarea>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td><span style="color:red;">↑ 格式：title | keywords | description</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td align="right">
+                                                配置域名：
+                                            </td>
+                                            <td>
+                                                <input name="txtdomain" type="text" id="txtdomain" class="input w160">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="right">
+                                                配置IP：
+                                            </td>
+                                            <td>
+                                                <input name="txtdomainip" type="text" id="txtdomainip" class="input w160">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="right">
+                                                ICP备案：
+                                            </td>
+                                            <td>
+                                                <input name="txticp" type="text" id="txticp" class="input w160">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="right">
+                                                企业风格：
+                                            </td>
+                                            <td>
+                                                <select name="ddltemplate" id="ddltemplate">
+                                                    <option value="0">默认风格</option>
+                                                    <option selected="selected" value="1">级别1</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                    </tbody></table>
+                                    <div class="spClear">
+                                    </div>
+                                    <table class="formTable" width="380">
+                                        <tbody><tr>
+                                            <th colspan="2">
+                                                企业描述:
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">
+                                                <div class="ke-container ke-container-default" style="width: 360px;"><div style="display:block;" class="ke-toolbar" unselectable="on"><span class="ke-outline" data-name="fontname" title="字体" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-fontname" unselectable="on"></span></span><span class="ke-outline" data-name="fontsize" title="文字大小" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-fontsize" unselectable="on"></span></span><span class="ke-inline-block ke-separator"></span><span class="ke-outline" data-name="forecolor" title="文字颜色" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-forecolor" unselectable="on"></span></span><span class="ke-outline" data-name="hilitecolor" title="文字背景" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-hilitecolor" unselectable="on"></span></span><span class="ke-outline" data-name="bold" title="粗体(Ctrl+B)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-bold" unselectable="on"></span></span><span class="ke-outline" data-name="italic" title="斜体(Ctrl+I)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-italic" unselectable="on"></span></span><span class="ke-outline" data-name="underline" title="下划线(Ctrl+U)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-underline" unselectable="on"></span></span><span class="ke-outline" data-name="removeformat" title="删除格式" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-removeformat" unselectable="on"></span></span><span class="ke-inline-block ke-separator"></span><span class="ke-outline" data-name="justifyleft" title="左对齐" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-justifyleft" unselectable="on"></span></span><span class="ke-outline" data-name="justifycenter" title="居中" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-justifycenter" unselectable="on"></span></span><span class="ke-outline" data-name="justifyright" title="右对齐" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-justifyright" unselectable="on"></span></span><span class="ke-outline" data-name="insertorderedlist" title="编号" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-insertorderedlist" unselectable="on"></span></span><span class="ke-outline" data-name="insertunorderedlist" title="项目符号" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-insertunorderedlist" unselectable="on"></span></span><span class="ke-inline-block ke-separator"></span><span class="ke-outline" data-name="image" title="图片" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-image" unselectable="on"></span></span><span class="ke-outline" data-name="flash" title="Flash" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-flash" unselectable="on"></span></span><span class="ke-outline" data-name="media" title="视音频" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-media" unselectable="on"></span></span><span class="ke-outline" data-name="link" title="超级链接" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-link" unselectable="on"></span></span><span class="ke-outline" data-name="fullscreen" title="全屏显示(Esc)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-fullscreen" unselectable="on"></span></span></div><div style="display: block; height: 100px;" class="ke-edit"><iframe class="ke-edit-iframe" hidefocus="true" frameborder="0" style="width: 100%; height: 100px;"></iframe><textarea class="ke-edit-textarea" hidefocus="true" style="width: 100%; height: 100px; display: none;"></textarea></div><div class="ke-statusbar"><span class="ke-inline-block ke-statusbar-center-icon"></span><span class="ke-inline-block ke-statusbar-right-icon"></span></div></div><textarea name="txtdescript" rows="5" cols="20" id="txtdescript" class="textarea required" style="width: 360px; display: none;">红星真北店</textarea>
+                                            </td>
+                                        </tr>
+                                    </tbody></table>
+                                    <div class="spClear">
+                                    </div>
+                                    <table class="formTable" width="380">
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody></table>
+                        <div style="margin-top: 10px; margin-left: 180px">
+                            <input type="submit" name="btnSave" value="确认保存" id="btnSave" class="submit"><input name="重置" type="reset" class="submit" value="重置">
+                        </div>
+                        <script>
+                        $("#rodIsMarket").click(function () {
+                        var ddlvalue = $("input[name='rodIsMarket']:checked").val();
+                        if (ddlvalue == '0') {
+                        $("#Zmarket").hide();
+                        $("#marketJ").hide();
+                        $("#cityid").show();
+                        $("#addressid").show();
+                        $("#ddlmarket").removeClass("selectNone");
+                        $("#txtaddress").removeClass("required").addClass("required");
+                        }
+                        else {
+                        $("#cityid").hide();
+                        $("#addressid").hide();
+                        $("#Zmarket").show();
+                        $("#marketJ").show();
+                        $("#ddlmarket").removeClass("selectNone").addClass("selectNone");
+                        $("#txtaddress").removeClass("required");
+                        }
+                        });
+                        if ("1" == "1") {
+                        $("input[name^='rodIsMarket']").each(function () {
+                        if (this.value == 1) {
+                        $(this).attr("checked", "true");
+                        }
+                        });
+                        $("#cityid").hide();
+                        $("#addressid").hide();
+                        $("#Zmarket").show();
+                        $("#marketJ").show();
+                        $("#ddlmarket").removeClass("selectNone").addClass("selectNone");
+                        $("#txtaddress").removeClass("required");
+                        }
+                        else {
+                        $("input[name^='rodIsMarket']").each(function () {
+                        if (this.value == 0) {
+                        $(this).attr("checked", "true");
+                        }
+                        });
+                        $("#Zmarket").hide();
+                        $("#marketJ").hide();
+                        $("#cityid").show();
+                        $("#addressid").show();
+                        $("#ddlmarket").removeClass("selectNone");
+                        $("#txtaddress").removeClass("required").addClass("required");
+                        }
+                        </script>
+                    </form>
+                </body></html>

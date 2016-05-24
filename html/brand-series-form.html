@@ -1,0 +1,704 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head id="Head1"><title>
+
+</title><link rel="stylesheet" type="text/css" href="../css/style.css">
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/jquery.form.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/additional-methods.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/messages_cn.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//My97DatePicker/WdatePicker.js"></script><link href="http://www.jiajuks.com//resource//My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/jquery.area.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//editor/kindeditor/kindeditor-min.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/fileupload.js"></script>
+    <style type="text/css">
+        .formTable
+        {
+            border: 1px solid #ccc;
+        }
+        .formTable tr th
+        {
+            background: #ededed;
+            text-align: left;
+        }
+        .formTable tr td
+        {
+            border: none;
+            padding-top: 8px;
+            padding-bottom: 8px;
+        }
+    </style>
+    <script type="text/javascript">
+        $(function () {
+        
+            //表单验证JS
+            $("#form1").validate({
+                //出错时添加的标签
+                errorElement: "span",
+                showErrors: function (errorMap, errorList) {
+                    if (errorList.length > 0) {
+                        if ($("#" + errorList[0].element.id).next() != null) {
+                            $("#" + errorList[0].element.id).next().remove();
+                        }
+                    }
+                    this.defaultShowErrors();
+                },
+                success: function (label) {
+                    //正确时的样式
+                    label.text(" ").addClass("success");
+                }
+            });
+
+            var editor;
+            KindEditor.ready(function (K) {
+                editor = K.create('#txtdescript', {
+                    allowPreviewEmoticons: true,
+                    allowImageUpload: true,
+                    allowFileManager: true,
+                    
+                    allowMediaUpload: true,
+                    items: [
+						'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+						'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+						'insertunorderedlist', '|', 'image', 'flash', 'media', 'link', 'fullscreen']
+                });
+            });
+
+
+            $("#btnSearch").click(function () {
+                $.ajax({
+                    url: "http://www.jiajuks.com//ajax/ajaxuser.ashx",
+                    data: "type=gettopbrand&v=" + $("#txtSearch").val(),
+                    dataType: "json",
+                    success: function (data) {
+                        if (data != "") {
+                            $("#ddlbrand").html();
+                            $("#ddlbrand").html("<option value=\"\">请选择</option>");
+                            $.each(data, function (i) {
+                                $("#ddlbrand").append("<option value=\"" + data[i].id + "\">" + data[i].name + "</option>");
+                            });
+                        }
+                    }
+                })
+            });
+        });
+    </script>
+<link href="http://www.jiajuks.com//resource//editor/kindeditor/themes/default/default.css" rel="stylesheet"></head>
+<body style="padding: 10px;">
+    <form name="form1" method="post" action="brandsinfo.aspx" id="form1" novalidate="novalidate">
+<div>
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="">
+</div>
+
+    <div class="navigation">
+        <span class="back"><a href="brandslist.aspx">返回列表</a></span><b>您当前的位置：首页 &gt; 成员管理 &gt;
+            登陆账号管理</b>
+    </div>
+    <div class="spClear">
+    </div>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="msgtable">
+        <tbody><tr>
+            <th colspan="3" align="left">
+                登陆账号信息
+            </th>
+        </tr>
+        <tr>
+            <td width="390px" valign="top">
+                <table class="formTable" width="380px">
+                    <tbody><tr>
+                        <th colspan="2">
+                            系列所属品牌：
+                        </th>
+                    </tr>
+                    <tr>
+                        <td align="right" width="70">
+                            品牌查找：
+                        </td>
+                        <td>
+                            <input name="txtSearch" type="text" id="txtSearch" class="w160 input">&nbsp;<input type="button" class="submit" value="查找" id="btnSearch">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            选择品牌：
+                        </td>
+                        <td>
+                            <select name="ddlbrand" id="ddlbrand" class="select selectNone" style="width:160px;">
+                            	<option value="">请选择</option>
+                            	<option value="772">6月1号</option>
+                            	<option value="768">ABC</option>
+                            	<option value="806">AsnaghiInteriors</option>
+                            	<option value="814">Bedont</option>
+                            	<option value="812">Bertolini</option>
+                            	<option value="780">C&amp;C</option>
+                            	<option value="805">calligaris</option>
+                            	<option value="850">CBD</option>
+                            	<option value="804">Chateaud’AxMD</option>
+                            	<option value="813">Ciacexport</option>
+                            	<option value="746">Cor</option>
+                            	<option value="547">ddddd</option>
+                            	<option value="747">DeAngeli</option>
+                            	<option value="495">DiamondSofa</option>
+                            	<option value="749">DomusMobili</option>
+                            	<option value="764">Ecus</option>
+                            	<option value="793">EDITIONS意迪森</option>
+                            	<option value="452">E-ON,宜安经典家具，宜安</option>
+                            	<option value="743">FOVRCORNERS</option>
+                            	<option value="817">Gallo</option>
+                            	<option value="753">Interstyle</option>
+                            	<option value="750">IssaccLight</option>
+                            	<option value="402">KBH</option>
+                            	<option value="752">L‘origine</option>
+                            	<option value="698">LUBEN</option>
+                            	<option value="816">Mantellassi</option>
+                            	<option value="756">Mastella</option>
+                            	<option value="801">ModernDesign100</option>
+                            	<option value="883">MPE</option>
+                            	<option value="803">NATUZZI</option>
+                            	<option value="808">Provasi</option>
+                            	<option value="809">RampoldiCreations</option>
+                            	<option value="811">Reflex</option>
+                            	<option value="751">RMArredamenti</option>
+                            	<option value="664">ROCKSTONE</option>
+                            	<option value="825">ROCKTIA罗克蒂亚</option>
+                            	<option value="815">Rossin</option>
+                            	<option value="810">SantoPassaia</option>
+                            	<option value="754">Sedital</option>
+                            	<option value="748">SevenSedie</option>
+                            	<option value="757">SimoneCenedese</option>
+                            	<option value="766">SL-Gkids</option>
+                            	<option value="802">SPIRIT</option>
+                            	<option value="755">StilDecor</option>
+                            	<option value="559">test1</option>
+                            	<option value="560">test2</option>
+                            	<option value="881">ULIVI</option>
+                            	<option value="807">Zanaboni</option>
+                            	<option value="474">阿马司</option>
+                            	<option value="31">艾迪卡</option>
+                            	<option value="363">艾菲尔</option>
+                            	<option value="479">艾芙迪</option>
+                            	<option value="824">艾玛莎</option>
+                            	<option value="705">艾森﹒地中海</option>
+                            	<option value="505">艾森堡庄园</option>
+                            	<option value="667">艾收家居</option>
+                            	<option value="425">艾特利</option>
+                            	<option value="472">艾一玛</option>
+                            	<option value="775">爱堡时代</option>
+                            	<option value="689">爱堡印象</option>
+                            	<option value="401">爱凡</option>
+                            	<option value="635">爱蒙</option>
+                            	<option value="477">爱舒</option>
+                            	<option value="848">安德And</option>
+                            	<option value="789">安曼</option>
+                            	<option value="628">安睡宝</option>
+                            	<option value="25">傲耐</option>
+                            	<option value="21">奥巴玛</option>
+                            	<option value="300">奥克兰尼</option>
+                            	<option value="503">奥莎蓓丽</option>
+                            	<option value="575">澳玛-枫木</option>
+                            	<option value="34">澳珀</option>
+                            	<option value="588">澳斯卡</option>
+                            	<option value="662">巴厘风情</option>
+                            	<option value="702">百慕林森</option>
+                            	<option value="855">百强</option>
+                            	<option value="857">百强.黑森林</option>
+                            	<option value="856">百强.欧福莱</option>
+                            	<option value="618">百岁诚品</option>
+                            	<option value="585">柏家居</option>
+                            	<option value="60">柏田</option>
+                            	<option value="470">柏逸轩</option>
+                            	<option value="592">保罗赛特</option>
+                            	<option value="821">保罗赛特.莱茵</option>
+                            	<option value="832">保罗赛特.塞纳</option>
+                            	<option value="822">保罗赛特.新巴黎</option>
+                            	<option value="432">北京皇家</option>
+                            	<option value="678">北美之家</option>
+                            	<option value="414">北欧E家</option>
+                            	<option value="879">北欧风情</option>
+                            	<option value="706">北欧森林</option>
+                            	<option value="40">贝朗家私</option>
+                            	<option value="602">博尔卡特</option>
+                            	<option value="59">博明轩</option>
+                            	<option value="638">布劳斯顿</option>
+                            	<option value="554">测试一</option>
+                            	<option value="484">昌业</option>
+                            	<option value="889">长实.阿默斯特</option>
+                            	<option value="410">诚丰</option>
+                            	<option value="501">川洋家私</option>
+                            	<option value="663">春上</option>
+                            	<option value="771">纯真岁月森林王子</option>
+                            	<option value="549">大大的</option>
+                            	<option value="436">大风范</option>
+                            	<option value="502">大花角</option>
+                            	<option value="637">大连华丰</option>
+                            	<option value="28">大普</option>
+                            	<option value="820">大术</option>
+                            	<option value="868">大自然</option>
+                            	<option value="630">大自然</option>
+                            	<option value="610">黛柏丽雅</option>
+                            	<option value="632">丹迪</option>
+                            	<option value="864">德驰</option>
+                            	<option value="636">邓禄普</option>
+                            	<option value="860">迪诺雅</option>
+                            	<option value="499">迪信</option>
+                            	<option value="404">帝梵尼</option>
+                            	<option value="606">帝浩</option>
+                            	<option value="633">蒂芬妮</option>
+                            	<option value="468">鼎汉家居</option>
+                            	<option value="646">鼎联</option>
+                            	<option value="818">东方百盛</option>
+                            	<option value="556">都市封神</option>
+                            	<option value="774">兜尔</option>
+                            	<option value="680">杜莎</option>
+                            	<option value="665">多少</option>
+                            	<option value="767">多喜爱我爱我家</option>
+                            	<option value="674">法郞仕</option>
+                            	<option value="398">法朗仕</option>
+                            	<option value="783">法雷尔</option>
+                            	<option value="608">凡尔赛</option>
+                            	<option value="731">菲克莱斯</option>
+                            	<option value="476">翡翠藤器</option>
+                            	<option value="875">芬迪Fendi</option>
+                            	<option value="726">奉威居品当代印象</option>
+                            	<option value="301">弗劳思丹</option>
+                            	<option value="736">弗沃德</option>
+                            	<option value="886">芙莱莎</option>
+                            	<option value="364">芙瑞斯达</option>
+                            	<option value="758">福乐娃</option>
+                            	<option value="478">福牌</option>
+                            	<option value="565">傅梨</option>
+                            	<option value="494">富宝</option>
+                            	<option value="493">富得宝</option>
+                            	<option value="838">富渥得</option>
+                            	<option value="624">富越居</option>
+                            	<option value="378">甘迪家具</option>
+                            	<option value="761">哥伦比尼</option>
+                            	<option value="399">格兰诺贝</option>
+                            	<option value="735">格林小镇</option>
+                            	<option value="619">格瑞仕</option>
+                            	<option value="583">格瑞斯丹</option>
+                            	<option value="684">格艺</option>
+                            	<option value="19">葛罗瑞亚</option>
+                            	<option value="617">工艺大师</option>
+                            	<option value="854">顾家家居</option>
+                            	<option value="893">光明</option>
+                            	<option value="574">广澳</option>
+                            	<option value="867">贵族</option>
+                            	<option value="626">贵族</option>
+                            	<option value="841">海盟</option>
+                            	<option value="639">韩雅居</option>
+                            	<option value="723">汉乐府</option>
+                            	<option value="823">豪恩</option>
+                            	<option value="32">豪门</option>
+                            	<option value="728">豪门名匠</option>
+                            	<option value="828">好人家</option>
+                            	<option value="709">和木之家</option>
+                            	<option value="611">和心</option>
+                            	<option value="38">和星</option>
+                            	<option value="679">恒信华典</option>
+                            	<option value="607">红邦家具</option>
+                            	<option value="550">红点</option>
+                            	<option value="498">红苹果</option>
+                            	<option value="451">宏生</option>
+                            	<option value="690">泓森</option>
+                            	<option value="409">后庭居</option>
+                            	<option value="496">花花世界</option>
+                            	<option value="694">花梨传奇</option>
+                            	<option value="884">华丰</option>
+                            	<option value="645">华泰</option>
+                            	<option value="380">华腾</option>
+                            	<option value="30">华伟</option>
+                            	<option value="671">画卷英伦</option>
+                            	<option value="22">欢乐E家</option>
+                            	<option value="898">环美</option>
+                            	<option value="673">皇朝</option>
+                            	<option value="486">皇朝家私</option>
+                            	<option value="587">皇家麦德</option>
+                            	<option value="652">皇家木匠</option>
+                            	<option value="710">皇家逸达永兴</option>
+                            	<option value="605">皇室伯爵</option>
+                            	<option value="426">吉蓝</option>
+                            	<option value="589">加枫意</option>
+                            	<option value="708">家具区</option>
+                            	<option value="718">假日森林</option>
+                            	<option value="45">简凡</option>
+                            	<option value="642">简欧</option>
+                            	<option value="405">简欧之尊</option>
+                            	<option value="859">健威</option>
+                            	<option value="435">杰尔曼尼</option>
+                            	<option value="776">杰克家</option>
+                            	<option value="571">金伯爵</option>
+                            	<option value="500">金凤凰</option>
+                            	<option value="880">金可儿</option>
+                            	<option value="61">金雅佳</option>
+                            	<option value="849">金雨</option>
+                            	<option value="579">锦时钟表</option>
+                            	<option value="878">京瓷（荣麟）</option>
+                            	<option value="622">居雅</option>
+                            	<option value="890">君和</option>
+                            	<option value="362">卡蒂斯</option>
+                            	<option value="365">卡丁乐园</option>
+                            	<option value="763">卡乐屋</option>
+                            	<option value="52">卡纳琪</option>
+                            	<option value="367">卡瑞迪</option>
+                            	<option value="568">卡诗兰诺</option>
+                            	<option value="26">楷模</option>
+                            	<option value="454">楷模100</option>
+                            	<option value="781">康宝</option>
+                            	<option value="53">康帝星</option>
+                            	<option value="777">康居</option>
+                            	<option value="866">康耐登</option>
+                            	<option value="877">柯意玛</option>
+                            	<option value="37">科默COMO</option>
+                            	<option value="307">酷梵特</option>
+                            	<option value="564">莱恩小镇</option>
+                            	<option value="43">莱嘉雅</option>
+                            	<option value="58">莱克斯曼</option>
+                            	<option value="485">兰美源森</option>
+                            	<option value="796">朗客</option>
+                            	<option value="483">朗尼</option>
+                            	<option value="655">老顾红木</option>
+                            	<option value="381">老木坊</option>
+                            	<option value="557">老斯藤艺</option>
+                            	<option value="686">乐雅轩</option>
+                            	<option value="719">雷罗纳</option>
+                            	<option value="475">理想沙发</option>
+                            	<option value="377">力派库斯</option>
+                            	<option value="466">丽源美家</option>
+                            	<option value="800">利豪</option>
+                            	<option value="882">利米缇思limitless</option>
+                            	<option value="491">联邦</option>
+                            	<option value="567">恋人花香</option>
+                            	<option value="629">龙凤</option>
+                            	<option value="368">露曼顿</option>
+                            	<option value="369">路易豪顿</option>
+                            	<option value="792">路易时代</option>
+                            	<option value="385">路易斯</option>
+                            	<option value="641">潞文堂</option>
+                            	<option value="902">履世春秋</option>
+                            	<option value="616">罗莱欧雅</option>
+                            	<option value="615">罗兰索</option>
+                            	<option value="620">洛克尼曼</option>
+                            	<option value="696">马杜菲</option>
+                            	<option value="644">马赫格尼</option>
+                            	<option value="703">玛荷尼</option>
+                            	<option value="433">玛润奇</option>
+                            	<option value="614">玛斯特</option>
+                            	<option value="370">麦尔迪</option>
+                            	<option value="861">猫王</option>
+                            	<option value="784">茂荣</option>
+                            	<option value="740">玫瑰花语</option>
+                            	<option value="36">美班</option>
+                            	<option value="434">美度沙</option>
+                            	<option value="582">美戈尔</option>
+                            	<option value="424">美晶</option>
+                            	<option value="769">美莱屋</option>
+                            	<option value="595">美欧美家</option>
+                            	<option value="570">美颂巴黎</option>
+                            	<option value="699">美特国际</option>
+                            	<option value="760">梦幻松木</option>
+                            	<option value="799">米兰</option>
+                            	<option value="372">米罗欧典</option>
+                            	<option value="833">名人居</option>
+                            	<option value="843">明珠家具</option>
+                            	<option value="729">墨源森</option>
+                            	<option value="734">木宝美家</option>
+                            	<option value="903">木槿之恋</option>
+                            	<option value="682">木兰居</option>
+                            	<option value="668">木容尚品</option>
+                            	<option value="836">木韵江南</option>
+                            	<option value="387">木之本</option>
+                            	<option value="621">木子</option>
+                            	<option value="631">慕思</option>
+                            	<option value="869">慕思.0769</option>
+                            	<option value="870">慕思.3D</option>
+                            	<option value="871">慕思.V6</option>
+                            	<option value="873">慕思.歌蒂娅</option>
+                            	<option value="872">慕思.凯奇</option>
+                            	<option value="27">拿铁</option>
+                            	<option value="704">纳西亚</option>
+                            	<option value="681">奶酪王国</option>
+                            	<option value="712">奈图</option>
+                            	<option value="896">耐特利尔</option>
+                            	<option value="697">南洋胡氏</option>
+                            	<option value="648">年年红</option>
+                            	<option value="895">挪亚家</option>
+                            	<option value="788">诺华</option>
+                            	<option value="623">欧典</option>
+                            	<option value="546">欧莱思特</option>
+                            	<option value="42">欧妮亚</option>
+                            	<option value="888">欧瑞</option>
+                            	<option value="594">欧瑞</option>
+                            	<option value="852">欧意诺</option>
+                            	<option value="553">偶尔特</option>
+                            	<option value="471">帕堤欧</option>
+                            	<option value="693">品欧</option>
+                            	<option value="887">品欧生活</option>
+                            	<option value="584">品智</option>
+                            	<option value="834">溥泽园</option>
+                            	<option value="314">七彩虹</option>
+                            	<option value="593">七彩人生</option>
+                            	<option value="566">七彩岁月</option>
+                            	<option value="762">七彩体验</option>
+                            	<option value="653">齐泰</option>
+                            	<option value="795">千派</option>
+                            	<option value="654">强艺</option>
+                            	<option value="406">青树林</option>
+                            	<option value="713">罄雷沃</option>
+                            	<option value="862">曲美</option>
+                            	<option value="643">曲美</option>
+                            	<option value="400">全友家私</option>
+                            	<option value="44">荣尊木坊</option>
+                            	<option value="29">锐驰</option>
+                            	<option value="373">塞戈维亚</option>
+                            	<option value="839">赛恩世家</option>
+                            	<option value="669">赛拉维尔简美﹒居家</option>
+                            	<option value="634">赛琳娜</option>
+                            	<option value="840">赛帕斯特</option>
+                            	<option value="846">桑马红木</option>
+                            	<option value="691">沙克﹒美郡</option>
+                            	<option value="659">设计共和</option>
+                            	<option value="656">深发</option>
+                            	<option value="612">圣罗玛</option>
+                            	<option value="701">圣美爵</option>
+                            	<option value="360">施华洛家具Vovo</option>
+                            	<option value="361">施华洛简欧（SJO）</option>
+                            	<option value="603">时尚大师</option>
+                            	<option value="577">实创</option>
+                            	<option value="737">世尚雅轩</option>
+                            	<option value="874">舒达</option>
+                            	<option value="894">舒曼</option>
+                            	<option value="765">舒童</option>
+                            	<option value="453">双口一家</option>
+                            	<option value="650">双叶</option>
+                            	<option value="715">丝涟</option>
+                            	<option value="670">思达可</option>
+                            	<option value="492">斯帝罗兰</option>
+                            	<option value="885">斯堪维亚</option>
+                            	<option value="797">斯可馨</option>
+                            	<option value="865">斯林百兰</option>
+                            	<option value="317">斯曼克</option>
+                            	<option value="770">松堡王国豆丁庄园木槿花大将作康檏乐</option>
+                            	<option value="779">松果</option>
+                            	<option value="778">松尚米尼</option>
+                            	<option value="604">松之树</option>
+                            	<option value="692">苏梨</option>
+                            	<option value="318">穗宝</option>
+                            	<option value="473">索菲</option>
+                            	<option value="794">索菲尼</option>
+                            	<option value="488">索菲亚</option>
+                            	<option value="640">台湾米夏</option>
+                            	<option value="876">泰普尔Tempur</option>
+                            	<option value="504">汤玛斯</option>
+                            	<option value="716">瑭融</option>
+                            	<option value="24">特奥特</option>
+                            	<option value="901">藤话故事</option>
+                            	<option value="601">天虹画廊</option>
+                            	<option value="319">田园之家</option>
+                            	<option value="897">汀西海岸</option>
+                            	<option value="721">汀西海岸</option>
+                            	<option value="744">童话森林</option>
+                            	<option value="791">帷思特</option>
+                            	<option value="687">维克森林</option>
+                            	<option value="858">文超</option>
+                            	<option value="590">文超</option>
+                            	<option value="428">文扬</option>
+                            	<option value="438">沃家</option>
+                            	<option value="497">屋之宝</option>
+                            	<option value="660">无界</option>
+                            	<option value="904">梧桐</option>
+                            	<option value="707">西部牛仔</option>
+                            	<option value="625">西娅图</option>
+                            	<option value="487">喜临门</option>
+                            	<option value="586">喜梦宝</option>
+                            	<option value="403">显赫世家</option>
+                            	<option value="900">小憨豆</option>
+                            	<option value="573">小憨豆鞋柜</option>
+                            	<option value="576">欣美</option>
+                            	<option value="759">新干线</option>
+                            	<option value="578">新绅士（居品）</option>
+                            	<option value="741">馨泰</option>
+                            	<option value="469">馨相宜</option>
+                            	<option value="695">星家</option>
+                            	<option value="581">星家艾美</option>
+                            	<option value="572">星星索</option>
+                            	<option value="366">星耀</option>
+                            	<option value="627">雅兰</option>
+                            	<option value="340">雅梦莎</option>
+                            	<option value="683">雅木</option>
+                            	<option value="676">亚力山卓</option>
+                            	<option value="597">亚梭</option>
+                            	<option value="482">亚振</option>
+                            	<option value="481">亚振</option>
+                            	<option value="56">言木</option>
+                            	<option value="677">扬狮﹒拾贝</option>
+                            	<option value="23">阳光岁月</option>
+                            	<option value="661">漾美</option>
+                            	<option value="891">伊和源</option>
+                            	<option value="790">依丽思</option>
+                            	<option value="782">依诺维绅</option>
+                            	<option value="785">壹加壹</option>
+                            	<option value="386">宜安</option>
+                            	<option value="899">宜华</option>
+                            	<option value="591">宜华</option>
+                            	<option value="724">宜华家居</option>
+                            	<option value="600">艺.空间</option>
+                            	<option value="599">艺博林</option>
+                            	<option value="598">艺典画廊</option>
+                            	<option value="613">艺轩</option>
+                            	<option value="649">艺尊轩</option>
+                            	<option value="376">易家丽木</option>
+                            	<option value="596">意多</option>
+                            	<option value="892">意利达</option>
+                            	<option value="675">雍和丽舍</option>
+                            	<option value="717">柚木大师</option>
+                            	<option value="580">柚优雅居</option>
+                            	<option value="727">柚至臻</option>
+                            	<option value="722">俞木匠</option>
+                            	<option value="449">愉悦玫瑰</option>
+                            	<option value="322">玉庭</option>
+                            	<option value="732">御景源</option>
+                            	<option value="733">御郎</option>
+                            	<option value="714">原木大师罗菲尔</option>
+                            	<option value="700">原木细语</option>
+                            	<option value="742">缘木居</option>
+                            	<option value="738">远大嘉华</option>
+                            	<option value="773">月亮船</option>
+                            	<option value="711">悦森木格</option>
+                            	<option value="437">悦生活</option>
+                            	<option value="552">扎西德勒</option>
+                            	<option value="730">展示区</option>
+                            	<option value="725">展示厅</option>
+                            	<option value="379">展旺</option>
+                            	<option value="41">珍妮弗</option>
+                            	<option value="672">珍荣</option>
+                            	<option value="374">真荣</option>
+                            	<option value="688">臻致美</option>
+                            	<option value="853">芝华仕</option>
+                            	<option value="609">芷洛蓝</option>
+                            	<option value="467">众怡</option>
+                            	<option value="745">竹之信仰</option>
+                            	<option value="685">紫榆艺品</option>
+                            	<option value="647">紫尊轩</option>
+                            	<option value="787">自然主义</option>
+                            	<option value="863">自由空间</option>
+                            	<option value="666">自由空间</option>
+                            	<option value="375">宗匠</option>
+                            	<option value="465">左右沙发</option>
+
+                            </select>
+                        </td>
+                    </tr>
+                    
+                </tbody></table>
+                <div class="spClear">
+                </div>
+                <table class="formTable" width="380px">
+                    <tbody><tr>
+                        <th colspan="2">
+                            系列信息：
+                        </th>
+                    </tr>
+                    <tr>
+                        <td width="70px" align="right">
+                            推荐属性：
+                        </td>
+                        <td>
+                            <span id="chkattribute"><input id="chkattribute_0" type="checkbox" name="chkattribute$0"><label for="chkattribute_0">首页置顶</label><input id="chkattribute_1" type="checkbox" name="chkattribute$1"><label for="chkattribute_1">推荐</label><input id="chkattribute_2" type="checkbox" name="chkattribute$2"><label for="chkattribute_2">热门</label><input id="chkattribute_3" type="checkbox" name="chkattribute$3"><label for="chkattribute_3">精华</label><input id="chkattribute_4" type="checkbox" name="chkattribute$4"><label for="chkattribute_4">幻灯</label><input id="chkattribute_5" type="checkbox" name="chkattribute$5"><label for="chkattribute_5">高亮</label></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            系列名称：
+                        </td>
+                        <td>
+                            <input name="txttitle" type="text" id="txttitle" class="input required w160">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            系列材质：
+                        </td>
+                        <td>
+                            <select name="ddlmaterial" id="ddlmaterial" class="select selectNone" style="width:160px;">
+                            	<option value="">选择选材</option>
+                            	<option value="140">实木</option>
+                            	<option value="21">全实木</option>
+                            	<option value="20">玻璃</option>
+                            	<option value="19">皮艺</option>
+                            	<option value="18">布艺</option>
+                            	<option value="17">竹艺</option>
+                            	<option value="16">藤艺</option>
+                            	<option value="15">大理石</option>
+                            	<option value="14">金属</option>
+                            	<option value="13">板式</option>
+                            	<option value="12">实木框架</option>
+
+                            </select>
+                            <div id="ddlmaterialTip" style="width: 280px; float: left" class="forTip">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            系列风格：
+                        </td>
+                        <td>
+                            <select name="ddlstyle" id="ddlstyle" class="select selectNone" style="width:160px;">
+                            	<option value="">选择风格</option>
+                            	<option value="60">韩式</option>
+                            	<option value="59">北欧</option>
+                            	<option value="58">东南亚</option>
+                            	<option value="57">美式仿古</option>
+                            	<option value="56">法式</option>
+                            	<option value="55">西班牙</option>
+                            	<option value="54">意大利</option>
+                            	<option value="53">美式</option>
+                            	<option value="52">户外</option>
+                            	<option value="51">简欧</option>
+                            	<option value="50">田园</option>
+                            	<option value="49">休闲</option>
+                            	<option value="48">现代</option>
+                            	<option value="47">中式</option>
+                            	<option value="46">欧式</option>
+
+                            </select>
+                            <div id="ddlstyleTip" style="width: 280px; float: left" class="forTip">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            系列色系：
+                        </td>
+                        <td>
+                            <select name="ddlcolor" id="ddlcolor" class="select selectNone" style="width:160px;">
+                            	<option value="">选择颜色</option>
+                            	<option value="139">木本色</option>
+                            	<option value="138">咖啡色</option>
+                            	<option value="11">其他</option>
+                            	<option value="137">浅色</option>
+                            	<option value="10">蓝色</option>
+                            	<option value="9">绿色</option>
+                            	<option value="8">黄色</option>
+                            	<option value="7">红色</option>
+                            	<option value="6">黑色</option>
+                            	<option value="5">白色</option>
+
+                            </select>
+                            <div id="ddlcolorTip" style="width: 280px; float: left" class="forTip">
+                            </div>
+                        </td>
+                    </tr>
+                    
+                </tbody></table>
+            </td>
+            
+        </tr>
+    </tbody></table>
+    <div style="margin-top: 10px; margin-left: 180px">
+        <input type="submit" name="btnSave" value="确认保存" id="btnSave" class="submit"><input name="重置" type="reset" class="submit" value="重置">
+    </div>
+    </form>
+
+
+</body></html>

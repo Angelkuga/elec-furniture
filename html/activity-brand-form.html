@@ -1,0 +1,250 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>
+	设置关联信息
+</title><link rel="Stylesheet" type="text/css" href="../css/style.css">
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/jquery.form.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/additional-methods.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/messages_cn.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//My97DatePicker/WdatePicker.js"></script><link href="http://www.jiajuks.com//resource//My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/jquery.area.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//editor/kindeditor/kindeditor-min.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/fileupload.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            //表单验证JS
+            $("#form1").validate({
+                //出错时添加的标签
+                errorElement: "span",
+                showErrors: function (errorMap, errorList) {
+                    if (errorList.length > 0) {
+                        if ($("#" + errorList[0].element.id).next() != null) {
+                            $("#" + errorList[0].element.id).next().remove();
+                        }
+                    }
+                    this.defaultShowErrors();
+                },
+                success: function (label) {
+                    //正确时的样式
+                    label.text(" ").addClass("success");
+                }
+            });
+            var editor;
+            KindEditor.ready(function (K) {
+                editor = K.create('#txtrulesInfo', {
+                    allowPreviewEmoticons: true,
+                    allowImageUpload: true,
+                    allowFileManager: true,
+                    
+                    allowMediaUpload: true,
+                    items: [
+						'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+						'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+						'insertunorderedlist', '|', 'image', 'flash', 'media', 'link', 'fullscreen']
+                });
+            });
+            KindEditor.ready(function (K) {
+                editor = K.create('#txttemplate', {
+                    allowPreviewEmoticons: true,
+                    allowImageUpload: true,
+                    allowFileManager: true,
+                    
+                    allowMediaUpload: true,
+                    items: [
+						'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+						'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+						'insertunorderedlist', '|', 'image', 'flash', 'media', 'link', 'fullscreen']
+                });
+            });
+        });
+    </script>
+    <style>
+        .fileUpload
+        {
+            float: left;
+            width: 380px;
+        }
+    </style>
+<link href="http://www.jiajuks.com//resource//editor/kindeditor/themes/default/default.css" rel="stylesheet"></head>
+<body style="padding: 10px;">
+    <form name="form1" method="post" action="apppromotionbrandinfo.aspx" id="form1" enctype="multipart/form-data" novalidate="novalidate">
+<div>
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTE3NjI3ODM4MjUPZBYCAgMPFgIeB2VuY3R5cGUFE211bHRpcGFydC9mb3JtLWRhdGEWAgICDxBkEBUBCeivt+afpeaJvhUBABQrAwFnZGQYAQUeX19Db250cm9sc1JlcXVpcmVQb3N0QmFja0tleV9fFgEFDWNrSXNSZWNvbW1lbmSTrhg47e1ACvg1eJuZekxjskRYSA==">
+</div>
+
+    <div class="navigation">
+        <span class="back"><a href="apppromotionbrandlist.aspx">返回列表</a></span><b>您当前的位置：首页
+            &gt; 促销活动 &gt; 促销活动信息</b>
+    </div>
+    <div class="spClear">
+    </div>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="msgtable">
+        <tbody><tr>
+            <th colspan="2" align="left">
+                查找品牌:
+            </th>
+        </tr>
+        <tr>
+            <td width="70" align="right">
+                活动类型：
+            </td>
+            <td align="left">
+                <input name="txtsearch" type="text" id="txtsearch" class="input">
+                <input type="submit" name="btnSearch" value="查找" id="btnSearch"><br>
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                选择结果：
+            </td>
+            <td>
+                <select name="ddlvalue" id="ddlvalue">
+	<option value="">请查找</option>
+
+</select>
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                缩略图：
+            </td>
+            <td>
+                <div class="fileUpload" path="/upload/apppromotionbrand/thumb//">
+                    <input type="hidden" name="hfthumb" id="hfthumb">
+                    <div class="fileTools">
+                        <input type="text" class="input w160 filedisplay">
+                        <a href="javascript:;" class="files">
+                            <input name="File3" type="file" id="File3" class="upload" onchange="_upfile(this)"></a>
+                        <span class="uploading">正在上传，请稍后……</span>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                幻灯图：
+            </td>
+            <td>
+                <div class="fileUpload m" path="/upload/apppromotionbrand/banner//">
+                    <input type="hidden" name="hfbannel" id="hfbannel">
+                    <div class="fileTools">
+                        <input type="text" class="input w160 filedisplay">
+                        <a href="javascript:;" class="files">
+                            <input name="File4" type="file" id="File4" class="upload" onchange="_upfile(this)"></a>
+                        <span class="uploading">正在上传，请稍后……</span>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                标题：
+            </td>
+            <td>
+                <input name="txthtmltitle" type="text" id="txthtmltitle" class="input">
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                品牌拼音：
+            </td>
+            <td>
+                <input name="txtBrandABC" type="text" id="txtBrandABC" class="input">必须和福家网一样
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                是否推荐：
+            </td>
+            <td>
+                <input id="ckIsRecommend" type="checkbox" name="ckIsRecommend">
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                简单介绍：
+            </td>
+            <td>
+                <textarea name="txtdescript" rows="2" cols="20" id="txtdescript" class="input w160" style="height:200px;width:500px;"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                规则介绍：
+            </td>
+            <td>
+                <div class="ke-container ke-container-default" style="width: 500px;"><div style="display:block;" class="ke-toolbar" unselectable="on"><span class="ke-outline" data-name="fontname" title="字体" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-fontname" unselectable="on"></span></span><span class="ke-outline" data-name="fontsize" title="文字大小" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-fontsize" unselectable="on"></span></span><span class="ke-inline-block ke-separator"></span><span class="ke-outline" data-name="forecolor" title="文字颜色" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-forecolor" unselectable="on"></span></span><span class="ke-outline" data-name="hilitecolor" title="文字背景" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-hilitecolor" unselectable="on"></span></span><span class="ke-outline" data-name="bold" title="粗体(Ctrl+B)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-bold" unselectable="on"></span></span><span class="ke-outline" data-name="italic" title="斜体(Ctrl+I)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-italic" unselectable="on"></span></span><span class="ke-outline" data-name="underline" title="下划线(Ctrl+U)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-underline" unselectable="on"></span></span><span class="ke-outline" data-name="removeformat" title="删除格式" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-removeformat" unselectable="on"></span></span><span class="ke-inline-block ke-separator"></span><span class="ke-outline" data-name="justifyleft" title="左对齐" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-justifyleft" unselectable="on"></span></span><span class="ke-outline" data-name="justifycenter" title="居中" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-justifycenter" unselectable="on"></span></span><span class="ke-outline" data-name="justifyright" title="右对齐" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-justifyright" unselectable="on"></span></span><span class="ke-outline" data-name="insertorderedlist" title="编号" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-insertorderedlist" unselectable="on"></span></span><span class="ke-outline" data-name="insertunorderedlist" title="项目符号" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-insertunorderedlist" unselectable="on"></span></span><span class="ke-inline-block ke-separator"></span><span class="ke-outline" data-name="image" title="图片" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-image" unselectable="on"></span></span><span class="ke-outline" data-name="flash" title="Flash" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-flash" unselectable="on"></span></span><span class="ke-outline" data-name="media" title="视音频" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-media" unselectable="on"></span></span><span class="ke-outline" data-name="link" title="超级链接" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-link" unselectable="on"></span></span><span class="ke-outline" data-name="fullscreen" title="全屏显示(Esc)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-fullscreen" unselectable="on"></span></span></div><div style="display: block; height: 161px;" class="ke-edit"><iframe class="ke-edit-iframe" hidefocus="true" frameborder="0" style="width: 100%; height: 161px;"></iframe><textarea class="ke-edit-textarea" hidefocus="true" style="width: 100%; height: 161px; display: none;"></textarea></div><div class="ke-statusbar"><span class="ke-inline-block ke-statusbar-center-icon"></span><span class="ke-inline-block ke-statusbar-right-icon"></span></div></div><textarea name="txtrulesInfo" rows="8" cols="20" id="txtrulesInfo" class="input" style="height: 200px; width: 500px; display: none;"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                产品介绍：
+            </td>
+            <td>
+                <div class="ke-container ke-container-default" style="width: 500px;"><div style="display:block;" class="ke-toolbar" unselectable="on"><span class="ke-outline" data-name="fontname" title="字体" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-fontname" unselectable="on"></span></span><span class="ke-outline" data-name="fontsize" title="文字大小" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-fontsize" unselectable="on"></span></span><span class="ke-inline-block ke-separator"></span><span class="ke-outline" data-name="forecolor" title="文字颜色" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-forecolor" unselectable="on"></span></span><span class="ke-outline" data-name="hilitecolor" title="文字背景" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-hilitecolor" unselectable="on"></span></span><span class="ke-outline" data-name="bold" title="粗体(Ctrl+B)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-bold" unselectable="on"></span></span><span class="ke-outline" data-name="italic" title="斜体(Ctrl+I)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-italic" unselectable="on"></span></span><span class="ke-outline" data-name="underline" title="下划线(Ctrl+U)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-underline" unselectable="on"></span></span><span class="ke-outline" data-name="removeformat" title="删除格式" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-removeformat" unselectable="on"></span></span><span class="ke-inline-block ke-separator"></span><span class="ke-outline" data-name="justifyleft" title="左对齐" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-justifyleft" unselectable="on"></span></span><span class="ke-outline" data-name="justifycenter" title="居中" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-justifycenter" unselectable="on"></span></span><span class="ke-outline" data-name="justifyright" title="右对齐" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-justifyright" unselectable="on"></span></span><span class="ke-outline" data-name="insertorderedlist" title="编号" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-insertorderedlist" unselectable="on"></span></span><span class="ke-outline" data-name="insertunorderedlist" title="项目符号" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-insertunorderedlist" unselectable="on"></span></span><span class="ke-inline-block ke-separator"></span><span class="ke-outline" data-name="image" title="图片" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-image" unselectable="on"></span></span><span class="ke-outline" data-name="flash" title="Flash" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-flash" unselectable="on"></span></span><span class="ke-outline" data-name="media" title="视音频" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-media" unselectable="on"></span></span><span class="ke-outline" data-name="link" title="超级链接" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-link" unselectable="on"></span></span><span class="ke-outline" data-name="fullscreen" title="全屏显示(Esc)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-fullscreen" unselectable="on"></span></span></div><div style="display: block; height: 161px;" class="ke-edit"><iframe class="ke-edit-iframe" hidefocus="true" frameborder="0" style="width: 100%; height: 161px;"></iframe><textarea class="ke-edit-textarea" hidefocus="true" style="width: 100%; height: 161px; display: none;"></textarea></div><div class="ke-statusbar"><span class="ke-inline-block ke-statusbar-center-icon"></span><span class="ke-inline-block ke-statusbar-right-icon"></span></div></div><textarea name="txttemplate" rows="8" cols="20" id="txttemplate" class="input" style="height: 200px; width: 500px; display: none;"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                开始时间 ：
+            </td>
+            <td>
+                <input name="txtstarttime" type="text" id="txtstarttime" class="input Wdate w160 required" onfocus="WdatePicker()">
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                结束时间 ：
+            </td>
+            <td>
+                <input name="txtendtime" type="text" id="txtendtime" class="input Wdate w160 required" onfocus="WdatePicker()">
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                购买过的人数：
+            </td>
+            <td>
+                <input name="txtpercount" type="text" value="0" id="txtpercount" class="input" style="width:40px;">
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                折扣力度：
+            </td>
+            <td>
+                <input name="txtdiscount" type="text" value="0" id="txtdiscount" class="input" style="width:40px;">
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                团购期数：
+            </td>
+            <td>
+                <input name="txtperiod" type="text" id="txtperiod" class="input" style="width:40px;">
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                排序：
+            </td>
+            <td>
+                <input name="txtsort" type="text" value="0" id="txtsort" class="input" style="width:40px;">
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                申请数：
+            </td>
+            <td>
+                <input name="txtappcount" type="text" value="0" id="txtappcount" class="input" style="width:40px;">
+            </td>
+        </tr>
+    </tbody></table>
+    <div style="margin-top: 10px; margin-left: 180px">
+        <input type="submit" name="btnSave" value="确认保存" id="btnSave" class="submit"><input name="重置" type="reset" class="submit" value="重置">
+    </div>
+    </form>
+
+
+</body></html>

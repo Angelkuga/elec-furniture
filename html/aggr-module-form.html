@@ -1,0 +1,117 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head id="Head1"><title>
+
+</title><link rel="stylesheet" type="text/css" href="../css/style.css">
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/jquery.form.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/additional-methods.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/messages_cn.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            //表单验证JS
+            $("#form1").validate({
+                //出错时添加的标签
+                errorElement: "span",
+                showErrors: function (errorMap, errorList) {
+                    if (errorList.length > 0) {
+                        if ($("#" + errorList[0].element.id).next() != null) {
+                            $("#" + errorList[0].element.id).next().remove();
+                        }
+                    }
+                    this.defaultShowErrors();
+                },
+                success: function (label) {
+                    //正确时的样式
+                    label.text(" ").addClass("success");
+                }
+            });
+        });
+    </script>
+</head>
+<body style="padding:10px;">
+<form name="form1" method="post" action="aggregationtypeinfo.aspx" id="form1" novalidate="novalidate">
+<div>
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="">
+</div>
+
+    <div class="navigation">
+      <span class="back"><a href="aggregationlist.aspx">返回列表</a></span><b>您当前的位置：首页 &gt; 信息管理 &gt; 聚合信息</b>
+    </div>
+    <div class="spClear"></div>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="msgtable">
+        <tbody><tr>
+            <th colspan="2" align="left">聚合信息模块</th>
+        </tr>
+        <tr>
+            <td width="160px" align="right">
+                上级模块 ：
+            </td>
+            <td align="left">
+                <select name="ddlparent" id="ddlparent" class="select">
+                	<option value="0">根模块</option>
+                	<option value="41">首页-推荐卖场广告</option>
+                	<option value="40">首页-推荐卖场右侧广告</option>
+                	<option value="39">首页-推荐卖场切换广告</option>
+                	<option value="37">家具卖场</option>
+                	<option value="34">经销店铺-按品牌</option>
+                	<option value="33">品牌厂家-按品牌</option>
+                	<option value="29">销售产品</option>
+                	<option value="28">经销店铺</option>
+                	<option value="27">品牌厂家</option>
+                	<option value="17">首页-搜索</option>
+                	<option value="14">首页-经销商列表</option>
+                	<option value="9">首页-家具卖场信息</option>
+                	<option value="6">首页-优秀品牌厂家</option>
+                	<option value="1">首页模块-产品首页</option>
+
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                名称 ：
+            </td>
+            <td align="left">
+                <input name="txttitle" type="text" id="txttitle" class="input">
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                副名称 ：
+            </td>
+            <td align="left">
+                <input name="txttitle1" type="text" id="txttitle1" class="input">
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                缩略图 ：
+            </td>
+            <td align="left">
+                <input name="txtthumb" type="text" id="txtthumb" class="input">
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                连接地址 ：
+            </td>
+            <td align="left">
+                <input name="txturl" type="text" id="txturl" class="input">
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                排序 ：
+            </td>
+            <td align="left">
+                <input name="txtsort" type="text" value="0" id="txtsort" class="input" style="width:40px;">
+            </td>
+        </tr>
+    </tbody></table>
+    <div style="margin-top:10px; margin-left:180px">
+  <input type="submit" name="btnSave" value="确认保存" id="btnSave" class="submit"><input name="重置" type="reset" class="submit" value="重置">
+</div>
+</form>
+
+
+</body></html>

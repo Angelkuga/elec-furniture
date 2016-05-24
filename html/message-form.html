@@ -1,0 +1,73 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>
+
+</title><link rel="stylesheet" type="text/css" href="../css/style.css">
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/jquery.form.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/additional-methods.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/messages_cn.js"></script>
+    <script type="text/javascript">
+        function Validate() {
+            var txtphone = $("#txtphone").val();
+            var txtcontent = $("#txtcontent").val();
+
+            if (txtphone == "") {
+                alert('抱歉，发送号码不能为空！');
+                $("#txtphone").focus();
+                return false;
+            }
+            if (txtcontent == "") {
+                alert('抱歉，短信内容不能为空！');
+                $("#txtcontent").focus();
+                return false;
+            }
+            if (txtcontent.length>250) {
+                alert('抱歉，短信内容长度不能超过250个字！');
+                $("#txtcontent").focus();
+                return false;
+            }
+            return true;
+        };
+        function Reset() {
+            $("#txtphone").val() = "";
+            $("#txtcontent").val() = "";
+        }
+    </script>
+</head>
+<body style="padding:10px;">
+<form name="form1" method="post" action="smssend.aspx" id="form1">
+<div>
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTgwMzU5MTMxNWRk/CnY0A5DQXvDEZKI/ipRcpcvd4U=">
+</div>
+
+    <div class="navigation">
+      <span class="back"><a href="smslist.aspx">返回列表</a></span><b>您当前的位置：首页 &gt; 短信管理 &gt; 短信编辑</b>
+    </div>
+    <div class="spClear"></div>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="msgtable">
+        <tbody><tr>
+            <th colspan="2" align="left">短信编辑</th>
+        </tr>
+        <tr>
+	        <td width="100px" align="right">发送号码：</td>
+	        <td>
+		        <input name="txtphone" type="text" id="txtphone" class="input w160 required" style="width:480px;">
+	        </td>
+        </tr>
+        <tr>
+            <td align="right">
+                短信内容 ：
+            </td>
+            <td height="25" width="*">
+                <textarea name="txtcontent" rows="2" cols="20" id="txtcontent" class="input w160 required" style="height:110px;width:480px;"></textarea>
+
+            </td>
+        </tr>
+    </tbody></table>
+    <div style="margin-top:10px; margin-left:110px">
+  <input type="submit" name="btnSave" value="确认保存" onclick="return Validate();" id="btnSave" class="submit"><input name="重置" type="reset" onclick="Reset();" class="submit" value="重置">
+</div>
+</form>
+
+
+</body></html>

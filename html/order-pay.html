@@ -1,0 +1,119 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head id="Head1"><title>
+
+</title><link rel="stylesheet" type="text/css" href="../css/style.css">
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/jquery.form.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/additional-methods.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/messages_cn.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//My97DatePicker/WdatePicker.js"></script><link href="http://www.jiajuks.com//resource//My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript">
+        $(function () {
+            //表单验证JS
+            $("#form1").validate({
+                //出错时添加的标签
+                errorElement: "span",
+                showErrors: function (errorMap, errorList) {
+                    if (errorList.length > 0) {
+                        if ($("#" + errorList[0].element.id).next() != null) {
+                            $("#" + errorList[0].element.id).next().remove();
+                        }
+                    }
+                    this.defaultShowErrors();
+                },
+                success: function (label) {
+                    //正确时的样式
+                    label.text(" ").addClass("success");
+                }
+            });
+        });
+    </script>
+</head>
+<body style="padding:10px;">
+<form name="form1" method="post" action="grouporderpayinfo.aspx" id="form1" novalidate="novalidate">
+<div>
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKLTY3MzAzMDkyNg9kFgICAw9kFgQCBQ8QZBAVAg/or7fpgInmi6nnsbvlnosJ5oql5ZCN6LS5FQIAAzEwMRQrAwJnZ2RkAgsPEGQQFQMP6K+36YCJ5oup54q25oCBBuacquS7mAblt7Hku5gVAwABMAExFCsDA2dnZ2RkZJzdZzaA525v9JG+H0QgXhhjYaXI">
+</div>
+
+    <div class="navigation">
+      <span class="back"><a href="grouporderpaylist.aspx">返回列表</a></span><b>您当前的位置：首页 &gt; 订单管理 &gt; 订单支付信息</b>
+    </div>
+    <div class="spClear"></div>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="msgtable">
+        <tbody><tr>
+            <th colspan="2" align="left">订单支付信息</th>
+        </tr>
+        <tr>
+            <td align="right" width="160">
+                订单编号 ：
+            </td>
+            <td align="left">
+                <input name="txtgrouporderno" type="text" id="txtgrouporderno" class="input">
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                支付编号 ：
+            </td>
+            <td align="left">
+                <input name="txtpaycode" type="text" id="txtpaycode" class="input">
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                支付类型 ：
+            </td>
+            <td align="left">
+                <select name="ddlpaytype" id="ddlpaytype" class="select selectNone">
+	<option value="">请选择类型</option>
+	<option value="101">报名费</option>
+
+</select>
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                支付金额 ：
+            </td>
+            <td align="left">
+                <input name="txtpaymoney" type="text" value="0" id="txtpaymoney" class="input">
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                描述 ：
+            </td>
+            <td align="left">
+                <input name="txtdescript" type="text" id="txtdescript" class="input">
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                支付状态 ：
+            </td>
+            <td align="left">
+                <select name="ddlpaystatus" id="ddlpaystatus" class="select selectNone">
+                	<option value="">请选择状态</option>
+                	<option value="0">未付</option>
+                	<option value="1">己付</option>
+
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                支付时间 ：
+            </td>
+            <td align="left">
+                <input name="txtpaydatetime" type="text" id="txtpaydatetime" disabled="disabled" class="input">
+            </td>
+        </tr>
+    </tbody></table>
+    
+    <div style="margin-top:10px; margin-left:140px">
+  <input type="submit" name="btnSave" value="确认保存" id="btnSave" class="submit"><input name="重置" type="reset" class="submit" value="重置">
+</div>
+</form>
+
+
+</body></html>

@@ -1,0 +1,130 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head id="Head1"><title>
+
+</title><link rel="stylesheet" type="text/css" href="../css/style.css">
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/jquery.form.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/additional-methods.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/messages_cn.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//My97DatePicker/WdatePicker.js"></script><link href="http://www.jiajuks.com//resource//My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/jquery.area.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//editor/kindeditor/kindeditor-min.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/fileupload.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            //表单验证JS
+            $("#form1").validate({
+                //出错时添加的标签
+                errorElement: "span",
+                showErrors: function (errorMap, errorList) {
+                    if (errorList.length > 0) {
+                        if ($("#" + errorList[0].element.id).next() != null) {
+                            $("#" + errorList[0].element.id).next().remove();
+                        }
+                    }
+                    this.defaultShowErrors();
+                },
+                success: function (label) {
+                    //正确时的样式
+                    label.text(" ").addClass("success");
+                }
+            });
+        });
+    </script>
+</head>
+<body style="padding:10px;">
+<form name="form1" method="post" action="apppromotioncusinfo.aspx" id="form1" novalidate="novalidate">
+<div>
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTE5MzY5NzM3NDkPZBYCAgMPZBYCAgEPEA8WBh4NRGF0YVRleHRGaWVsZAUFdGl0bGUeDkRhdGFWYWx1ZUZpZWxkBQJpZB4LXyFEYXRhQm91bmRnZBAVCAnor7fpgInmi6kG5aSn5pmuBuaLv+mTgQbmpbfmqKEJ5pav5pu85YWLBueOieW6rQnms5XmnJfku5UJ6ZuF5qKm6I6OFQgAAjE1AjE2AjE3AjE4AjIxAjI5AjM2FCsDCGdnZ2dnZ2dnZGRkuMfBLA43gUtxDW1CGwoOQVpTVUk=">
+</div>
+
+    <div class="navigation">
+      <span class="back"><a href="apppromotioncuslist.aspx">返回列表</a></span><b>您当前的位置：首页 &gt; 促销活动 &gt; 促销活动信息</b>
+    </div>
+    <div class="spClear"></div>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="msgtable">
+        <tbody><tr>
+            <th colspan="2" align="left">申请记录</th>
+        </tr>
+        <tr>
+            <td width="160" align="right">
+                品牌：
+            </td>
+            <td align="left">
+                <select name="ddlappbrand" id="ddlappbrand" class="select" style="width:160px;">
+	<option value="">请选择</option>
+	<option value="15">大普</option>
+	<option value="16">拿铁</option>
+	<option value="17">楷模</option>
+	<option value="18">斯曼克</option>
+	<option value="21">玉庭</option>
+	<option value="29">法朗仕</option>
+	<option value="36">雅梦莎</option>
+
+</select>
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                姓名 ：
+            </td>
+            <td align="left">
+                <input name="txtname" type="text" id="txtname" class="input">
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                电话 ：
+            </td>
+            <td align="left">
+                <input name="txtphone" type="text" id="txtphone" class="input">
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                手机 ：
+            </td>
+            <td align="left">
+                <input name="txtmphone" type="text" id="txtmphone" class="input">
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                邮件 ：
+            </td>
+            <td align="left">
+                <input name="txtemail" type="text" id="txtemail" class="input">
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                地址 ：
+            </td>
+            <td align="left">
+                <input name="txtaddress" type="text" id="txtaddress" class="input w380">
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                描述 ：
+            </td>
+            <td align="left">
+                <input name="txtdescript" type="text" id="txtdescript" class="textarea w250" style="height:60px;">
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                联系记录 ：
+            </td>
+            <td align="left">
+                <textarea name="txtcus" rows="2" cols="20" id="txtcus" class=" textarea w380" style="height:80px;"></textarea>
+            </td>
+        </tr>
+    </tbody></table>
+    <div style="margin-top:10px; margin-left:180px">
+  <input type="submit" name="btnSave" value="确认保存" id="btnSave" class="submit"><input name="重置" type="reset" class="submit" value="重置">
+</div>
+</form>
+
+
+</body></html>

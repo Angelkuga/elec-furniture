@@ -1,0 +1,121 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head id="Head1"><title>
+	消费用户信息
+</title><link rel="stylesheet" type="text/css" href="../css/style.css">
+    <script type="text/javascript" src="http://www.jiajuks.com//resource/script/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource/script/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource/script/jquery.form.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource/script/additional-methods.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource/script/messages_cn.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource/script/fileupload.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource/My97DatePicker/WdatePicker.js"></script><link href="http://www.jiajuks.com//resource/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript">
+        $(function () {
+            //表单验证JS
+            $("#form1").validate({
+                //出错时添加的标签
+                errorElement: "span",
+                showErrors: function (errorMap, errorList) {
+                    if (errorList.length > 0) {
+                        if ($("#" + errorList[0].element.id).next() != null) {
+                            $("#" + errorList[0].element.id).next().remove();
+                        }
+                    }
+                    this.defaultShowErrors();
+                },
+                success: function (label) {
+                    //正确时的样式
+                    label.text(" ").addClass("success");
+                }
+            });
+        });
+    </script>
+    <style type="text/css">
+        .adType
+        {
+            display: none;
+        }
+    </style>
+</head>
+<body style="padding: 10px;">
+    <form name="form1" method="post" action="customerinfo.aspx?edit=1&amp;id=195" id="form1" novalidate="novalidate">
+<div>
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJNTIxMDQ4MDQ3D2QWAgIDD2QWBAIBDxBkDxYCZgIBFgIQBQbmiYvmnLoFATFnEAUG6YKu566xBQEyZ2RkAgsPEGQPFgJmAgEWAhAFCeacqua/gOa0uwUBMGcQBQbmv4DmtLsFATFnZGRkKJu/IM+pxUt0kb/VDmFO29csj9M=">
+</div>
+
+    <div class="navigation">
+        <span class="back"><a href="customerlist.aspx">返回列表</a></span><b>您当前的位置：首页 &gt;
+            会员管理 &gt; 消费用户信息</b>
+    </div>
+    <div class="spClear">
+    </div>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="msgtable">
+        <tbody><tr>
+            <th colspan="2" align="left">
+                消费用户信息
+            </th>
+        </tr>
+        <tr>
+            <td width="160px" align="right">
+                账号类型 ：
+            </td>
+            <td align="left">
+                <select name="ddltype" id="ddltype" class="select">
+	<option value="1">手机</option>
+	<option selected="selected" value="2">邮箱</option>
+
+</select>
+            </td>
+        </tr>
+        <tr>
+            <td width="160px" align="right">
+                账号名称 ：
+            </td>
+            <td align="left">
+                <input name="txtname" type="text" value="850128@qq.com" id="txtname" class="input w250">
+            </td>
+        </tr>
+        <tr>
+            <td width="160px" align="right" style="color: #f30">
+                账号密码 ：
+            </td>
+            <td align="left">
+                <input name="txtpwd" type="text" id="txtpwd" class="input  w250">
+                <span style="color: #FF0000;">密码重设置填写不改留空</span>
+            </td>
+        </tr>
+        <tr>
+            <td width="160px" align="right">
+                注册IP ：
+            </td>
+            <td align="left">
+                <input name="txtIP" type="text" value="221.232.216.161" id="txtIP" class="input  w250">
+            </td>
+        </tr>
+        <tr>
+            <td width="160px" align="right">
+                注册时间 ：
+            </td>
+            <td align="left">
+                <input name="txtregtime" type="text" value="2016-5-24 0:44:10" id="txtregtime" class="input w250">
+            </td>
+        </tr>
+        <tr>
+            <td width="160px" align="right">
+                状态：
+            </td>
+            <td align="left">
+                <select name="ddlustatus" id="ddlustatus" class="select">
+	<option selected="selected" value="0">未激活</option>
+	<option value="1">激活</option>
+
+</select>
+            </td>
+        </tr>
+    </tbody></table>
+    <div style="margin-top: 10px; margin-left: 180px">
+        <input type="submit" name="btnSave" value="确认保存" id="btnSave" class="submit"><input name="重置" type="reset" class="submit" value="重置">
+    </div>
+    </form>
+
+
+</body></html>

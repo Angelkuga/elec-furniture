@@ -1,0 +1,316 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head id="Head1"><title>
+
+</title><link rel="stylesheet" type="text/css" href="../css/style.css">
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/jquery.form.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/additional-methods.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/messages_cn.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//My97DatePicker/WdatePicker.js"></script><link href="http://www.jiajuks.com//resource//My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/jquery.area.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//editor/kindeditor/kindeditor-min.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/fileupload.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//listbox/jquery.dualListBox-1.3.min.js"></script>
+
+    <style type="text/css">
+        .formTable{border:1px solid #ccc;}
+        .formTable tr th{background:#ededed; text-align:left;}
+        .formTable tr td{border:none; padding-top:8px; padding-bottom:8px;}
+    </style>
+    <script type="text/javascript">
+        $(function () {
+        
+            //表单验证JS
+            $("#form1").validate({
+                //出错时添加的标签
+                errorElement: "span",
+                showErrors: function (errorMap, errorList) {
+                    if (errorList.length > 0) {
+                        if ($("#" + errorList[0].element.id).next() != null) {
+                            $("#" + errorList[0].element.id).next().remove();
+                        }
+                    }
+                    this.defaultShowErrors();
+                },
+                success: function (label) {
+                    //正确时的样式
+                    label.text(" ").addClass("success");
+                }
+            });
+
+            var editor;
+            KindEditor.ready(function (K) {
+                editor = K.create('#txtdescript', {
+                    allowPreviewEmoticons: true,
+                    allowImageUpload: true,
+                    allowFileManager: true,
+                    
+                    allowMediaUpload: true,
+                    items: [
+						'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+						'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+						'insertunorderedlist', '|', 'image', 'flash', 'media', 'link', 'fullscreen']
+                });
+            });
+            $.configureBoxes();
+        });
+    </script>
+<link href="http://www.jiajuks.com//resource//editor/kindeditor/themes/default/default.css" rel="stylesheet"></head>
+<body style="padding:10px;">
+<form name="form1" method="post" action="productcategoryinfo.aspx" id="form1" enctype="multipart/form-data" novalidate="novalidate">
+<div>
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="">
+</div>
+
+    <div class="navigation">
+    
+      <span class="back"><a href="productcategorylist.aspx">返回列表</a></span><b>您当前的位置：首页 &gt; 产品管理 &gt; 产品分类</b>
+    </div>
+    <div class="spClear"></div>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="msgtable">
+        <tbody><tr>
+            <th colspan="3" align="left">产品分类</th>
+        </tr>
+        <tr>
+            <td width="770px" valign="top">
+                <table class="formTable" width="770px">
+                    <tbody><tr>
+                        <th colspan="2">分类信息：</th>
+                    </tr>
+                      <tr>
+                        <td align="right" width="80">分类名称：</td>
+                        <td><input name="txttitle" type="text" id="txttitle" class="input required"></td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            字母索引 ：
+                        </td>
+                        <td align="left">
+                            <input name="txtletter" type="text" id="txtletter" class="input required">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            重写路径 ：
+                        </td>
+                        <td align="left">
+                            <input name="txtrewritetitle" type="text" id="txtrewritetitle" class="input">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            上级分类 ：
+                        </td>
+                        <td align="left">
+                            <select name="ddlparent" id="ddlparent" class="select required">
+                            	<option value="0">根级</option>
+                            	<option value="7">|--卧室家具</option>
+                            	<option value="8">|----床</option>
+                            	<option value="13">|----床头柜</option>
+                            	<option value="14">|----衣柜</option>
+                            	<option value="15">|----斗柜</option>
+                            	<option value="16">|----梳妆台/镜</option>
+                            	<option value="17">|----梳妆凳</option>
+                            	<option value="18">|----床尾凳</option>
+                            	<option value="19">|----衣架</option>
+                            	<option value="20">|----穿衣镜</option>
+                            	<option value="21">|----床垫</option>
+                            	<option value="22">|----床屏</option>
+                            	<option value="23">|----床头板</option>
+                            	<option value="24">|----卧室其他</option>
+                            	<option value="64">|----卧室套组合</option>
+                            	<option value="9">|--客厅家具</option>
+                            	<option value="25">|----沙发</option>
+                            	<option value="26">|----茶几</option>
+                            	<option value="27">|----角几</option>
+                            	<option value="28">|----电视柜</option>
+                            	<option value="29">|----展示柜</option>
+                            	<option value="30">|----酒柜</option>
+                            	<option value="31">|----休闲椅</option>
+                            	<option value="32">|----脚踏</option>
+                            	<option value="33">|----贵妃椅</option>
+                            	<option value="34">|----玄关/镜</option>
+                            	<option value="35">|----鞋柜</option>
+                            	<option value="36">|----话几</option>
+                            	<option value="37">|----花架</option>
+                            	<option value="38">|----屏风</option>
+                            	<option value="39">|----客厅其他</option>
+                            	<option value="65">|----客厅套组合</option>
+                            	<option value="10">|--餐厅家具</option>
+                            	<option value="40">|----餐桌</option>
+                            	<option value="41">|----餐椅</option>
+                            	<option value="42">|----餐边柜/镜</option>
+                            	<option value="43">|----橱柜</option>
+                            	<option value="44">|----吧台</option>
+                            	<option value="45">|----吧椅</option>
+                            	<option value="46">|----餐车</option>
+                            	<option value="47">|----餐厅其他</option>
+                            	<option value="66">|----餐厅套组合</option>
+                            	<option value="11">|--书房家具</option>
+                            	<option value="48">|----书桌/电脑桌</option>
+                            	<option value="49">|----书/电脑椅</option>
+                            	<option value="50">|----书柜</option>
+                            	<option value="52">|----书/报架</option>
+                            	<option value="54">|----书房其他</option>
+                            	<option value="67">|----书房套组合</option>
+                            	<option value="12">|--儿童家具</option>
+                            	<option value="55">|----儿童床</option>
+                            	<option value="56">|----儿童桌</option>
+                            	<option value="57">|----儿童椅</option>
+                            	<option value="58">|----儿童衣柜</option>
+                            	<option value="59">|----儿童床头柜</option>
+                            	<option value="60">|----儿童书柜</option>
+                            	<option value="61">|----儿童斗柜</option>
+                            	<option value="62">|----儿童其他</option>
+                            	<option value="68">|----儿童套组合</option>
+                            	<option value="69">|--户外家具</option>
+                            	<option value="70">|----休闲椅</option>
+                            	<option value="71">|----吊椅</option>
+                            	<option value="72">|----桌子</option>
+                            	<option value="73">|----户外套组合</option>
+
+                            </select>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            关键字 ：
+                        </td>
+                        <td align="left">
+                            <input name="txtkeywords" type="text" id="txtkeywords" class="input">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            模版路径：
+                        </td>
+                        <td align="left">
+                            <input name="txttemplate" type="text" id="txttemplate" class="input">
+                        </td>
+                    </tr>
+                </tbody></table>
+                <div class="spClear"></div>
+                <table class="formTable" width="770px">
+                    <tbody><tr>
+                        <th colspan="2">类型绑定:</th>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="typelist">
+                            <table>
+                                <tbody><tr>
+                                    <td><select size="4" name="box1View" multiple="multiple" id="box1View" style="height:280px;width:220px;"><option value="89">七斗柜</option><option value="71">三人沙发</option><option value="85">三斗柜</option><option value="80">三门书柜</option><option value="76">三门衣柜</option><option value="117">三门酒柜</option><option value="61">上下床</option><option value="110">中硬</option><option value="112">中软</option><option value="134">主机架</option><option value="103">九斗柜</option><option value="51">书房其他</option><option value="50">书报架</option><option value="55">书架</option><option value="37">书柜</option><option value="35">书桌</option><option value="70">二人沙发</option><option value="120">二斗柜</option><option value="81">二门书柜</option><option value="77">二门衣柜</option><option value="116">二门酒柜</option><option value="58">五尺床(宽1.5m)</option><option value="128">五斗/四斗/三斗柜</option><option value="87">五斗柜</option><option value="93">五门书柜</option><option value="92">五门衣柜</option><option value="19">休闲椅</option><option value="53">儿童书柜</option><option value="43">儿童其他</option><option value="39">儿童床</option><option value="56">儿童床</option><option value="119">儿童床头柜</option><option value="52">儿童床头柜</option><option value="54">儿童斗柜</option><option value="40">儿童桌</option><option value="137">儿童桌</option><option value="41">儿童椅</option><option value="42">儿童衣柜</option><option value="90">八斗柜</option><option value="106">六尺床(宽1.8m)</option><option value="88">六斗柜</option><option value="78">六门书柜</option><option value="74">六门衣柜</option><option value="138">其他书柜</option><option value="122">其它</option><option value="36">办公椅</option><option value="73">功能沙发</option><option value="59">加大床</option><option value="69">单人沙发</option><option value="98">单门书柜</option><option value="91">单门衣柜</option><option value="115">单门酒柜</option><option value="14">卧室其他</option><option value="30">吧台</option><option value="31">吧椅</option><option value="121">四人沙发</option><option value="57">四尺床(宽1.2m)</option><option value="86">四斗柜</option><option value="79">四门书柜</option><option value="75">四门衣柜</option><option value="118">四门酒柜</option><option value="65">圆形</option><option value="84">圆茶几</option><option value="96">圆角几</option><option value="100">圆餐桌</option><option value="104">壁炉</option><option value="5">婴儿床</option><option value="34">客厅其他</option><option value="49">屏风</option><option value="21">展示柜</option><option value="47">床垫</option><option value="46">床头板</option><option value="7">床头柜</option><option value="11">床尾凳</option><option value="45">床屏</option><option value="136">床屏</option><option value="107">很硬</option><option value="113">很软</option><option value="135">托床</option><option value="67">扶手椅</option><option value="60">折叠床</option><option value="140">报架</option><option value="10">斗柜</option><option value="83">方茶几</option><option value="95">方角几</option><option value="101">方餐桌</option><option value="68">无扶手椅</option><option value="111">柔软</option><option value="9">梳妆凳</option><option value="8">梳妆台</option><option value="124">梳妆台</option><option value="129">梳妆台/镜</option><option value="125">梳妆镜</option><option value="66">椭圆形</option><option value="105">椭圆茶几</option><option value="102">椭圆餐桌</option><option value="29">橱柜</option><option value="64">正方形</option><option value="15">沙发</option><option value="62">沙发床</option><option value="126">玄关</option><option value="22">玄关/镜</option><option value="38">电脑桌</option><option value="139">电脑椅</option><option value="18">电视柜</option><option value="108">硬</option><option value="109">硬</option><option value="13">穿衣镜</option><option value="82">组合书柜</option><option value="130">组合梳妆台/镜</option><option value="72">组合沙发</option><option value="127">组合衣柜</option><option value="20">脚踏</option><option value="24">花架</option><option value="16">茶几</option><option value="131">衣帽架</option><option value="12">衣架</option><option value="6">衣柜</option><option value="17">角几</option><option value="25">话几</option><option value="44">贵妃椅</option><option value="114">转角沙发</option><option value="133">酒吧柜</option><option value="48">酒柜</option><option value="63">长方形</option><option value="94">长茶几</option><option value="97">长角几</option><option value="99">长餐桌</option><option value="132">门厅柜</option><option value="23">鞋柜</option><option value="33">餐厅其他</option><option value="26">餐桌</option><option value="27">餐椅</option><option value="32">餐车</option><option value="123">餐边柜</option><option value="28">餐边柜/镜</option></select></td>
+                                    <td>
+                                        <button id="to2" type="button">&nbsp;&gt;&nbsp;</button>
+
+                                        <button id="allTo2" type="button">&nbsp;&gt;&gt;&nbsp;</button>
+
+                                        <button id="allTo1" type="button">&nbsp;&lt;&lt;&nbsp;</button>
+
+                                        <button id="to1" type="button">&nbsp;&lt;&nbsp;</button>
+                                    </td>
+                                    <td>
+                                         <select size="4" name="box2View" multiple="multiple" id="box2View" style="height:280px;width:220px;"></select>
+                                    </td>
+                                </tr>
+                            </tbody></table>
+
+                        </td>
+                    </tr>
+                </tbody></table>
+            </td>
+            <td valign="top">
+                <table class="formTable" width="380">
+                    <tbody><tr>
+                        <th colspan="2">图片信息:</th>
+                    </tr>
+                    <tr>
+                        <td align="right" valign="top">形&nbsp;象&nbsp;&nbsp;图：</td>
+                        <td>
+                            <div class="fileUpload" path="/upload/productcategory/surface//">
+                                <input type="hidden" name="hfsurface" id="hfsurface">
+                                <div class="fileTools">
+                                    <input type="text" class="input w160 filedisplay">
+                                    <a href="javascript:;" class="files"><input name="File1" type="file" id="File1" class="upload" onchange="_upfile(this)"></a>
+                                    <span class="uploading">正在上传，请稍后……</span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">缩&nbsp;略&nbsp;&nbsp;图：</td>
+                        <td>
+                            <div class="fileUpload" path="/upload/productcategory/thumb//">
+                                <input type="hidden" name="hfthumb" id="hfthumb">
+                                <div class="fileTools">
+                                    <input type="text" class="input w160 filedisplay">
+                                    <a href="javascript:;" class="files"><input name="File3" type="file" id="File3" class="upload" onchange="_upfile(this)"></a>
+                                    <span class="uploading">正在上传，请稍后……</span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">广告幻灯：</td>
+                        <td>
+                            <div class="fileUpload m" path="/upload/productcategory/banner//">
+                                <input type="hidden" name="hfbannel" id="hfbannel">
+                                <div class="fileTools">
+                                    <input type="text" class="input w160 filedisplay">
+                                    <a href="javascript:;" class="files"><input name="File4" type="file" id="File4" class="upload" onchange="_upfile(this)"></a>
+                                    <span class="uploading">正在上传，请稍后……</span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody></table>
+                 <div class="spClear"></div>
+                
+
+                <table class="formTable" width="380">
+                    <tbody><tr>
+                        <th colspan="2">产品分类介绍:</th>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><div class="ke-container ke-container-default" style="width: 360px;"><div style="display:block;" class="ke-toolbar" unselectable="on"><span class="ke-outline" data-name="fontname" title="字体" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-fontname" unselectable="on"></span></span><span class="ke-outline" data-name="fontsize" title="文字大小" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-fontsize" unselectable="on"></span></span><span class="ke-inline-block ke-separator"></span><span class="ke-outline" data-name="forecolor" title="文字颜色" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-forecolor" unselectable="on"></span></span><span class="ke-outline" data-name="hilitecolor" title="文字背景" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-hilitecolor" unselectable="on"></span></span><span class="ke-outline" data-name="bold" title="粗体(Ctrl+B)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-bold" unselectable="on"></span></span><span class="ke-outline" data-name="italic" title="斜体(Ctrl+I)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-italic" unselectable="on"></span></span><span class="ke-outline" data-name="underline" title="下划线(Ctrl+U)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-underline" unselectable="on"></span></span><span class="ke-outline" data-name="removeformat" title="删除格式" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-removeformat" unselectable="on"></span></span><span class="ke-inline-block ke-separator"></span><span class="ke-outline" data-name="justifyleft" title="左对齐" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-justifyleft" unselectable="on"></span></span><span class="ke-outline" data-name="justifycenter" title="居中" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-justifycenter" unselectable="on"></span></span><span class="ke-outline" data-name="justifyright" title="右对齐" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-justifyright" unselectable="on"></span></span><span class="ke-outline" data-name="insertorderedlist" title="编号" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-insertorderedlist" unselectable="on"></span></span><span class="ke-outline" data-name="insertunorderedlist" title="项目符号" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-insertunorderedlist" unselectable="on"></span></span><span class="ke-inline-block ke-separator"></span><span class="ke-outline" data-name="image" title="图片" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-image" unselectable="on"></span></span><span class="ke-outline" data-name="flash" title="Flash" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-flash" unselectable="on"></span></span><span class="ke-outline" data-name="media" title="视音频" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-media" unselectable="on"></span></span><span class="ke-outline" data-name="link" title="超级链接" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-link" unselectable="on"></span></span><span class="ke-outline" data-name="fullscreen" title="全屏显示(Esc)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-fullscreen" unselectable="on"></span></span></div><div style="display: block; height: 100px;" class="ke-edit"><iframe class="ke-edit-iframe" hidefocus="true" frameborder="0" style="width: 100%; height: 100px;"></iframe><textarea class="ke-edit-textarea" hidefocus="true" style="width: 100%; height: 100px; display: none;"></textarea></div><div class="ke-statusbar"><span class="ke-inline-block ke-statusbar-center-icon"></span><span class="ke-inline-block ke-statusbar-right-icon"></span></div></div><textarea name="txtdescript" rows="5" cols="20" id="txtdescript" class="textarea required" style="width: 360px; display: none;"></textarea></td>
+                    </tr>
+                </tbody></table>
+                
+                
+                <div class="spClear"></div>
+                <table class="formTable" width="380">
+                    <tbody><tr>
+                        <th colspan="2">产品分类状态:</th>
+                    </tr>
+                    <tr>
+                        <td align="right">上/下线：</td>
+                        <td><select name="ddllinestatus" id="ddllinestatus" class="select selectNone" style="width:160px;">
+                        	<option value="">请选择</option>
+                        	<option value="0">待审核</option>
+                        	<option value="-1">正在审核</option>
+                        	<option value="1">通过</option>
+                        	<option value="-99">未通过</option>
+
+                        </select></td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            排序 ：
+                        </td>
+                        <td>
+                            <input name="txtsort" type="text" value="0" id="txtsort" class="input w160 required digits">
+                        </td>
+                    </tr>
+                    
+                </tbody></table>
+            </td>
+        </tr>
+    </tbody></table>
+    
+    <div style="margin-top:10px; margin-left:180px">
+  <input type="submit" name="btnSave" value="确认保存" id="btnSave" class="submit"><input name="重置" type="reset" class="submit" value="重置">
+</div>
+</form>
+
+
+</body></html>

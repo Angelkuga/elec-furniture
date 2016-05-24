@@ -1,0 +1,215 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>
+
+</title><link rel="stylesheet" type="text/css" href="../css/style.css">
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="../script/admin.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(".msgtable tr:nth-child(odd)").addClass("tr_bg"); //隔行变色
+            $(".msgtable tr").hover(
+			    function () {
+			        $(this).addClass("tr_hover_col");
+			    },
+			    function () {
+			        $(this).removeClass("tr_hover_col");
+			    }
+		    );
+        })
+    </script>
+</head>
+<body style="padding: 10px;">
+    <form name="form1" method="post" action="ipaddresspage.aspx?id=2" id="form1">
+<div>
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="">
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="/WebResource.axd?d=xjzboPOQIeEFrL_yw4Za4vxjP0o0AitblOVDfsyOpgVkySG3J3G7dgaRGRA9Vw0eql36LkyswJtIL8x9SuL9SszySpU1&amp;t=635671212306192854" type="text/javascript"></script>
+
+
+<script src="/ScriptResource.axd?d=dYcKlPrz2O6dRyZgNbp6Zy8qOXsDQYfJGelVRHtyUNsodcEbHIBWqnitRL0OSSGbofiWvh5e94MwVquvT7LFGyYMpBG5iGaIQz0o-m4dt0Ccg3vghIB6BgD9o8LQg3IvixJPrKLaOZTDJOZmVWeeK-CLBCzd5t1fuWD7UwlRYr_2uVsQ0&amp;t=ffffffffd850f5fa" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+if (typeof(Sys) === 'undefined') throw new Error('ASP.NET Ajax 客户端框架未能加载。');
+//]]>
+</script>
+
+<script src="/ScriptResource.axd?d=cLb0yGqqySDgn1VsoBrMwwrPHtsDrIAYYvm17yVnI8BRdURgo60hI-_CR3K_yOvt6i1-dmGlaOWOQEadnGHGl-TvjS_v_454qkniko7fPxcINLNr2Lls2IhJVw7AWAdM7MGAP6WznTmykBkHxhZchPkOjj7ORgkPRmaUsNdq35mwGs9C0&amp;t=ffffffffd850f5fa" type="text/javascript"></script>
+    <div class="navigation">
+        <span class="add"><a href="ipaddresspage.aspx">新增</a></span><b>您当前的位置：首页 &gt; 成员管理 &gt;
+            IP地址管理</b>
+    </div>
+    <div class="spClear">
+    </div>
+
+    <table>
+    <tbody><tr><td>二级域名 </td><td> <input name="txt_ip" type="text" value="haoen" id="txt_ip"> </td> 
+    <td>对应地址：</td><td> <input name="txt_url" type="text" value="http://www.jiajuks.com/company/360/index.aspx" id="txt_url">  </td>
+    <td>商家名称：</td><td> <input name="txt_name" type="text" value="豪恩" id="txt_name">  </td>
+    <td><input type="submit" name="bnt_save" value="修改" id="bnt_save" class="submit">
+        </td>
+    </tr>
+    </tbody></table>
+    <table>
+        <tbody><tr>
+            
+            
+            
+            
+            <td>
+                 <label>
+                    二级域名/商家名称：</label><input name="txt_search" type="text" id="txt_search" class="input">
+            </td>
+            
+            <td>
+               
+                <input type="submit" name="btnSearch" value="查询" id="btnSearch" class="submit">
+            </td>
+        </tr>
+    </tbody></table>
+    
+    <div class="spClear">
+        <script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ScriptManager1', document.getElementById('form1'));
+Sys.WebForms.PageRequestManager.getInstance()._updateControls([], [], [], 90);
+//]]>
+</script>
+
+    </div>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="msgtable">
+        <tbody><tr class="tr_bg">
+            <th width="40px" align="center">
+                选择
+            </th>
+            <th width="40px" align="center">
+                编号
+            </th>
+            <th align="center">
+                二级域名
+            </th>
+       
+         <th align="center">
+                商家
+            </th>
+              <th align="center">
+                跳转地址
+            </th>
+            <th align="center" width="160px">
+                添加时间
+            </th>
+            <th width="80px" align="right" style="padding-left: 5px;">
+                操作
+            </th>
+        </tr>
+        
+                <tr class="">
+                    <td align="center">
+                        <span class="checkall"><input id="rptList_ctl00_cb_id" type="checkbox" name="rptList$ctl00$cb_id"></span>
+                      
+                    </td>
+                    <td align="center">
+                        <span id="rptList_ctl00_lb_id">2</span>
+                    </td>
+                    <td align="center">
+                        
+                            haoen
+                    </td>
+                        <td align="center">
+                        
+                            豪恩
+                    </td>
+                    
+                        <td align="center">
+                        
+                            http://www.jiajuks.com/company/360/index.aspx
+                    </td>
+                    
+                    
+                    
+                    <td align="center">
+                        2015-5-29 11:37:21
+                    </td>
+                    <td align="right" style="padding-left: 5px;">
+                        <a href="IpAddressPage.aspx?id=2">修改</a></td>
+                </tr>
+            
+                <tr class="tr_bg">
+                    <td align="center">
+                        <span class="checkall"><input id="rptList_ctl01_cb_id" type="checkbox" name="rptList$ctl01$cb_id"></span>
+                      
+                    </td>
+                    <td align="center">
+                        <span id="rptList_ctl01_lb_id">1</span>
+                    </td>
+                    <td align="center">
+                        
+                            cs
+                    </td>
+                        <td align="center">
+                        
+                            臣森
+                    </td>
+                    
+                        <td align="center">
+                        
+                            http://jiajuks.com/company/341/index.aspx
+                    </td>
+                    
+                    
+                    
+                    <td align="center">
+                        2015-5-29 11:15:25
+                    </td>
+                    <td align="right" style="padding-left: 5px;">
+                        <a href="IpAddressPage.aspx?id=1">修改</a></td>
+                </tr>
+            
+    </tbody></table>
+    <div class="spClear">
+    </div>
+    <div style="line-height: 30px; height: 30px;">
+        <div id="Pagination" class="right flickr">
+            
+<!-- AspNetPager 7.3.2  Copyright:2003-2010 Webdiyer (www.webdiyer.com) -->
+<div id="AspNetPager1">
+<a disabled="disabled" style="margin-right:5px;">首页</a><a disabled="disabled" style="margin-right:5px;">上一页</a><span style="margin-right:5px;font-weight:Bold;color:red;">1</span><a disabled="disabled" style="margin-right:5px;">下一页</a><a disabled="disabled" style="margin-right:5px;">尾页</a>
+</div>
+<!-- AspNetPager 7.3.2  Copyright:2003-2010 Webdiyer (www.webdiyer.com) -->
+
+
+        </div>
+        <div class="left">
+            <span class="btn_all" onclick="checkAll(this);">全选</span> <span class="btn_bg">
+                <a onclick="return confirm( '确定要删除这些记录吗？ ');" id="lbtnDel" href="javascript:__doPostBack('lbtnDel','')">删 除</a>&nbsp;&nbsp; </span>
+        </div>
+    </div>
+    
+
+<script type="text/javascript">
+//<![CDATA[
+Sys.Application.initialize();
+//]]>
+</script>
+</form>
+
+
+</body></html>

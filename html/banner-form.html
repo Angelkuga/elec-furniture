@@ -1,0 +1,315 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head id="Head1"><title>
+	广告信息
+</title><link rel="stylesheet" type="text/css" href="../css/style.css">
+    <script type="text/javascript" src="http://www.jiajuks.com//resource/script/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource/script/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource/script/jquery.form.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource/script/additional-methods.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource/script/messages_cn.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource/script/fileupload.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource/My97DatePicker/WdatePicker.js"></script><link href="http://www.jiajuks.com//resource/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript">
+        $(function () {
+            //表单验证JS
+            $("#form1").validate({
+                //出错时添加的标签
+                errorElement: "span",
+                showErrors: function (errorMap, errorList) {
+                    if (errorList.length > 0) {
+                        if ($("#" + errorList[0].element.id).next() != null) {
+                            $("#" + errorList[0].element.id).next().remove();
+                        }
+                    }
+                    this.defaultShowErrors();
+                },
+                success: function (label) {
+                    //正确时的样式
+                    label.text(" ").addClass("success");
+                }
+            });
+        });
+    </script>
+    <style type="text/css">
+        .adType
+        {
+            display: none;
+        }
+    </style>
+</head>
+<body style="padding: 10px;">
+    <form name="form1" method="post" action="advertisementinfo.aspx" id="form1" enctype="multipart/form-data" novalidate="novalidate">
+<div>
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="">
+</div>
+
+    <div class="navigation">
+        <span class="back"><a href="advertisementlist.aspx">返回列表</a></span><b>您当前的位置：首页 &gt;
+            营销互动 &gt; 广告管理</b>
+    </div>
+    <div class="spClear">
+    </div>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="msgtable">
+        <tbody><tr>
+            <th colspan="2" align="left">
+                广告信息
+            </th>
+        </tr>
+        <tr>
+            <td width="160px" align="right">
+                所属广告位 ：
+            </td>
+            <td align="left">
+                <select name="ddlCategory" id="ddlCategory" class="select selectNone  w250" onchange="SetAdType()">
+                	<option value="0">请选择</option>
+                	<option value="23">产品列表页-热卖推荐</option>
+                	<option value="36">产品列表页-推荐产品</option>
+                	<option value="32">产品搜索页-推荐产品</option>
+                	<option value="55">店铺独立-&gt;右侧广告</option>
+                	<option value="38">卖场促销资讯页-右边底部广告</option>
+                	<option value="39">卖场促销资讯页-右边推荐店铺</option>
+                	<option value="37">卖场促销资讯页-右边优质商家</option>
+                	<option value="35">卖场首页-右边底部广告</option>
+                	<option value="33">卖场首页-右边推荐店铺</option>
+                	<option value="34">卖场首页-右边优质商家</option>
+                	<option value="31">卖场搜索页-优质商家</option>
+                	<option value="30">卖场搜索页-右边底部广告</option>
+                	<option value="26">品牌搜索页-优质商家</option>
+                	<option value="25">品牌搜索页-右边底部广告</option>
+                	<option value="24">品牌搜索页-右边推荐品牌</option>
+                	<option value="13">前台页面-促销模块</option>
+                	<option value="45">全部分类-推荐品牌</option>
+                	<option value="22">商家活动页面-顶部广告图</option>
+                	<option value="21">商家活动页面-右边广告图</option>
+                	<option value="54">首页-&gt;逛卖场-&gt;场馆</option>
+                	<option value="52">首页-&gt;品牌推荐-&gt;高端品牌</option>
+                	<option value="53">首页-&gt;品牌推荐-&gt;图片广告</option>
+                	<option value="19">首页-本周特价右边广告位</option>
+                	<option value="48">首页-逛卖场轮播图片</option>
+                	<option value="47">首页-逛卖场图片</option>
+                	<option value="17">首页-品牌推荐左边广告位</option>
+                	<option value="20">首页-商家活动导购</option>
+                	<option value="18">首页-限时抢购右边广告位</option>
+                	<option value="51">淘宝贝列表页-顶部4个广告图片</option>
+                	<option value="41">淘宝贝列表页推荐产品</option>
+                	<option value="50">淘宝贝列表页-最上面轮播图片</option>
+                	<option value="49">淘宝贝列表页-左下热卖宝贝</option>
+                	<option value="46">页面-淘宝贝左边广告图</option>
+                	<option value="44">主站首页-本周特价</option>
+                	<option value="42">主站首页-品牌推荐</option>
+                	<option value="43">主站首页-限时抢购</option>
+
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td width="160px" align="right">
+                广告名称 ：
+            </td>
+            <td align="left">
+                <input name="txttitle" type="text" id="txttitle" class="input w250">
+            </td>
+        </tr>
+        <tr>
+            <td width="160px" align="right">
+                推广产品连接地址 ：
+            </td>
+            <td align="left">
+                <input name="txtlinkurl" type="text" id="txtlinkurl" class="input  w250">
+            </td>
+        </tr>
+        <tr id="adFlash" class="adType" style="display: none;">
+            <td width="160px" align="right" style="color: #f30">
+                Falsh地址 ：
+            </td>
+            <td align="left">
+                <input name="txtflashurl" type="text" id="txtflashurl" class="input" style="width:380px;">
+            </td>
+        </tr>
+        <tr id="Tr1" class="adType" style="display: none;">
+            <td width="160px" align="right" style="color: #f30">
+                视频地址： ：
+            </td>
+            <td align="left">
+                <input name="txtvideourl" type="text" id="txtvideourl" class="input" style="width:380px;">
+            </td>
+        </tr>
+        <tr id="adText" class="adType" style="display: none;">
+            <td align="right" style="color: #f30">
+                文字广告 ：
+            </td>
+            <td align="left">
+                <input name="txtadtext" type="text" id="txtadtext" class="input" style="width:380px;">
+            </td>
+        </tr>
+        <tr id="adCode" class="adType" style="display: none;">
+            <td width="160px" align="right" style="color: #f30">
+                广告代码 ：
+            </td>
+            <td align="left">
+                <textarea name="txtadcode" rows="4" cols="20" id="txtadcode" class="textarea" style="width:380px;"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td width="160px" align="right">
+                是否开启 ：
+            </td>
+            <td align="left">
+                <span id="raOpen"><input id="raOpen_0" type="radio" name="raOpen" value="1" checked="checked"><label for="raOpen_0">是</label><input id="raOpen_1" type="radio" name="raOpen" value="0"><label for="raOpen_1">否</label></span>
+            </td>
+        </tr>
+        <tr>
+            <td width="160px" align="right">
+                联系人 ：
+            </td>
+            <td align="left">
+                <input name="txtadlinkman" type="text" id="txtadlinkman" class="input w250">
+            </td>
+        </tr>
+        <tr>
+            <td width="160px" align="right">
+                联系电话 ：
+            </td>
+            <td align="left">
+                <input name="txtadlinkphone" type="text" id="txtadlinkphone" class="input  w250">
+            </td>
+        </tr>
+        <tr>
+            <td width="160px" align="right">
+                Email ：
+            </td>
+            <td align="left">
+                <input name="txtadlinkemail" type="text" id="txtadlinkemail" class="input  w250">
+            </td>
+        </tr>
+        <tr>
+            <td width="160px" align="right">
+                <a href="javascript:;" onclick="imgUrlChg();">图片URL方式</a>
+            </td><td align="left"></td>
+        </tr>
+        <tr id="adImageA" style="display:none">
+            <td width="160px" align="right">
+                上传图片地址：
+            </td>
+            <td align="left">
+                <div class="fileUpload" path="/upload/show/thumb//">
+                    <input type="hidden" name="hfimgurl" id="hfimgurl">
+                    <div class="fileTools">
+                        <input type="text" class="input w160 filedisplay" id="htmltxtimg">
+                        <a href="javascript:;" class="files">
+                            <input name="File1" type="file" id="File1" class="upload" onchange="_upfileiswater(this,'0')"></a>
+                        <span class="uploading">正在上传，请稍后……</span>
+                    </div>
+                </div>   
+                <input type="button" value="清除上传连接" onclick="$('#hfimgurl').val('');$('#htmltxtimg').val('');">
+            </td>
+        </tr>
+        <tr id="adImageB">
+            <td width="160px" align="right">
+                连接图片URL:
+            </td>
+            <td align="left">
+                <input name="txtimgurlfull" type="text" id="txtimgurlfull" class="input  w250">
+            </td>
+        </tr>
+        <tr>
+            <td width="160px" align="right">
+                推广产品促销价:
+            </td>
+            <td align="left">
+                <input name="txtprice" type="text" id="txtprice" class="input  w250">
+            </td>
+        </tr>
+        <tr>
+            <td width="160px" align="right">
+                推广产品原始价:
+            </td>
+            <td align="left">
+                <input name="txtorgprice" type="text" id="txtorgprice" class="input  w250">
+            </td>
+        </tr>
+        <tr>
+            <td width="160px" align="right">
+                推广产品ID:
+            </td>
+            <td align="left">
+                <input name="txtprodID" type="text" id="txtprodID" class="input  w250">
+            </td>
+        </tr>
+        <tr>
+            <td width="160px" align="right">
+                开始时间:
+            </td>
+            <td align="left">
+                <input name="txtstarttime" type="text" id="txtstarttime" class="input  w250">
+                <img onclick="WdatePicker({el:'txtstarttime'})" src="http://www.jiajuks.com//resource/My97DatePicker/skin/datePicker.gif" width="16" height="22" style="cursor: pointer" align="absmiddle">
+            </td>
+        </tr>
+        <tr>
+            <td width="160px" align="right">
+                结束时间:
+            </td>
+            <td align="left">
+                <input name="txtendtime" type="text" id="txtendtime" class="input  w250">
+                <img onclick="WdatePicker({el:'txtendtime'})" src="http://www.jiajuks.com//resource/My97DatePicker/skin/datePicker.gif" width="16" height="22" style="cursor: pointer" align="absmiddle">
+            </td>
+        </tr>
+        <tr>
+            <td width="160px" align="right">
+                排序:
+            </td>
+            <td align="left">
+                <input name="txtsort" type="text" id="txtsort" class="input  w250">
+            </td>
+        </tr>
+        
+    </tbody></table>
+    <div style="margin-top: 10px; margin-left: 180px">
+        <input type="submit" name="btnSave" value="确认保存" id="btnSave" class="submit"><input name="重置" type="reset" class="submit" value="重置">
+    </div>
+    <script type="text/javascript">
+        $(function () {
+            $("#adImage").removeClass("adType");
+        });
+        function imgUrlChg() {
+            if ($("#adImageA").css("display") == "none") {
+                $("#adImageA").show();
+                $("#adImageB").hide();
+            } else {
+                $("#adImageA").hide();
+                $("#adImageB").show();
+            }
+        }
+        SetAdType();
+        function SetAdType() {
+            $(".adType").hide();
+            if ($("#ddlCategory").val() != "" && $("#ddlCategory").val() != "0") {
+                jQuery.ajax({
+                    url: 'http://www.jiajuks.com//ajax/ajaxuser.ashx',
+                    data: 'type=getadcategoryadtype&v=' + $("#ddlCategory").val(),
+                    success: function (data) {
+                        if (data != "") {
+                            if (data == "101") {
+                                $("#adText").css("display", "table-row");
+                            }
+                            if (data == "102") {
+                                $("#adImage").css("display", "table-row");
+                            }
+                            if (data == "103") {
+                                $("#adFlash").css("display", "table-row");
+                            }
+                            if (data == "104") {
+                                $("#adCode").css("display", "table-row");
+                            }
+                        }
+                        else {
+                            alert("数据错误!");
+                        }
+                    }
+                });
+            }
+        }
+    </script>
+    </form>
+
+
+</body></html>

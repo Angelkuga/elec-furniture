@@ -1,0 +1,164 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head id="Head1"><title>
+
+</title><link rel="stylesheet" type="text/css" href="../css/style.css">
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/jquery.form.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/additional-methods.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/messages_cn.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//My97DatePicker/WdatePicker.js"></script><link href="http://www.jiajuks.com//resource//My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+     <script type="text/javascript" src="http://www.jiajuks.com//resource//script/Aliyunfileupload.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            //表单验证JS
+            $("#form1").validate({
+                //出错时添加的标签
+                errorElement: "span",
+                showErrors: function (errorMap, errorList) {
+                    if (errorList.length > 0) {
+                        if ($("#" + errorList[0].element.id).next() != null) {
+                            $("#" + errorList[0].element.id).next().remove();
+                        }
+                    }
+                    this.defaultShowErrors();
+                },
+                success: function (label) {
+                    //正确时的样式
+                    label.text(" ").addClass("success");
+                }
+            });
+        });
+    </script>
+    <style type="text/css">
+        .formTable{border:1px solid #ccc;}
+        .formTable tr th{background:#ededed; text-align:left;}
+        .formTable tr td{border:none; padding-top:8px; padding-bottom:8px;}
+    </style>
+</head>
+<body style="padding:10px;">
+<form name="form1" method="post" action="groupbuyinfor.aspx?id=6" id="form1" enctype="multipart/form-data" novalidate="novalidate">
+<div>
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMjA2OTM4MzgxNQ9kFgICAw8WAh4HZW5jdHlwZQUTbXVsdGlwYXJ0L2Zvcm0tZGF0YRYCAgEPDxYCHgRUZXh0BQblpKfmma5kZBgBBR5fX0NvbnRyb2xzUmVxdWlyZVBvc3RCYWNrS2V5X18WAQUNY2hlY2tfZGVmYXVsdE1gEkzN8dlzbJ3A0V67MW+RnZnb">
+</div>
+
+    <div class="navigation">
+      <span class="back"><a href="shopgrouplist.aspx">返回列表</a></span><b>您当前的位置：首页 &gt; 店铺管理 &gt; 店铺组管理</b>
+    </div>
+    <div class="spClear"></div>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="msgtable">
+        <tbody><tr>
+            <th colspan="3" align="left">折扣信息</th>
+        </tr>
+        <tr>
+            <td width="120" align="right">
+                品牌名称 ：
+            </td>
+            <td align="left">
+                <input name="txttitle" type="text" value="大普" readonly="readonly" id="txttitle" class="w160 input required">
+            </td>
+        </tr>
+
+        <tr>
+            <td width="120" align="right">
+                团购标题：
+            </td>
+            <td align="left">
+                <input name="txt_tgtitle" type="text" value="五一大普团购" id="txt_tgtitle" class="w160 input required valid"><span for="txt_tgtitle" generated="true" class="error success"> </span>
+            </td>
+        </tr>
+
+        <tr>
+            <td width="120" align="right">
+                线下体验馆：
+            </td>
+            <td align="left">
+                <input name="txt_unline" type="text" value="吉盛伟邦家具村" id="txt_unline" class="w160 input required">
+            </td>
+        </tr>
+         <tr>
+            <td width="120" align="right">
+                排序：
+            </td>
+            <td align="left">
+                <input name="txt_orderby" type="text" value="0" id="txt_orderby" class="w160 input required valid"><span for="txt_orderby" generated="true" class="error success"> </span>
+            </td>
+        </tr>
+         <tr>
+            <td width="120" align="right">
+                首页推荐：
+            </td>
+            <td align="left">
+                <input id="check_default" type="checkbox" name="check_default">
+            </td>
+        </tr>
+        <tr>
+            <td width="120" align="right">
+                展位号：
+            </td>
+            <td align="left">
+                <input name="txt_showpos" type="text" value="A22" id="txt_showpos" class="w160 input required">
+            </td>
+        </tr>
+
+        <tr>
+            <td width="120" align="right">
+                折数起步：
+            </td>
+            <td align="left">
+                <input name="txt_zsbegin" type="text" value="6" id="txt_zsbegin" class="w160 input required">
+            </td>
+        </tr>
+
+        <tr>
+            <td align="right">
+                打折信息1：
+            </td>
+            <td align="left">
+            <div style="float:left;">
+                <input name="txt_user1" type="text" value="0" id="txt_user1" style="width:50px;"></div>
+                <div style="float:left;">元 </div>
+            <div style="float:left;"><input name="txt_DiscountPerson1" type="text" value="50" id="txt_DiscountPerson1" class="w160 input" style="width:50px;"></div>
+                <div style="float:left;">人</div>
+                <div style="float:left;"><input name="txt_DiscountResult1" type="text" value="6" id="txt_DiscountResult1" class="w160 input" style="width:50px;"></div>
+                <div style="float:left;">折</div>
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                打折信息2：
+            </td>
+            <td align="left">
+              <div style="float:left;">
+                <input name="txt_user2" type="text" value="0" id="txt_user2" style="width:50px;"></div>
+                <div style="float:left;">元 </div>
+            <div style="float:left;"><input name="txt_DiscountPerson2" type="text" value="100" id="txt_DiscountPerson2" class="w160 input" style="width:50px;"></div>
+                <div style="float:left;">人</div>
+                <div style="float:left;"><input name="txt_DiscountResult2" type="text" value="6" id="txt_DiscountResult2" class="w160 input" style="width:50px;"></div>
+                <div style="float:left;">折</div>
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                logo ：
+            </td>
+            <td>
+             <div class="fileUpload" path="">
+                    <input type="hidden" name="hidelogimg" id="hidelogimg">
+                    <div class="fileTools" style="width: 410px">
+                        <input type="text" class="input w250 filedisplay" id="mklogimg">
+                        <a href="javascript:;" class="files">
+                            <input name="File4" type="file" id="File4" class="upload" onchange="_upfileiswater(this,'0')"></a>
+                        <span class="uploading">上传中</span>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </tbody></table>
+    
+    <div style="margin-top:10px; margin-left:140px">
+  <input type="submit" name="btnSave" value="确认保存" id="btnSave" class="submit">
+</div>
+</form>
+
+
+</body></html>

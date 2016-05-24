@@ -1,0 +1,230 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head id="Head1"><title>
+
+</title><link rel="stylesheet" type="text/css" href="../css/style.css">
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/jquery.form.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/additional-methods.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/messages_cn.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//My97DatePicker/WdatePicker.js"></script><link href="http://www.jiajuks.com//resource//My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/jquery.area.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//editor/kindeditor/kindeditor-min.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/fileupload.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            //表单验证JS
+            $("#form1").validate({
+                //出错时添加的标签
+                errorElement: "span",
+                showErrors: function (errorMap, errorList) {
+                    if (errorList.length > 0) {
+                        if ($("#" + errorList[0].element.id).next() != null) {
+                            $("#" + errorList[0].element.id).next().remove();
+                        }
+                    }
+                    this.defaultShowErrors();
+                },
+                success: function (label) {
+                    //正确时的样式
+                    label.text(" ").addClass("success");
+                }
+            });
+        });
+    </script>
+</head>
+<body style="padding:10px;">
+<form name="form1" method="post" action="aggregationinfo.aspx" id="form1" enctype="multipart/form-data" novalidate="novalidate">
+<div>
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJMjE5NjA3ODU2D2QWAgIDDxYCHgdlbmN0eXBlBRNtdWx0aXBhcnQvZm9ybS1kYXRhFgJmDxAPFgYeDURhdGFUZXh0RmllbGQFBXRpdGxlHg5EYXRhVmFsdWVGaWVsZAUCaWQeC18hRGF0YUJvdW5kZ2QQFScJ6K+36YCJ5oupGemmlumhtS3mjqjojZDljZblnLrlub/lkYof6aaW6aG1LeaOqOiNkOWNluWcuuWPs+S+p+W5v+WRih/pppbpobUt5o6o6I2Q5Y2W5Zy65YiH5o2i5bm/5ZGKDOWutuWFt+WNluWcuhx8LS3lrrblhbfljZblnLot5o6o6I2Q5ZOB54mMFue7j+mUgOW6l+mTui3mjInlk4HniYwPfC0t5o6o6I2Q5ZOB54mMFuWTgeeJjOWOguWuti3mjInlk4HniYwPfC0t5o6o6I2Q5ZOB54mMDOmUgOWUruS6p+WTgRZ8LS3kuqflk4Et5o6o6I2Q5ZOB54mMDOe7j+mUgOW6l+mTuhx8LS3nu4/plIDlupfpk7ot5o6o6I2Q5ZOB54mMDOWTgeeJjOWOguWuthx8LS3lk4HniYzljoLlrrYt5o6o6I2Q5ZOB54mMDemmlumhtS3mkJzntKIPfC0t54Ot6Zeo5pCc57SiD3wtLeWNluWcuuWbvuaWhwp8LS3ljZYg5Zy6CnwtLeWTgSDniYwKfC0t5p2QIOi0qAl8LS3po47moLwKfC0t5Lu3IOS9jRbpppbpobUt57uP6ZSA5ZWG5YiX6KGoFXwtLeacgOWPl+WFs+azqOW6l+mTug98LS3lupfpk7rliJfooagZ6aaW6aG1LeWutuWFt+WNluWcuuS/oeaBrxV8LS3mnIDlj5flhbPms6jljZblnLoPfC0t5Y2W5Zy65YiX6KGoGemmlumhtS3kvJjnp4Dlk4HniYzljoLlrrYVfC0t5pyA5Y+X5YWz5rOo5Y6C5a62F3wtLeWTgeeJjFvlm77niYdd5YiX6KGoGemmlumhteaooeWdly3kuqflk4HpppbpobUJfC0t5qyn5byPFnwtLeaWsOWPpOWFuC/lkI7njrDku6MPfC0t576O5byP5Lmh5p2RE3wtLeWbveWbrS/lnLDkuK3mtbcPfC0t546w5Luj566A57qmFScBMAI0MQI0MAIzOQIzNwIzOAIzNAIzNgIzMwIzNQIyOQIzMgIyOAIzMQIyNwIzMAIxNwIyNgIyMwIyMgIyMQIyMAIxOQIxOAIxNAIxNgIxNQE5AjExAjEwATYBOAE3ATECMjQBNQE0ATMBMhQrAydnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dkZGSM4ugigMixK/t6zJ/GcHo3L5OM2Q==">
+</div>
+
+    <div class="navigation">
+      <span class="back"><a href="aggregationlist.aspx">返回列表</a></span><b>您当前的位置：首页 &gt; 信息管理 &gt; 聚合信息</b>
+    </div>
+    <div class="spClear"></div>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="msgtable">
+        <tbody><tr>
+            <th colspan="2" align="left">聚合信息</th>
+        </tr>
+        <tr>
+            <td width="160" align="right">
+                所属模块：
+            </td>
+            <td align="left">
+                <select name="ddltype" id="ddltype" class="select">
+                	<option value="0">请选择</option>
+                	<option value="41">首页-推荐卖场广告</option>
+                	<option value="40">首页-推荐卖场右侧广告</option>
+                	<option value="39">首页-推荐卖场切换广告</option>
+                	<option value="37">家具卖场</option>
+                	<option value="38">|--家具卖场-推荐品牌</option>
+                	<option value="34">经销店铺-按品牌</option>
+                	<option value="36">|--推荐品牌</option>
+                	<option value="33">品牌厂家-按品牌</option>
+                	<option value="35">|--推荐品牌</option>
+                	<option value="29">销售产品</option>
+                	<option value="32">|--产品-推荐品牌</option>
+                	<option value="28">经销店铺</option>
+                	<option value="31">|--经销店铺-推荐品牌</option>
+                	<option value="27">品牌厂家</option>
+                	<option value="30">|--品牌厂家-推荐品牌</option>
+                	<option value="17">首页-搜索</option>
+                	<option value="26">|--热门搜索</option>
+                	<option value="23">|--卖场图文</option>
+                	<option value="22">|--卖 场</option>
+                	<option value="21">|--品 牌</option>
+                	<option value="20">|--材 质</option>
+                	<option value="19">|--风格</option>
+                	<option value="18">|--价 位</option>
+                	<option value="14">首页-经销商列表</option>
+                	<option value="16">|--最受关注店铺</option>
+                	<option value="15">|--店铺列表</option>
+                	<option value="9">首页-家具卖场信息</option>
+                	<option value="11">|--最受关注卖场</option>
+                	<option value="10">|--卖场列表</option>
+                	<option value="6">首页-优秀品牌厂家</option>
+                	<option value="8">|--最受关注厂家</option>
+                	<option value="7">|--品牌[图片]列表</option>
+                	<option value="1">首页模块-产品首页</option>
+                	<option value="24">|--欧式</option>
+                	<option value="5">|--新古典/后现代</option>
+                	<option value="4">|--美式乡村</option>
+                	<option value="3">|--国园/地中海</option>
+                	<option value="2">|--现代简约</option>
+
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td width="160" align="right">
+                信息标题 ：
+            </td>
+            <td align="left">
+                <input name="txttitle" type="text" id="txttitle" class="input">
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                信息副标题1 ：
+            </td>
+            <td align="left">
+                <input name="txttitle1" type="text" id="txttitle1" class="input">
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                信息副标题2 ：
+            </td>
+            <td align="left">
+                <input name="txttitle2" type="text" id="txttitle2" class="input">
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                信息副标题3 ：
+            </td>
+            <td align="left">
+                <input name="txttitle3" type="text" id="txttitle3" class="input">
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                图片 ：
+            </td>
+            <td align="left">
+                <div class="fileUpload" path="/upload/aggregation/thumb//">
+                    <input type="hidden" name="hfthumb" id="hfthumb">
+                    <div class="fileTools">
+                        <input type="text" class="input w160 filedisplay">
+                        <a href="javascript:;" class="files"><input name="File3" type="file" id="File3" class="upload" onchange="_upfile(this)"></a>
+                        <span class="uploading">正在上传，请稍后……</span>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                图片宽 ：
+            </td>
+            <td align="left">
+                <input name="txtthumbw" type="text" value="0" id="txtthumbw" class="input" style="width:60px;">
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                图片高 ：
+            </td>
+            <td align="left">
+                <input name="txtthumbh" type="text" value="0" id="txtthumbh" class="input valid" style="width:60px;">
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                幻灯图 ：
+            </td>
+            <td align="left">
+                <div class="fileUpload m" path="/upload/aggregation/banner//">
+                    <input type="hidden" name="hfbannel" id="hfbannel">
+                    <div class="fileTools">
+                        <input type="text" class="input w160 filedisplay">
+                        <a href="javascript:;" class="files"><input name="File4" type="file" id="File4" class="upload" onchange="_upfile(this)"></a>
+                        <span class="uploading">正在上传，请稍后……</span>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                连接地址 ：
+            </td>
+            <td align="left">
+                <input name="txturl" type="text" id="txturl" class="input">
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                连接地址1 ：
+            </td>
+            <td align="left">
+                <input name="txturl1" type="text" id="txturl1" class="input">
+            </td>
+        </tr><tr>
+            <td align="right">
+                连接地址2 ：
+            </td>
+            <td align="left">
+                <input name="txturl2" type="text" id="txturl2" class="input">
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                描述 ：
+            </td>
+            <td align="left">
+                <input name="txtdescript" type="text" id="txtdescript" class="input">
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                排序 ：
+            </td>
+            <td align="left">
+                <input name="txtsort" type="text" value="0" id="txtsort" class="input" style="width:60px;">
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                点击量 ：
+            </td>
+            <td align="left">
+                <input name="txthits" type="text" value="0" id="txthits" class="input" style="width:60px;">
+            </td>
+        </tr>
+    </tbody></table>
+    <div style="margin-top:10px; margin-left:180px">
+  <input type="submit" name="btnSave" value="确认保存" id="btnSave" class="submit"><input name="重置" type="reset" class="submit" value="重置">
+</div>
+</form>
+
+
+</body></html>
