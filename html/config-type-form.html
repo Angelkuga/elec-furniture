@@ -1,0 +1,132 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head id="Head1"><title>
+
+</title><link rel="stylesheet" type="text/css" href="../css/style.css">
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/jquery.form.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/additional-methods.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/messages_cn.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            //表单验证JS
+            $("#form1").validate({
+                errorElement: "span",
+                showErrors: function (errorMap, errorList) {
+                    if (errorList.length > 0) {
+                        if ($("#" + errorList[0].element.id).next() != null) {
+                            $("#" + errorList[0].element.id).next().remove();
+                        }
+                    }
+                    this.defaultShowErrors();
+                },
+                success: function (label) {
+                    //正确时的样式
+                    label.text(" ").addClass("success");
+                }
+            });
+
+            $("#btnSave").click(function () {
+                if ($("#txtmark").val() == "") { alert("请输入标识！")}
+                $.ajax(function () {
+                    url:'../ajax/adminajax.ashx',
+                    data:'type=getconfigtypemarket&v='+$("#txtmark").val()+"&t=",
+                    success:function(data){
+                           if(data=="1")
+                           {
+                            return true;
+                           }
+                    }
+                })
+
+            })
+        });
+
+
+    </script>
+</head>
+
+<body style="padding:10px;">
+<form name="form1" method="post" action="configtypeinfo.aspx" id="form1">
+<div>
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUIMjc5MDUyOTAPZBYCAgMPZBYCAgcPEGQQFQgJ6K+36YCJ5oupDOezu+e7n+mFjee9rgzkvIHkuJrphY3nva4M5bel5Y6C6YWN572uD+e7j+mUgOWVhumFjee9rgzlupfpk7rphY3nva4M5Y2W5Zy66YWN572uDOS6p+WTgemFjee9rhUIAAMxMDEDMTAyBDEwMjEEMTIwMgQxMjAzBDEyMDQDMTAzFCsDCGdnZ2dnZ2dnZGRkbrpnU2YsD2hHgwE+OUNen68++iE=">
+</div>
+
+    <div class="navigation">
+      <span class="back"><a href="configtypelist.aspx">返回列表</a></span><b>您当前的位置：首页 &gt; 系统管理 &gt; 配置管理</b>
+    </div>
+    <div class="spClear"></div>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="msgtable">
+        <tbody><tr>
+            <th colspan="2" align="left">配置类型信息</th>
+        </tr> 
+        <tr>
+	        <td width="160px" align="right">配置类型名称：</td>
+	        <td align="left">
+		        <input name="txttitle" type="text" id="txttitle" class="input required w250">
+	        </td>
+        </tr>
+        <tr>
+            <td align="right">
+                标识 ：
+            </td>
+            <td>
+                <input name="txtmark" type="text" id="txtmark" class="input required  w160">
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                索引 ：
+            </td>
+            <td>
+                <input name="txtletter" type="text" id="txtletter" class="input required w160">
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                配置模块 ：
+            </td>
+            <td>
+                <select name="ddltype" id="ddltype" class="select selectNone">
+	<option value="">请选择</option>
+	<option value="101">系统配置</option>
+	<option value="102">企业配置</option>
+	<option value="1021">工厂配置</option>
+	<option value="1202">经销商配置</option>
+	<option value="1203">店铺配置</option>
+	<option value="1204">卖场配置</option>
+	<option value="103">产品配置</option>
+
+</select>
+            </td>
+        </tr>
+
+        <tr>
+            <td align="right">
+                对象数量 ：
+            </td>
+            <td>
+                <input name="txtcount" type="text" value="0" id="txtcount" class="input required digits" style="width:40px;">
+            </td>
+        </tr>
+	   <tr>
+	        <td align="right">排序：</td>
+	        <td align="left">
+		        <input name="txtsort" type="text" value="0" id="txtsort" class="input required digits" style="width:40px;">
+	        </td>
+      </tr>
+       <tr>
+            <td align="right">
+                描述 ：
+            </td>
+            <td>
+                <textarea name="txtdescript" rows="5" cols="20" id="txtdescript" class="textarea w380"></textarea>
+            </td>
+        </tr>
+    </tbody></table>
+    <div style="margin-top:10px; margin-left:180px">
+  <input type="submit" name="btnSave" value="确认保存" id="btnSave" class="submit"><input name="重置" type="reset" class="submit" value="重置">
+</div>
+</form>
+
+
+</body></html>

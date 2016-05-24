@@ -1,0 +1,93 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head id="Head1"><title>
+
+</title><link rel="stylesheet" type="text/css" href="../css/style.css">
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/jquery.form.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/additional-methods.js"></script>
+    <script type="text/javascript" src="http://www.jiajuks.com//resource//script/messages_cn.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            //表单验证JS
+            $("#form1").validate({
+                //出错时添加的标签
+                errorElement: "span",
+                showErrors: function (errorMap, errorList) {
+                    if (errorList.length > 0) {
+                        if ($("#" + errorList[0].element.id).next() != null) {
+                            $("#" + errorList[0].element.id).next().remove();
+                        }
+                    }
+                    this.defaultShowErrors();
+                },
+                success: function (label) {
+                    //正确时的样式
+                    label.text(" ").addClass("success");
+                }
+            });
+        });
+    </script>
+</head>
+<body style="padding:10px;">
+<form name="form1" method="post" action="moduleinfo.aspx" id="form1" novalidate="novalidate">
+<div>
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKLTE2NzQ3ODEwNg9kFgICAw9kFgICBQ8QZBAVCQnor7fpgInmi6kG57O757ufBuWQjuWPsAnkvpvlupTllYYP5L6b5bqU5ZWG5Y6C5a62EuS+m+W6lOWVhue7j+mUgOWVhg/kvpvlupTllYbljZblnLoP5L6b5bqU5ZWG5bqX6ZO6BuWJjeWPsBUJAAQxMDAxBDEwMDIEMTAwMwYxMDAzMDEGMTAwMzAyBjEwMDMwMwYxMDAzMDQEMTAwNBQrAwlnZ2dnZ2dnZ2dkZGQ8f/EobL3lyacldz9MZYpAVLuTQA==">
+</div>
+
+    <div class="navigation">
+      <span class="back"><a href="modulelist.aspx">返回列表</a></span><b>您当前的位置：首页 &gt; 系统管理 &gt; 模块信息</b>
+    </div>
+    <div class="spClear"></div>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="msgtable">
+        <tbody><tr>
+            <th colspan="2" align="left">模块信息</th>
+        </tr>
+        <tr>
+	        <td width="160px" align="right">模块标题：</td>
+	        <td align="left">
+		        <input name="txttitle" type="text" id="txttitle" class="input">
+	        </td>
+        </tr>
+	    <tr>
+	        <td align="right">模块标识：</td>
+	        <td align="left">
+                <input name="txtmark" type="text" id="txtmark" class="input">
+	        </td>
+        </tr>
+        <tr>
+	        <td align="right">模块类型：</td>
+	        <td align="left">
+                <select name="ddltype" id="ddltype" class="select selectNone">
+                	<option value="">请选择</option>
+                	<option value="1001">系统</option>
+                	<option value="1002">后台</option>
+                	<option value="1003">供应商</option>
+                	<option value="100301">供应商厂家</option>
+                	<option value="100302">供应商经销商</option>
+                	<option value="100303">供应商卖场</option>
+                	<option value="100304">供应商店铺</option>
+                	<option value="1004">前台</option>
+
+                </select>
+	        </td>
+        </tr>
+	    <tr>
+            <td align="right">模块描述：</td>
+	        <td align="left">
+		        <textarea name="txtdescript" rows="3" cols="20" id="txtdescript" class="textarea w380"></textarea>
+	        </td>
+       </tr>
+	   <tr>
+	        <td align="right">排序：</td>
+	        <td align="left">
+		        <input name="txtsort" type="text" value="0" id="txtsort" class="input valid" style="width:40px;">
+	        </td>
+      </tr>
+    </tbody></table>
+    <div style="margin-top:10px; margin-left:180px">
+  <input type="submit" name="btnSave" value="确认保存" id="btnSave" class="submit"><input name="重置" type="reset" class="submit" value="重置">
+</div>
+</form>
+
+
+</body></html>
